@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial - App Acadêmico</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="/CSS/style.css">
+</head>
+<body>
+
+    <div class="mobile-frame">
+        <div class="content-area">
+            
+            <div class="top-bar">
+                <div>
+                    <h3 style="color: var(--text-light); font-weight: 400; font-size: 14px;">Olá,</h3>
+                    <h1 style="font-size: 20px;">Gabriel Canal</h1>
+                </div>
+                <span class="material-symbols-outlined" style="font-size: 28px; cursor: pointer;">notifications</span>
+            </div>
+
+            <div class="card hero-card">
+                <h2>Engenharia Elétrica</h2>
+                <p>📍 Bloco J - Sala 204 <br> ⏰ 19:30 às 22:30</p>
+                <button class="btn-primary" id="btnChamada" style="background-color: white; color: var(--primary-color);">Responder Chamada</button>
+            </div>
+
+            <h3 style="font-size: 16px; margin: 16px 0 8px 0;">Acesso Rápido</h3>
+            <div class="grid-menu">
+                <div class="grid-item">
+                    <span class="material-symbols-outlined" style="display: block; font-size: 28px; margin-bottom: 8px; color: var(--primary-color);">local_library</span>
+                    Biblioteca
+                </div>
+                <div class="grid-item">
+                    <span class="material-symbols-outlined" style="display: block; font-size: 28px; margin-bottom: 8px; color: var(--primary-color);">assignment</span>
+                    Notas
+                </div>
+                <div class="grid-item">
+                    <span class="material-symbols-outlined" style="display: block; font-size: 28px; margin-bottom: 8px; color: var(--primary-color);">event_busy</span>
+                    Faltas
+                </div>
+                <div class="grid-item">
+                    <span class="material-symbols-outlined" style="display: block; font-size: 28px; margin-bottom: 8px; color: var(--primary-color);">payments</span>
+                    Financeiro
+                </div>
+            </div>
+
+        </div>
+
+        <nav class="bottom-nav">
+            <a href="home.html" class="nav-item active">
+                <span class="material-symbols-outlined">home</span> Início
+            </a>
+            <a href="#" class="nav-item modal-trigger">
+                <span class="material-symbols-outlined">calendar_month</span> Agenda
+            </a>
+            <a href="#" class="nav-item modal-trigger">
+                <span class="material-symbols-outlined">person</span> Perfil
+            </a>
+        </nav>
+
+        <div class="modal-overlay" id="myModal">
+            <div class="modal-content">
+                <h2 id="modalTitle">Sucesso!</h2>
+                <p id="modalMessage" style="margin: 16px 0; color: var(--text-light);">Sua presença foi registrada com sucesso nesta disciplina.</p>
+                <button class="btn-primary close-modal">Entendi</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/Javascript/app.js"></script>
+</body>
+</html>
