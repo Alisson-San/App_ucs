@@ -495,3 +495,239 @@ h3 {
 .map-fab { width: 48px; height: 48px; border-radius: 50%; background-color: var(--card-bg); color: var(--primary-color); border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: flex; justify-content: center; align-items: center; cursor: pointer; }
 .map-fab:active { background-color: var(--bg-color); transform: scale(0.95); }
 .map-btn-small { width: 36px; height: 36px; border-radius: 50%; background-color: var(--card-bg); color: var(--text-light); border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: flex; justify-content: center; align-items: center; cursor: pointer; }
+
+/* =========================================
+   13. TELA DE LOGIN ESPECÍFICA
+   ========================================= */
+
+/* Fundo escuro do Login */
+.login-body {
+    background-color: #0b1a2e; /* Azul bem escuro padrão da tela */
+}
+
+.login-frame {
+    background-color: transparent;
+    padding: 0; 
+    border: none;
+    box-shadow: none;
+}
+
+/* Barra Vermelha Superior */
+.ucs-topbar {
+    background-color: #B30000; /* Vermelho UCS */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ucs-topbar .material-symbols-outlined {
+    font-size: 20px;
+}
+
+.menu-icon {
+    cursor: pointer;
+}
+
+/* Área central do login */
+.login-content-area {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.login-card-original {
+    background-color: var(--card-bg);
+    padding: 32px 24px;
+    border-radius: 8px; 
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+/* Logo */
+.logo-container {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.logo-img {
+    max-height: 80px;
+    margin-bottom: 8px;
+}
+
+.logo-fallback-red {
+    background-color: #B30000;
+    color: white;
+    width: 100px;
+    height: 60px;
+    margin: 0 auto 8px auto;
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 28px;
+    border-radius: 4px;
+}
+
+.logo-subtitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Campos de Input com Ícones */
+.input-with-icon {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.input-with-icon .icon-left {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 22px;
+}
+
+.input-with-icon input {
+    width: 100%;
+    padding: 14px 16px 14px 44px; 
+    background-color: #F0F2F5; 
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    color: #333;
+    outline: none;
+}
+
+.input-with-icon input:focus {
+    background-color: #E4E6E9;
+}
+
+.toggle-password-btn {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+/* Checkbox Lembrar */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: #555;
+}
+
+.custom-checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* Botão Azul Entrar */
+.btn-ucs-blue {
+    width: 100%;
+    background-color: #005A9C; 
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 24px;
+    transition: background-color 0.2s;
+}
+
+.btn-ucs-blue:hover {
+    background-color: #004578;
+}
+
+/* Links */
+.login-links-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.login-links-vertical a {
+    color: #005A9C;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.login-links-vertical a:hover {
+    text-decoration: underline;
+}
+
+/* Instruções Rodapé */
+.login-instructions {
+    font-size: 12px;
+    color: #777;
+    text-align: justify;
+    line-height: 1.4;
+    border-top: 1px solid #EEE;
+    padding-top: 16px;
+}
+
+/* Seletor de Idiomas (Rodapé) */
+.language-selector {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid #EEEEEE;
+}
+
+.lang-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.lang-btn span {
+    font-size: 16px;
+}
+
+.lang-btn:hover {
+    background-color: #F0F2F5;
+    color: #333;
+}
+
+.lang-btn.active {
+    background-color: #E4E6E9;
+    color: #333;
+    font-weight: 600;
+    border-color: #D1D5DB;
+}
