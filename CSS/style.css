@@ -1,18 +1,29 @@
 /* =========================================
-   Variáveis de Cor e Estilo Global
+   1. VARIÁVEIS GLOBAIS E PALETA (UCS)
    ========================================= */
 :root {
-    --primary-color: #0A3D73;
-    --primary-hover: #072b52;
-    --bg-color: #F4F6F9;
+    /* Cores Oficiais */
+    --ucs-blue-dark: #002D5D;
+    --ucs-blue-light: #005A9C;
+    --ucs-red: #C8102E;
+    
+    /* Cores de Interface */
+    --primary-color: var(--ucs-blue-light);
+    --primary-hover: var(--ucs-blue-dark);
+    --bg-color: #F0F4F8; /* Cinza Ártico Elegante */
     --card-bg: #FFFFFF;
-    --text-main: #333333;
-    --text-light: #666666;
-    --border-color: #E2E8F0;
-    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.04);
-    --shadow-btn: 0 4px 12px rgba(10, 61, 115, 0.2);
-    --radius-card: 16px;
-    --radius-input: 8px;
+    --text-main: #1E293B;
+    --text-light: #64748B;
+    --border-color: rgba(0, 45, 93, 0.08);
+    
+    /* Sombras Premium */
+    --shadow-soft: 0 8px 24px rgba(0, 45, 93, 0.06);
+    --shadow-hover: 0 12px 32px rgba(0, 45, 93, 0.12);
+    --shadow-btn: 0 8px 20px rgba(0, 90, 156, 0.25);
+    
+    /* Arredondamentos */
+    --radius-card: 20px;
+    --radius-input: 12px;
 }
 
 * {
@@ -29,10 +40,11 @@ body {
     align-items: center;
     min-height: 100vh;
     color: var(--text-main);
+    -webkit-font-smoothing: antialiased;
 }
 
 /* =========================================
-   Container Mobile (Simulador de Tela)
+   2. ESTRUTURA PRINCIPAL MOBILE
    ========================================= */
 .mobile-frame {
     width: 100%;
@@ -43,8 +55,7 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: hidden; 
 }
 
 @media (min-width: 450px) {
@@ -56,15 +67,13 @@ body {
     }
 }
 
-/* =========================================
-   Componentes Compartilhados (Cards, Botões)
-   ========================================= */
 .content-area {
     padding: 24px;
     flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 80px; /* Espaço para o menu inferior */
+    display: block; 
+    overflow-y: auto; 
+    overflow-x: hidden;
+    padding-bottom: 120px; 
 }
 
 .card {
@@ -96,78 +105,78 @@ body {
 }
 
 /* =========================================
-   Tela de Login Específica
+   3. HOME: CABEÇALHO E CARD PRINCIPAL
    ========================================= */
-.header-login {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
+.notification-dot {
+    background-color: var(--ucs-red) !important;
 }
 
-.logo-placeholder {
-    width: 64px;
-    height: 64px;
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 16px;
-}
-
-.input-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.input-group label {
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 8px;
-}
-
-.input-group input {
-    padding: 14px 16px;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-input);
-    font-size: 15px;
-    outline: none;
-    background-color: #FAFAFA;
-}
-
-.toggle-password {
+.top-bg-gradient {
     position: absolute;
-    right: 16px;
-    top: 38px;
-    background: none;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-/* =========================================
-   Tela Inicial (Dashboard)
-   ========================================= */
-.top-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 16px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 230px;
+    background: linear-gradient(135deg, var(--ucs-blue-dark) 0%, var(--ucs-blue-light) 100%);
+    z-index: 0;
+    border-radius: 0 0 32px 32px; /* Curva suave na base do azul */
 }
 
 .hero-card {
-    background: linear-gradient(135deg, var(--primary-color), #1a5b9e);
+    background: linear-gradient(135deg, #3C3C3B 0%, #1E293B 100%);
     color: white;
+    box-shadow: 0 16px 32px rgba(60, 60, 59, 0.25);
+    border-radius: var(--radius-card);
+    padding: 28px 24px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    z-index: 1; /* Garante que o card fique por cima do fundo azul */
 }
 
-.hero-card h2 { font-size: 18px; margin-bottom: 8px; }
-.hero-card p { font-size: 14px; opacity: 0.9; margin-bottom: 16px; }
+.hero-card h2 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+.hero-card p { font-size: 14px; opacity: 0.85; margin-bottom: 20px; line-height: 1.5; }
+
+.hero-card .btn-primary {
+    background-color: white;
+    color: #3C3C3B;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 100px;
+    padding: 14px;
+}
+
+.hero-card .btn-primary:hover {
+    background-color: #F8FAFC;
+    transform: scale(1.02);
+}
+
+/* =========================================
+   4. HOME: GRIDS E CARROSSÉIS
+   ========================================= */
+h3 {
+    color: var(--text-main);
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+.icon-wrapper {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: rgba(0, 90, 156, 0.08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 12px auto;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.icon-wrapper .material-symbols-outlined {
+    font-size: 28px;
+    color: var(--ucs-blue-light);
+}
 
 .grid-menu {
     display: grid;
@@ -177,28 +186,79 @@ body {
 
 .grid-item {
     background-color: var(--card-bg);
-    padding: 20px;
+    padding: 20px 8px;
     border-radius: var(--radius-card);
     text-align: center;
     box-shadow: var(--shadow-soft);
-    font-weight: 500;
-    cursor: pointer;
     font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+}
+
+.services-scroll {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 16px;
+    margin-left: -24px;
+    margin-right: -24px;
+    padding-left: 24px;
+    padding-right: 24px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.services-scroll::-webkit-scrollbar { display: none; }
+
+.service-item {
+    flex: 0 0 auto;
+    width: 104px;
+    background-color: var(--card-bg);
+    padding: 16px 8px;
+    border-radius: var(--radius-card);
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-main);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+}
+
+.grid-item:hover, .service-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.grid-item:hover .icon-wrapper, .service-item:hover .icon-wrapper {
+    transform: scale(1.1);
+    background-color: rgba(0, 90, 156, 0.12);
 }
 
 /* =========================================
-   Menu Inferior (Navegação)
+   5. MENU INFERIOR E MODAIS
    ========================================= */
 .bottom-nav {
     position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: var(--card-bg);
+    bottom: 0; left: 0; width: 100%;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.03);
     display: flex;
     justify-content: space-around;
-    padding: 16px 0;
-    border-top: 1px solid var(--border-color);
+    padding: 12px 0 20px 0;
     border-radius: 0 0 32px 32px;
+    z-index: 50;
 }
 
 .nav-item {
@@ -209,287 +269,229 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 4px;
+    transition: color 0.2s;
 }
 
 .nav-item.active {
-    color: var(--primary-color);
+    color: var(--ucs-blue-dark);
     font-weight: 600;
 }
 
-/* =========================================
-   Sistema de Modais (Janelas Sobrepostas)
-   ========================================= */
-.modal-overlay {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+.modal-overlay, .drawer-overlay {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
     background-color: rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    visibility: hidden;
+    opacity: 0; visibility: hidden;
     transition: all 0.3s ease;
-    z-index: 100;
+    z-index: 90;
+    display: flex; justify-content: center; align-items: center;
 }
 
-.modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
+.modal-overlay.active, .drawer-overlay.active { opacity: 1; visibility: visible; }
 
 .modal-content {
     background-color: var(--card-bg);
-    width: 85%;
-    padding: 24px;
+    width: 85%; padding: 24px;
     border-radius: var(--radius-card);
     text-align: center;
     transform: translateY(20px);
     transition: transform 0.3s ease;
 }
 
-.modal-overlay.active .modal-content {
-    transform: translateY(0);
-}
+.modal-overlay.active .modal-content { transform: translateY(0); }
 
 .close-modal {
-    margin-top: 16px;
-    background: none;
-    color: var(--text-light);
-    border: none;
-    font-weight: 600;
-    cursor: pointer;
+    margin-top: 16px; background: none; color: var(--text-light);
+    border: none; font-weight: 600; cursor: pointer;
 }
 
-/* Fundo escuro do Login (pode colocar imagem de fundo aqui) */
-.login-body {
-    background-color: #0b1a2e; /* Azul bem escuro padrão da tela */
-    /* Se quiser usar imagem de fundo, descomente a linha abaixo e coloque a imagem na pasta: */
-    /* background-image: url('imagens/fundo-login.jpg'); background-size: cover; */
+/* Drawer Perfil */
+.profile-drawer {
+    position: absolute; top: 0; right: -100%;
+    width: 80%; height: 100%; background-color: var(--bg-color);
+    z-index: 100; display: flex; flex-direction: column;
+    box-shadow: -4px 0 24px rgba(0,0,0,0.15);
+    transition: right 0.3s ease-in-out;
+}
+.profile-drawer.active { right: 0; }
+.drawer-header {
+    background-color: var(--card-bg); padding: 32px 24px 24px 24px;
+    border-bottom: 1px solid var(--border-color); position: relative; text-align: center;
+}
+.close-drawer {
+    position: absolute; top: 16px; left: 16px; background: none; border: none;
+    font-size: 24px; color: var(--text-light); cursor: pointer;
+}
+.user-avatar {
+    width: 72px; height: 72px; border-radius: 50%; background-color: #F1F5F9;
+    margin: 0 auto 16px auto; display: flex; justify-content: center; align-items: center;
+}
+.drawer-menu { padding: 24px; flex-grow: 1; }
+.drawer-link {
+    display: flex; align-items: center; gap: 16px; padding: 16px 0;
+    text-decoration: none; color: var(--text-main); font-size: 15px; font-weight: 500;
+    border-bottom: 1px solid var(--border-color);
+}
+.drawer-footer { padding: 24px; background-color: var(--card-bg); }
+.logout-btn {
+    display: flex; justify-content: center; align-items: center; gap: 8px;
+    text-decoration: none; color: var(--ucs-red); font-weight: 600; font-size: 15px;
+    padding: 12px; background-color: #FEF2F2; border-radius: 8px;
 }
 
-.login-frame {
-    background-color: transparent;
-    padding: 0; /* Tiramos o padding para a barra vermelha colar nas bordas */
-    border: none;
-    box-shadow: none;
-}
-
-/* Barra Vermelha Superior */
-.ucs-topbar {
-    background-color: #B30000; /* Vermelho UCS */
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 16px;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.topbar-left {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.ucs-topbar .material-symbols-outlined {
-    font-size: 20px;
-}
-
-.menu-icon {
-    cursor: pointer;
-}
-
-/* Área central do login */
-.login-content-area {
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex-grow: 1;
-}
-
-.login-card-original {
-    padding: 32px 24px;
-    border-radius: 8px; /* Bordas menos arredondadas que o design anterior */
-}
-
-/* Logo */
-.logo-container {
-    text-align: center;
-    margin-bottom: 32px;
-}
-
-.logo-img {
-    max-height: 80px;
-    margin-bottom: 8px;
-}
-
-.logo-fallback-red {
-    background-color: #B30000;
-    color: white;
-    width: 100px;
-    height: 60px;
-    margin: 0 auto 8px auto;
-    display: none; /* Só aparece se a imagem falhar */
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    font-size: 28px;
-    border-radius: 4px;
-}
-
-.logo-subtitle {
-    font-size: 16px;
-    font-weight: 600;
-    color: #333;
-}
-
-/* Campos de Input com Ícones */
-.input-with-icon {
-    position: relative;
-    margin-bottom: 16px;
-}
-
-.input-with-icon .icon-left {
-    position: absolute;
-    left: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #666;
-    font-size: 22px;
-}
-
-.input-with-icon input {
-    width: 100%;
-    padding: 14px 16px 14px 44px; /* Espaço para o ícone na esquerda */
-    background-color: #F0F2F5; /* Fundo cinza como na imagem */
-    border: none;
-    border-radius: 4px;
-    font-size: 15px;
-    color: #333;
-    outline: none;
-}
-
-.input-with-icon input:focus {
-    background-color: #E4E6E9;
-}
-
-.toggle-password-btn {
-    position: absolute;
-    right: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: #666;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-}
-
-/* Checkbox Lembrar */
-.checkbox-container {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 24px;
-    font-size: 14px;
-    color: #555;
-}
-
-.custom-checkbox {
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-}
-
-/* Botão Azul Entrar */
-.btn-ucs-blue {
-    width: 100%;
-    background-color: #005A9C; /* Azul do botão original */
-    color: white;
-    border: none;
-    padding: 14px;
-    border-radius: 4px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-bottom: 24px;
-    transition: background-color 0.2s;
-}
-
-.btn-ucs-blue:hover {
-    background-color: #004578;
-}
-
-/* Links */
-.login-links-vertical {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 32px;
-}
-
-.login-links-vertical a {
-    color: #005A9C;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.login-links-vertical a:hover {
-    text-decoration: underline;
-}
-
-/* Instruções Rodapé */
-.login-instructions {
-    font-size: 12px;
-    color: #777;
-    text-align: justify;
-    line-height: 1.4;
-    border-top: 1px solid #EEE;
-    padding-top: 16px;
-}
 /* =========================================
-   Seletor de Idiomas (Rodapé)
+   6. TELAS SECUNDÁRIAS GERAIS
    ========================================= */
-.language-selector {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 24px;
-    padding-top: 16px;
-    border-top: 1px solid #EEEEEE;
+.topbar-subpage {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 24px 16px 24px; background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
 }
-
-.lang-btn {
-    background: transparent;
-    border: 1px solid transparent;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 13px;
-    color: #666;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.2s ease;
+.topbar-subpage h2 { font-size: 18px; font-weight: 600; color: var(--text-main); }
+.back-button {
+    color: var(--text-main); text-decoration: none; display: flex;
+    align-items: center; justify-content: center; width: 36px; height: 36px;
+    border-radius: 50%; transition: background-color 0.2s;
 }
+.back-button:hover { background-color: var(--bg-color); }
 
-.lang-btn span {
-    font-size: 16px; /* Tamanho da bandeira (emoji) */
+/* =========================================
+   7. BIBLIOTECA
+   ========================================= */
+.search-container { position: relative; margin-bottom: 20px; }
+.search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-light); }
+.search-input {
+    width: 100%; padding: 14px 16px 14px 44px; border: 1px solid var(--border-color);
+    border-radius: var(--radius-input); font-size: 15px; outline: none;
+    background-color: var(--card-bg); box-shadow: var(--shadow-soft);
 }
-
-.lang-btn:hover {
-    background-color: #F0F2F5;
-    color: #333;
+.categories-scroll {
+    display: flex; gap: 12px; overflow-x: auto; padding-bottom: 16px; margin-bottom: 8px; scrollbar-width: none;
 }
+.categories-scroll::-webkit-scrollbar { display: none; }
+.category-chip {
+    white-space: nowrap; padding: 8px 16px; border-radius: 20px; border: 1px solid var(--border-color);
+    background-color: var(--card-bg); color: var(--text-main); font-size: 14px; font-weight: 500; cursor: pointer;
+}
+.category-chip.active { background-color: var(--primary-color); color: white; border-color: var(--primary-color); }
+.books-list { display: flex; flex-direction: column; gap: 16px; }
+.book-card { display: flex; gap: 16px; background-color: var(--card-bg); padding: 16px; border-radius: var(--radius-card); box-shadow: var(--shadow-soft); }
+.book-cover { width: 80px; height: 110px; border-radius: 8px; display: flex; justify-content: center; align-items: center; flex-shrink: 0; }
+.book-info { display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
+.book-title { font-size: 15px; font-weight: 600; line-height: 1.3; margin-bottom: 4px; }
+.book-author { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+.book-status { font-size: 12px; color: #10B981; font-weight: 500; margin-bottom: 12px; }
+.btn-small { padding: 8px 12px; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 6px; width: max-content; }
 
-/* Estado Ativo (Idioma Selecionado) */
-.lang-btn.active {
-    background-color: #E4E6E9;
-    color: #333;
-    font-weight: 600;
-    border-color: #D1D5DB;
-}   
+/* =========================================
+   8. NOTAS E FALTAS
+   ========================================= */
+.subject-card { padding: 20px; margin-bottom: 20px; }
+.subject-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 2px solid var(--bg-color); }
+.subject-title { font-size: 16px; font-weight: 600; color: var(--primary-color); margin-bottom: 4px; }
+.subject-code { font-size: 12px; color: var(--text-light); }
+.average-badge { padding: 6px 10px; border-radius: 8px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+.badge-green { background-color: #DEF7EC; color: #03543F; }
+.badge-red { background-color: #FDE8E8; color: #9B1C1C; }
+.badge-yellow { background-color: #FEF3C7; color: #B45309; }
+.badge-normal { background-color: #F1F5F9; color: #475569; }
+.grade-section { margin-bottom: 16px; }
+.grade-category { font-size: 13px; color: var(--text-light); text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
+.grade-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; font-size: 14px; border-bottom: 1px dashed var(--border-color); }
+.grade-value { font-weight: 700; font-size: 15px; }
+.text-green { color: #10B981; }
+.text-red { color: #EF4444; }
+.text-yellow { color: #D97706; }
+.text-normal { color: #475569; }
+
+.progress-container { margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px dashed var(--border-color); }
+.progress-bar { width: 100%; height: 8px; background-color: #E2E8F0; border-radius: 4px; overflow: hidden; margin-bottom: 8px; }
+.progress-fill { height: 100%; border-radius: 4px; transition: width 0.5s ease-in-out; }
+.fill-normal { background-color: #3B82F6; }
+.fill-yellow { background-color: #F59E0B; }
+.fill-red { background-color: #EF4444; }
+.progress-text { font-size: 13px; color: var(--text-light); }
+.absence-history { margin-top: 8px; }
+.absence-value { font-weight: 600; }
+
+/* =========================================
+   9. FINANCEIRO
+   ========================================= */
+.finance-card { padding: 24px; border: 1px solid var(--border-color); }
+.finance-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.finance-month { font-size: 15px; font-weight: 600; color: var(--text-main); text-transform: uppercase; }
+.finance-status { padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+.status-pending { background-color: #FEF3C7; color: #B45309; }
+.finance-details { text-align: center; margin-bottom: 32px; }
+.finance-label { font-size: 14px; color: var(--text-light); margin-bottom: 8px; }
+.finance-amount { font-size: 32px; font-weight: 700; color: var(--primary-color); margin-bottom: 12px; }
+.finance-due-date { font-size: 14px; color: var(--text-main); }
+.btn-outline { background-color: transparent; color: var(--primary-color); border: 1px solid var(--primary-color); padding: 14px 16px; border-radius: var(--radius-input); font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.contact-finance-btn { display: flex; align-items: center; gap: 16px; background-color: var(--card-bg); padding: 16px; border-radius: var(--radius-card); box-shadow: var(--shadow-soft); border: 1px solid var(--border-color); }
+
+/* =========================================
+   10. AGENDA / CALENDÁRIO
+   ========================================= */
+.calendar-tabs { display: flex; background-color: #E2E8F0; border-radius: 8px; padding: 4px; margin-bottom: 20px; }
+.cal-tab { flex: 1; padding: 10px 0; text-align: center; background: transparent; border: none; font-size: 14px; font-weight: 600; color: var(--text-light); cursor: pointer; border-radius: 6px; }
+.cal-tab.active { background-color: var(--card-bg); color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.cal-header-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.cal-header-nav h3 { font-size: 16px; font-weight: 600; color: var(--text-main); }
+.cal-legend { display: flex; justify-content: center; gap: 16px; margin-bottom: 24px; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-light); }
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot-class { background-color: var(--primary-color); }
+.dot-exam { background-color: #EF4444; }
+.dot-task { background-color: #F59E0B; }
+.cal-grid-header { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-size: 12px; font-weight: 600; color: var(--text-light); margin-bottom: 8px; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.cal-cell { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 6px; aspect-ratio: 1 / 1; display: flex; flex-direction: column; align-items: center; padding-top: 6px; font-size: 14px; color: var(--text-main); position: relative; }
+.cal-cell.empty { background-color: transparent; border: none; }
+.cal-cell.today { background-color: var(--primary-color); color: white; font-weight: bold; border: none; }
+.cal-event { width: 6px; height: 6px; border-radius: 50%; margin-top: auto; margin-bottom: 6px; }
+.event-class { background-color: var(--primary-color); }
+.event-exam { background-color: #EF4444; }
+.event-task { background-color: #F59E0B; }
+.cal-cell.today .cal-event { background-color: white; }
+.week-day-group { margin-bottom: 24px; }
+.week-day-title { font-size: 14px; color: var(--text-light); margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 4px; }
+.agenda-card { display: flex; align-items: flex-start; gap: 12px; padding: 16px; border-radius: var(--radius-card); margin-bottom: 12px; background-color: var(--card-bg); box-shadow: var(--shadow-soft); border-left: 4px solid; }
+.agenda-card strong { display: block; font-size: 15px; margin-bottom: 4px; color: var(--text-main); }
+.agenda-card p { font-size: 13px; color: var(--text-light); }
+.time-badge { background-color: #F1F5F9; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; color: var(--text-main); }
+.bg-class { border-left-color: var(--primary-color); }
+.bg-exam { border-left-color: #EF4444; }
+.bg-task { border-left-color: #F59E0B; }
+.timeline-container { position: relative; padding-left: 16px; border-left: 2px solid var(--border-color); margin-left: 32px; }
+.timeline-row { position: relative; margin-bottom: 32px; }
+.timeline-time { position: absolute; left: -54px; top: 0; font-size: 12px; font-weight: 600; color: var(--text-light); }
+.timeline-row::before { content: ''; position: absolute; left: -21px; top: 4px; width: 10px; height: 10px; background-color: var(--border-color); border-radius: 50%; border: 2px solid var(--bg-color); }
+
+/* =========================================
+   11. NOTIFICAÇÕES (INBOX)
+   ========================================= */
+.inbox-list { display: flex; flex-direction: column; }
+.msg-card { display: flex; gap: 16px; padding: 20px 24px; background-color: var(--card-bg); border-bottom: 1px solid var(--border-color); cursor: pointer; transition: background-color 0.2s; }
+.msg-card:hover { background-color: #F8FAFC; }
+.msg-icon { width: 48px; height: 48px; background-color: #FEE2E2; color: #EF4444; border-radius: 50%; display: flex; justify-content: center; align-items: center; flex-shrink: 0; }
+.msg-content { flex-grow: 1; overflow: hidden; }
+.msg-header { display: flex; justify-content: space-between; margin-bottom: 4px; }
+.msg-sender { font-size: 14px; color: var(--text-light); }
+.msg-date { font-size: 12px; color: var(--text-light); }
+.msg-subject { font-size: 15px; font-weight: 500; color: var(--text-main); margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.msg-preview { font-size: 13px; color: var(--text-light); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.msg-card.unread .msg-sender { font-weight: 700; color: var(--text-main); }
+.msg-card.unread .msg-subject { font-weight: 700; }
+.msg-card.unread .msg-date { color: var(--primary-color); font-weight: 600; }
+
+/* =========================================
+   12. MAPAS E ROTAS
+   ========================================= */
+.campus-selector { display: flex; background-color: var(--bg-color); border-radius: 8px; padding: 4px; }
+.campus-btn { flex: 1; padding: 10px 0; text-align: center; background: transparent; border: none; font-size: 14px; font-weight: 600; color: var(--text-light); cursor: pointer; border-radius: 6px; }
+.campus-btn.active { background-color: var(--card-bg); color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.map-area { flex-grow: 1; background-color: #E2E8F0; overflow: auto; position: relative; display: flex; justify-content: center; align-items: center; }
+.map-image { max-width: 100%; height: auto; object-fit: contain; transform-origin: center center; transition: transform 0.3s ease; }
+.map-controls { position: absolute; bottom: 24px; right: 24px; display: flex; flex-direction: column; gap: 12px; align-items: center; z-index: 20; }
+.map-fab { width: 48px; height: 48px; border-radius: 50%; background-color: var(--card-bg); color: var(--primary-color); border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: flex; justify-content: center; align-items: center; cursor: pointer; }
+.map-fab:active { background-color: var(--bg-color); transform: scale(0.95); }
+.map-btn-small { width: 36px; height: 36px; border-radius: 50%; background-color: var(--card-bg); color: var(--text-light); border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: flex; justify-content: center; align-items: center; cursor: pointer; }

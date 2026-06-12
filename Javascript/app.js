@@ -147,3 +147,218 @@ document.addEventListener('DOMContentLoaded', () => {
             setLanguage(selectedLang);
         });
     });
+
+
+    /* =========================================
+       Lógica do Menu Lateral (Drawer de Perfil)
+       ========================================= */
+    const btnPerfil = document.getElementById('btnPerfil');
+    const profileDrawer = document.getElementById('profileDrawer');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+    const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+
+    // Função para abrir o menu
+    function openDrawer(e) {
+        if(e) e.preventDefault(); // Evita recarregar a tela
+        profileDrawer.classList.add('active');
+        drawerOverlay.classList.add('active');
+    }
+
+    // Função para fechar o menu
+    function closeDrawer() {
+        profileDrawer.classList.remove('active');
+        drawerOverlay.classList.remove('active');
+    }
+
+    // Eventos de clique
+    if(btnPerfil) btnPerfil.addEventListener('click', openDrawer);
+    if(closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeDrawer);
+    if(drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer); // Fecha ao clicar no fundo escuro
+
+    /* =========================================
+       Lógica da Caixa de Notificações
+       ========================================= */
+    const msgTriggers = document.querySelectorAll('.msg-trigger');
+    const readMsgModal = document.getElementById('readMsgModal');
+    
+    // Elementos dentro do Modal que vão receber o texto
+    const modalSender = document.getElementById('modalMsgSender');
+    const modalDate = document.getElementById('modalMsgDate');
+    const modalSubject = document.getElementById('modalMsgSubject');
+    const modalBody = document.getElementById('modalMsgBody');
+
+    const closeMsgBtns = document.querySelectorAll('.close-msg-btn');
+
+    if(msgTriggers.length > 0 && readMsgModal) {
+        msgTriggers.forEach(card => {
+            card.addEventListener('click', function() {
+                // 1. Pega os dados escondidos no HTML da mensagem clicada
+                const sender = this.getAttribute('data-sender');
+                const date = this.getAttribute('data-date');
+                const subject = this.getAttribute('data-subject');
+                const body = this.getAttribute('data-body');
+
+                // 2. Preenche o Modal com esses dados
+                modalSender.textContent = sender;
+                modalDate.textContent = date;
+                modalSubject.textContent = subject;
+                modalBody.textContent = body;
+
+                // 3. Marca a mensagem como lida visualmente (tira o negrito)
+                this.classList.remove('unread');
+
+                // 4. Abre o Modal
+                readMsgModal.classList.add('active');
+            });
+        });
+
+        // Eventos para fechar o modal de leitura
+        closeMsgBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                readMsgModal.classList.remove('active');
+            });
+        });
+
+        // Fecha se clicar fora da caixa do modal
+        readMsgModal.addEventListener('click', (e) => {
+            if(e.target === readMsgModal) {
+                readMsgModal.classList.remove('active');
+            }
+        });
+    }
+
+    /* =========================================
+       Lógica do Mapa Interativo
+       ========================================= */
+    const campusBtns = document.querySelectorAll('.campus-btn');
+    const mapImage = document.getElementById('mapImage');
+    
+    // Variáveis de controle de Zoom
+    let currentZoom = 1;
+    const zoomStep = 0.3; // O quanto aumenta por clique
+    const maxZoom = 3;    // Zoom máximo (3x)
+    const minZoom = 1;    // Zoom mínimo (Tamanho original)
+
+    // 1. Troca de Campus
+    if(campusBtns.length > 0 && mapImage) {
+        campusBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Atualiza visual dos botões
+                campusBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Troca a imagem do mapa com base no data-map
+                const newSrc = this.getAttribute('data-map');
+                mapImage.src = newSrc;
+                
+                // Reseta o zoom ao trocar de mapa
+                resetZoom();
+            });
+        });
+    }
+
+    // 2. Controles de Zoom
+    const btnZoomIn = document.getElementById('btnZoomIn');
+    const btnZoomOut = document.getElementById('btnZoomOut');
+    const btnZoomReset = document.getElementById('btnZoomReset');
+
+    function applyZoom() {
+        if(mapImage) {
+            // Aplica a transformação CSS para aumentar a imagem
+            mapImage.style.transform = `scale(${currentZoom})`;
+            
+            // Se o zoom for maior que 1, garantimos que a imagem cresça do topo/esquerda 
+            // para gerar a barra de rolagem corretamente
+            if(currentZoom > 1) {
+                mapImage.style.transformOrigin = "top left";
+                mapImage.style.maxWidth = "none"; // Libera a largura para expandir
+            } else {
+                mapImage.style.transformOrigin = "center center";
+                mapImage.style.maxWidth = "100%"; // Volta a caber na tela
+            }
+        }
+    }
+
+    function resetZoom() {
+        currentZoom = 1;
+        applyZoom();
+    }
+
+    if(btnZoomIn) {
+        btnZoomIn.addEventListener('click', () => {
+            if(currentZoom < maxZoom) {
+                currentZoom += zoomStep;
+                applyZoom();
+            }
+        });
+    }
+
+    if(btnZoomOut) {
+        btnZoomOut.addEventListener('click', () => {
+            if(currentZoom > minZoom) {
+                currentZoom -= zoomStep;
+                applyZoom();
+            }
+        });
+    }
+
+    if(btnZoomReset) {
+        btnZoomReset.addEventListener('click', resetZoom);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+            /* Mágica do Botão de Chamada */
+            const btnChamada = document.getElementById('btnChamada');
+            const containerChamada = document.getElementById('containerChamada');
+            const myModal = document.getElementById('myModal');
+            const closeModals = document.querySelectorAll('.close-modal');
+
+            if(btnChamada && containerChamada) {
+                btnChamada.addEventListener('click', () => {
+                    // 1. Abre o modal de sucesso
+                    if(myModal) myModal.classList.add('active');
+                    
+                    // 2. Substitui o botão pelo texto verde de sucesso
+                    containerChamada.innerHTML = `
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 8px; background-color: rgba(255, 255, 255, 0.1); color: #10B981; padding: 14px; border-radius: 100px; font-weight: 700; font-size: 16px;">
+                            <span class="material-symbols-outlined" style="font-size: 22px;">check_circle</span>
+                            Chamada Respondida
+                        </div>
+                    `;
+                });
+            }
+
+            // Fechar o Modal
+            if(closeModals) {
+                closeModals.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        if(myModal) myModal.classList.remove('active');
+                    });
+                });
+            }
+
+            /* Mágica do Menu Lateral de Perfil */
+            const btnPerfil = document.getElementById('btnPerfil');
+            const profileDrawer = document.getElementById('profileDrawer');
+            const drawerOverlay = document.getElementById('drawerOverlay');
+            const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+
+            function openDrawer(e) {
+                if(e) e.preventDefault();
+                if(profileDrawer && drawerOverlay) {
+                    profileDrawer.classList.add('active');
+                    drawerOverlay.classList.add('active');
+                }
+            }
+
+            function closeDrawer() {
+                if(profileDrawer && drawerOverlay) {
+                    profileDrawer.classList.remove('active');
+                    drawerOverlay.classList.remove('active');
+                }
+            }
+
+            if(btnPerfil) btnPerfil.addEventListener('click', openDrawer);
+            if(closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeDrawer);
+            if(drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+        });

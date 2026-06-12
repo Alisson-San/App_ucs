@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda - App Acadêmico</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="/CSS/style.css">
+
+</head>
+<body>
+
+    <div class="mobile-frame">
+        
+        <!-- Barra Superior -->
+        <div class="topbar-subpage" style="padding-bottom: 8px;">
+            <a href="home.html" class="back-button">
+                <span class="material-symbols-outlined">arrow_back_ios_new</span>
+            </a>
+            <h2>Agenda</h2>
+            <span class="material-symbols-outlined" style="visibility: hidden;">arrow_back_ios_new</span>
+        </div>
+
+        <div class="content-area" style="padding-top: 16px; padding-bottom: 100px; display: block; overflow-y: auto;">
+            
+            <!-- Controle de Visualização (Tabs) -->
+            <div class="calendar-tabs">
+                <button class="cal-tab active" data-target="view-month">Mês</button>
+                <button class="cal-tab" data-target="view-week">Semana</button>
+                <button class="cal-tab" data-target="view-day">Dia</button>
+            </div>
+
+            <!-- Cabeçalho Dinâmico -->
+            <div class="cal-header-nav">
+                <span class="material-symbols-outlined" style="cursor: pointer;">chevron_left</span>
+                <h3 id="cal-current-date">Junho 2026</h3>
+                <span class="material-symbols-outlined" style="cursor: pointer;">chevron_right</span>
+            </div>
+
+            <!-- Legenda de Cores -->
+            <div class="cal-legend">
+                <div class="legend-item"><span class="dot dot-class"></span> Aula</div>
+                <div class="legend-item"><span class="dot dot-exam"></span> Prova</div>
+                <div class="legend-item"><span class="dot dot-task"></span> Trabalho</div>
+            </div>
+
+            <!-- ==============================================
+                 VISÃO: MÊS (Grid de Calendário)
+                 ============================================== -->
+            <div id="view-month" class="cal-view" style="display: block;">
+                <div class="cal-grid-header">
+                    <span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span>
+                </div>
+                <div class="cal-grid">
+                    <!-- Dias vazios para começar o mês no dia certo -->
+                    <div class="cal-cell empty"></div>
+                    
+                    <div class="cal-cell">1</div>
+                    <div class="cal-cell">2 <div class="cal-event event-class"></div></div>
+                    <div class="cal-cell">3</div>
+                    <div class="cal-cell">4 <div class="cal-event event-class"></div></div>
+                    <div class="cal-cell">5</div>
+                    <div class="cal-cell">6</div>
+                    <div class="cal-cell">7</div>
+                    
+                    <div class="cal-cell">8</div>
+                    <div class="cal-cell">9 <div class="cal-event event-class"></div></div>
+                    <div class="cal-cell">10 <div class="cal-event event-task"></div></div>
+                    <div class="cal-cell">11 <div class="cal-event event-class"></div></div>
+                    <div class="cal-cell today">12 <div class="cal-event event-exam"></div></div>
+                    <div class="cal-cell">13</div>
+                    <div class="cal-cell">14</div>
+
+                    <div class="cal-cell">15 <div class="cal-event event-task"></div></div>
+                    <div class="cal-cell">16 <div class="cal-event event-class"></div></div>
+                    <div class="cal-cell">17</div>
+                    <div class="cal-cell">18 <div class="cal-event event-class"></div></div>
+                    <div class="cal-cell">19</div>
+                    <div class="cal-cell">20</div>
+                    <div class="cal-cell">21</div>
+
+                    <div class="cal-cell">22</div>
+                    <div class="cal-cell">23</div>
+                    <div class="cal-cell">24 <div class="cal-event event-exam"></div></div>
+                    <div class="cal-cell">25</div>
+                    <div class="cal-cell">26</div>
+                    <div class="cal-cell">27</div>
+                    <div class="cal-cell">28</div>
+
+                    <div class="cal-cell">29</div>
+                    <div class="cal-cell">30</div>
+                </div>
+            </div>
+
+            <!-- ==============================================
+                 VISÃO: SEMANA (Lista Agrupada)
+                 ============================================== -->
+            <div id="view-week" class="cal-view" style="display: none;">
+                
+                <div class="week-day-group">
+                    <h4 class="week-day-title">Terça, 09 de Jun</h4>
+                    <div class="agenda-card bg-class">
+                        <span class="time-badge">19:30</span>
+                        <div>
+                            <strong>Engenharia de Software</strong>
+                            <p>Aula Normal - Sala 204</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="week-day-group">
+                    <h4 class="week-day-title">Quarta, 10 de Jun</h4>
+                    <div class="agenda-card bg-task">
+                        <span class="time-badge">23:59</span>
+                        <div>
+                            <strong>Gestão de Projetos</strong>
+                            <p>Entrega TDE 1 (Sistema AVA)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="week-day-group">
+                    <h4 class="week-day-title" style="color: var(--primary-color);">Sexta, 12 de Jun (Hoje)</h4>
+                    <div class="agenda-card bg-exam">
+                        <span class="time-badge">19:30</span>
+                        <div>
+                            <strong>Cálculo Numérico</strong>
+                            <p>Prova 2 (P2) - Presencial</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ==============================================
+                 VISÃO: DIA (Timeline)
+                 ============================================== -->
+            <div id="view-day" class="cal-view" style="display: none;">
+                <div class="timeline-container">
+                    
+                    <div class="timeline-row">
+                        <div class="timeline-time">08:00</div>
+                        <div class="timeline-content">
+                            <!-- Horário Vazio -->
+                        </div>
+                    </div>
+
+                    <div class="timeline-row">
+                        <div class="timeline-time">10:00</div>
+                        <div class="timeline-content">
+                            <!-- Horário Vazio -->
+                        </div>
+                    </div>
+
+                    <div class="timeline-row">
+                        <div class="timeline-time">19:30</div>
+                        <div class="timeline-content">
+                            <div class="agenda-card bg-exam" style="margin-bottom: 0;">
+                                <div>
+                                    <strong>Cálculo Numérico</strong>
+                                    <p>Prova 2 (P2) - Bloco J, Sala 301</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-row">
+                        <div class="timeline-time">22:30</div>
+                        <div class="timeline-content">
+                            <!-- Horário Vazio -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Menu Inferior -->
+        <nav class="bottom-nav">
+            <a href="home.html" class="nav-item">
+                <span class="material-symbols-outlined">home</span> Início
+            </a>
+            <a href="agenda.html" class="nav-item active">
+                <span class="material-symbols-outlined">calendar_month</span> Agenda
+            </a>
+            <a href="#" class="nav-item">
+                <span class="material-symbols-outlined">person</span> Perfil
+            </a>
+        </nav>
+
+    </div>
+
+    <!-- Script de Troca de Visualização -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.cal-tab');
+            const views = document.querySelectorAll('.cal-view');
+            const headerDate = document.getElementById('cal-current-date');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // 1. Remove classe 'active' de todas as abas
+                    tabs.forEach(t => t.classList.remove('active'));
+                    // 2. Adiciona 'active' na aba clicada
+                    tab.classList.add('active');
+
+                    // 3. Esconde todas as visões
+                    views.forEach(v => v.style.display = 'none');
+                    // 4. Mostra a visão correspondente ao data-target
+                    const targetId = tab.getAttribute('data-target');
+                    document.getElementById(targetId).style.display = 'block';
+
+                    // 5. Altera o título de acordo com a visão para simular realismo
+                    if (targetId === 'view-month') {
+                        headerDate.textContent = 'Junho 2026';
+                    } else if (targetId === 'view-week') {
+                        headerDate.textContent = '07 - 13 Jun 2026';
+                    } else if (targetId === 'view-day') {
+                        headerDate.textContent = 'Sexta, 12 Junho';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

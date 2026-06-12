@@ -3,73 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial - App Acadêmico</title>
+    <title>Home - Universidade de Caxias do Sul</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="/CSS/style.css">
-</head>
+    <link rel="stylesheet" href="/CSS/style.css"> </head>
 <body>
 
     <div class="mobile-frame">
-        <div class="content-area">
+        
+        <div class="content-area" style="padding: 0;">
             
-            <div class="top-bar">
-                <div>
-                    <h3 style="color: var(--text-light); font-weight: 400; font-size: 14px;">Olá,</h3>
-                    <h1 style="font-size: 20px;">Gabriel Canal</h1>
-                </div>
-                <span class="material-symbols-outlined" style="font-size: 28px; cursor: pointer;">notifications</span>
-            </div>
-
-            <div class="card hero-card">
-                <h2>Engenharia Elétrica</h2>
-                <p>📍 Bloco J - Sala 204 <br> ⏰ 19:30 às 22:30</p>
-                <button class="btn-primary" id="btnChamada" style="background-color: white; color: var(--primary-color);">Responder Chamada</button>
-            </div>
-
-            <h3 style="font-size: 16px; margin: 16px 0 8px 0;">Acesso Rápido</h3>
-            <div class="grid-menu">
-                <div class="grid-item">
-                    <span class="material-symbols-outlined" style="display: block; font-size: 28px; margin-bottom: 8px; color: var(--primary-color);">local_library</span>
-                    Biblioteca
-                </div>
-                <div class="grid-item">
-                    <span class="material-symbols-outlined" style="display: block; font-size: 28px; margin-bottom: 8px; color: var(--primary-color);">assignment</span>
-                    Notas
-                </div>
-                <div class="grid-item">
-                    <span class="material-symbols-outlined" style="display: block; font-size: 28px; margin-bottom: 8px; color: var(--primary-color);">event_busy</span>
-                    Faltas
-                </div>
-                <div class="grid-item">
-                    <span class="material-symbols-outlined" style="display: block; font-size: 28px; margin-bottom: 8px; color: var(--primary-color);">payments</span>
-                    Financeiro
+            <div style="background: linear-gradient(135deg, var(--ucs-blue-dark) 0%, var(--ucs-blue-light) 100%); padding: 32px 24px 24px 24px; border-radius: 0 0 24px 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    
+                    <div style="display: flex; align-items: center; gap: 14px;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background-color: white; color: var(--ucs-blue-dark); display: flex; justify-content: center; align-items: center; font-weight: 800; font-size: 18px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);">
+                            GC
+                        </div>
+                        <div>
+                            <h3 style="color: rgba(255,255,255,0.85); font-weight: 500; font-size: 13px; margin-bottom: 2px;">Bem-vindo de volta,</h3>
+                            <h1 style="color: white; font-weight: 800; font-size: 20px; letter-spacing: -0.5px;">Gabriel Canal</h1>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 16px; align-items: center;">
+                        <a href="mapa.html" style="text-decoration: none; color: white; display: flex;">
+                            <span class="material-symbols-outlined" style="font-size: 28px;">map</span>
+                        </a>
+                        <a href="notificacoes.html" style="text-decoration: none; color: white; position: relative; display: flex;">
+                            <span class="material-symbols-outlined" style="font-size: 28px;">notifications</span>
+                            <span class="notification-dot" style="position: absolute; top: 2px; right: 2px; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--ucs-blue-light);"></span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
-        </div>
+            <div style="padding: 24px; padding-bottom: 120px;">
+                
+                <div class="hero-card" style="background: linear-gradient(135deg, #3C3C3B 0%, #1E293B 100%); color: white; box-shadow: 0 16px 32px rgba(60, 60, 59, 0.25); border-radius: var(--radius-card); padding: 28px 24px; margin-bottom: 24px; border: none;">
+                    <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 6px;">Engenharia Elétrica</h2>
+                    <p style="font-size: 14px; opacity: 0.85; margin-bottom: 20px; line-height: 1.5;">📍 Bloco J - Sala 204 <br> ⏰ 19:30 às 22:30</p>
+                    
+                    <div id="containerChamada">
+                        <button class="btn-primary" id="btnChamada" style="background-color: white; color: #3C3C3B; width: 100%; border: none; padding: 14px; border-radius: 100px; font-size: 16px; font-weight: 700; cursor: pointer; transition: transform 0.2s;">
+                            Responder Chamada
+                        </button>
+                    </div>
+                </div>
 
-        <nav class="bottom-nav">
+                <h3 style="font-size: 16px; margin: 8px 0 16px 0;">Acesso Rápido</h3>
+                <div class="grid-menu">
+                    <a href="biblioteca.html" class="grid-item">
+                        <div class="icon-wrapper"><span class="material-symbols-outlined">local_library</span></div>
+                        Biblioteca
+                    </a>
+                    <a href="notas.html" class="grid-item">
+                        <div class="icon-wrapper"><span class="material-symbols-outlined">assignment</span></div>
+                        Notas
+                    </a>
+                    <a href="faltas.html" class="grid-item">
+                        <div class="icon-wrapper"><span class="material-symbols-outlined">event_busy</span></div>
+                        Faltas
+                    </a>
+                    <a href="financeiro.html" class="grid-item">
+                        <div class="icon-wrapper"><span class="material-symbols-outlined">payments</span></div>
+                        Financeiro
+                    </a>
+                </div>
+
+                <h3 style="font-size: 16px; margin: 32px 0 16px 0;">Serviços Acadêmicos</h3>
+                <div class="services-scroll">
+                    <a href="#" class="service-item">
+                        <div class="icon-wrapper"><span class="material-symbols-outlined">smartphone</span></div>
+                        AVA Graduação
+                    </a>
+                    <a href="#" class="service-item">
+                        <div class="icon-wrapper"><span class="material-symbols-outlined">description</span></div>
+                        Matrícula Online
+                    </a>
+                    <a href="mapa.html" class="service-item">
+                        <div class="icon-wrapper"><span class="material-symbols-outlined">route</span></div>
+                        Rotas Acad.
+                    </a>
+                    <a href="biblioteca.html" class="service-item">
+                        <div class="icon-wrapper"><span class="material-symbols-outlined">local_library</span></div>
+                        Biblioteca
+                    </a>
+                    <a href="notas.html" class="service-item">
+                        <div class="icon-wrapper"><span class="material-symbols-outlined">assignment</span></div>
+                        Notas
+                    </a>
+                </div>
+
+                <h3 style="font-size: 16px; margin: 32px 0 16px 0;">Diversos</h3>
+                <div class="services-scroll">
+                    <a href="#" class="service-item">
+                        <div class="icon-wrapper"><span class="material-symbols-outlined">pets</span></div>
+                        Zoo
+                    </a>
+                    <a href="#" class="service-item">
+                        <div class="icon-wrapper"><span class="material-symbols-outlined">auto_stories</span></div>
+                        EDUCS
+                    </a>
+                    <a href="#" class="service-item">
+                        <div class="icon-wrapper"><span class="material-symbols-outlined">radio</span></div>
+                        Rádio
+                    </a>
+                    <a href="#" class="service-item">
+                        <div class="icon-wrapper"><span class="material-symbols-outlined">campaign</span></div>
+                        Denúncia
+                    </a>
+                </div>
+
+            </div> </div> <nav class="bottom-nav">
             <a href="home.html" class="nav-item active">
                 <span class="material-symbols-outlined">home</span> Início
             </a>
-            <a href="#" class="nav-item modal-trigger">
+            <a href="agenda.html" class="nav-item">
                 <span class="material-symbols-outlined">calendar_month</span> Agenda
             </a>
-            <a href="#" class="nav-item modal-trigger">
+            <a href="#" class="nav-item" id="btnPerfil">
                 <span class="material-symbols-outlined">person</span> Perfil
             </a>
         </nav>
 
+        <div class="drawer-overlay" id="drawerOverlay"></div>
+        <div class="profile-drawer" id="profileDrawer">
+            <div class="drawer-header">
+                <button class="close-drawer" id="closeDrawerBtn"><span class="material-symbols-outlined">close</span></button>
+                <div class="user-avatar">
+                    <span class="material-symbols-outlined" style="font-size: 40px; color: var(--primary-color);">account_circle</span>
+                </div>
+                <h3 class="user-name-drawer" style="color: var(--text-main); font-size: 18px; margin-bottom: 4px;">Gabriel Canal</h3>
+                <p class="user-ra-drawer" style="color: var(--text-light); font-size: 13px;">RA: 123456 • Engenharia Elétrica</p>
+            </div>
+            <div class="drawer-menu">
+                <a href="#" class="drawer-link"><span class="material-symbols-outlined" style="color: var(--primary-color);">manage_accounts</span> Editar Perfil</a>
+                <a href="#" class="drawer-link"><span class="material-symbols-outlined" style="color: var(--primary-color);">settings</span> Configurações</a>
+                <a href="#" class="drawer-link"><span class="material-symbols-outlined" style="color: var(--primary-color);">privacy_tip</span> Política de Privacidade</a>
+            </div>
+            <div class="drawer-footer">
+                <a href="index.html" class="logout-btn"><span class="material-symbols-outlined">logout</span> Sair</a>
+            </div>
+        </div>
+
         <div class="modal-overlay" id="myModal">
             <div class="modal-content">
-                <h2 id="modalTitle">Sucesso!</h2>
-                <p id="modalMessage" style="margin: 16px 0; color: var(--text-light);">Sua presença foi registrada com sucesso nesta disciplina.</p>
-                <button class="btn-primary close-modal">Entendi</button>
+                <div style="width: 56px; height: 56px; border-radius: 50%; background-color: #D1FAE5; color: #10B981; display: flex; justify-content: center; align-items: center; margin: 0 auto 16px auto;">
+                    <span class="material-symbols-outlined" style="font-size: 32px;">check</span>
+                </div>
+                <h2 id="modalTitle" style="color: var(--text-main); font-size: 20px;">Presença Registrada!</h2>
+                <p id="modalMessage" style="margin: 12px 0 24px 0; color: var(--text-light); font-size: 14px;">Você confirmou sua presença em Engenharia Elétrica com sucesso.</p>
+                <button class="btn-primary close-modal" style="width: 100%;">Entendi</button>
             </div>
         </div>
 
     </div>
 
     <script src="/Javascript/app.js"></script>
+
 </body>
 </html>

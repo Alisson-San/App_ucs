@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faltas - App Acadêmico</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="/CSS/style.css">
+</head>
+<body>
+
+    <div class="mobile-frame">
+        
+        <!-- Barra Superior com Botão Voltar -->
+        <div class="topbar-subpage">
+            <a href="home.html" class="back-button">
+                <span class="material-symbols-outlined">arrow_back_ios_new</span>
+            </a>
+            <h2>Controle de Faltas</h2>
+            <span class="material-symbols-outlined" style="visibility: hidden;">arrow_back_ios_new</span>
+        </div>
+
+        <div class="content-area" style="padding-top: 16px;">
+
+            <!-- Disciplina 1: Gestão de Projetos (Normal / < 20%) -->
+            <div class="card subject-card">
+                <div class="subject-header" style="margin-bottom: 8px; border-bottom: none;">
+                    <div>
+                        <h3 class="subject-title">Gestão de Projetos</h3>
+                        <p class="subject-code">40h • Limite: 10 faltas (25%)</p>
+                    </div>
+                    <div class="average-badge badge-normal">10%</div>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill fill-normal" style="width: 40%;"></div> <!-- 4 de 10 faltas = 40% da barra preenchida -->
+                    </div>
+                    <p class="progress-text">4 de 10 faltas atingidas</p>
+                </div>
+
+                <div class="absence-history">
+                    <h4 class="grade-category">Histórico de Ausências</h4>
+                    <div class="grade-row">
+                        <span>22/04/2026</span>
+                        <span class="absence-value text-normal">+2 faltas</span>
+                    </div>
+                    <div class="grade-row">
+                        <span>20/05/2026</span>
+                        <span class="absence-value text-normal">+2 faltas</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disciplina 2: Engenharia de Software (Atenção / 20% a 25%) -->
+            <div class="card subject-card">
+                <div class="subject-header" style="margin-bottom: 8px; border-bottom: none;">
+                    <div>
+                        <h3 class="subject-title">Engenharia de Software</h3>
+                        <p class="subject-code">60h • Limite: 15 faltas (25%)</p>
+                    </div>
+                    <div class="average-badge badge-yellow">20%</div>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill fill-yellow" style="width: 80%;"></div> <!-- 12 de 15 faltas = 80% da barra preenchida -->
+                    </div>
+                    <p class="progress-text text-yellow" style="font-weight: 600;">12 de 15 faltas atingidas (Atenção)</p>
+                </div>
+
+                <div class="absence-history">
+                    <h4 class="grade-category">Histórico de Ausências</h4>
+                    <div class="grade-row">
+                        <span>10/03/2026</span>
+                        <span class="absence-value text-yellow">+4 faltas</span>
+                    </div>
+                    <div class="grade-row">
+                        <span>07/04/2026</span>
+                        <span class="absence-value text-yellow">+4 faltas</span>
+                    </div>
+                    <div class="grade-row">
+                        <span>19/05/2026</span>
+                        <span class="absence-value text-yellow">+4 faltas</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disciplina 3: Cálculo Numérico (Estourou Limite / > 25%) -->
+            <div class="card subject-card" style="border: 1px solid #FCA5A5;">
+                <div class="subject-header" style="margin-bottom: 8px; border-bottom: none;">
+                    <div>
+                        <h3 class="subject-title text-red">Cálculo Numérico</h3>
+                        <p class="subject-code">80h • Limite: 20 faltas (25%)</p>
+                    </div>
+                    <div class="average-badge badge-red">30%</div>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill fill-red" style="width: 100%;"></div>
+                    </div>
+                    <p class="progress-text text-red" style="font-weight: 600;">24 de 20 faltas (Limite Excedido)</p>
+                </div>
+
+                <div class="absence-history">
+                    <h4 class="grade-category">Histórico de Ausências</h4>
+                    <div class="grade-row">
+                        <span>26/02/2026</span>
+                        <span class="absence-value text-red">+4 faltas</span>
+                    </div>
+                    <div class="grade-row">
+                        <span>18/03/2026</span>
+                        <span class="absence-value text-red">+4 faltas</span>
+                    </div>
+                    <div class="grade-row">
+                        <span>15/04/2026</span>
+                        <span class="absence-value text-red">+4 faltas</span>
+                    </div>
+                    <div class="grade-row">
+                        <span>06/05/2026</span>
+                        <span class="absence-value text-red">+4 faltas</span>
+                    </div>
+                    <div class="grade-row">
+                        <span>27/05/2026</span>
+                        <span class="absence-value text-red">+4 faltas</span>
+                    </div>
+                    <div class="grade-row">
+                        <span>03/06/2026</span>
+                        <span class="absence-value text-red">+4 faltas</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="/Javascript/app.js"></script>
+</body>
+</html>

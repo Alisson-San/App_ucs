@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa do Campus - App Acadêmico</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="/CSS/style.css">
+
+</head>
+<body>
+
+    <div class="mobile-frame" style="padding: 0; display: flex; flex-direction: column;">
+        
+        <div class="topbar-subpage" style="padding: 20px 24px 16px 24px; border-bottom: none; z-index: 10; background-color: var(--card-bg); box-shadow: var(--shadow-soft);">
+            
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                <a href="home.html" class="back-button">
+                    <span class="material-symbols-outlined">arrow_back_ios_new</span>
+                </a>
+                <h2 style="font-size: 18px; font-weight: 600; color: var(--text-main);">Mapa do Campus</h2>
+                <span class="material-symbols-outlined" style="visibility: hidden;">arrow_back_ios_new</span>
+            </div>
+
+            <div class="campus-selector">
+                <button class="campus-btn active" data-map="/imagens/mapa_caxias.png">Caxias do Sul</button>
+                <button class="campus-btn" data-map="/imagens/mapa_bento.png">Bento Gonçalves</button>
+            </div>
+            
+        </div>
+
+        <div class="map-area" id="mapContainer">
+            
+            <img src="/imagens/mapa_caxias.png" alt="Mapa do Campus" class="map-image" id="mapImage" 
+                 onerror="this.src='https://placehold.co/800x1200/e2e8f0/475569?text=Mapa+Caxias\n(Adicione+a+imagem)'">
+            
+        </div>
+
+        <div class="map-controls">
+            <button class="map-fab" id="btnZoomIn" title="Aproximar">
+                <span class="material-symbols-outlined">zoom_in</span>
+            </button>
+            <button class="map-btn-small" id="btnZoomReset" title="Restaurar Visão">
+                <span class="material-symbols-outlined">fit_screen</span>
+            </button>
+            <button class="map-fab" id="btnZoomOut" title="Afastar">
+                <span class="material-symbols-outlined">zoom_out</span>
+            </button>
+        </div>
+
+    </div>
+
+    <script src="/Javascript/app.js"></script>
+
+</body>
+</html>

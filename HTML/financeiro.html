@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financeiro - App Acadêmico</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="/CSS/style.css">
+</head>
+<body>
+
+    <div class="mobile-frame">
+        
+        <div class="topbar-subpage">
+            <a href="home.html" class="back-button">
+                <span class="material-symbols-outlined">arrow_back_ios_new</span>
+            </a>
+            <h2>Financeiro</h2>
+            <span class="material-symbols-outlined" style="visibility: hidden;">arrow_back_ios_new</span>
+        </div>
+
+        <div class="content-area" style="padding-top: 16px;">
+
+            <h3 style="font-size: 16px; margin-bottom: 12px;">Mensalidade Atual</h3>
+            
+            <div class="card finance-card">
+                <div class="finance-header">
+                    <span class="finance-month">Junho / 2026</span>
+                    <span class="finance-status status-pending">A Vencer</span>
+                </div>
+                
+                <div class="finance-details">
+                    <p class="finance-label">Valor total</p>
+                    <h2 class="finance-amount">R$ 1.450,00</h2>
+                    <p class="finance-due-date">Vencimento: <strong>15/06/2026</strong></p>
+                </div>
+
+                <div class="finance-actions">
+                    <button class="btn-ucs-blue" style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 12px;" onclick="alert('Código de barras copiado: 34191.09008 63571.277308 71444.640008 1 900000000145000')">
+                        <span class="material-symbols-outlined">content_copy</span>
+                        Copiar Código
+                    </button>
+                    
+                    <button class="btn-outline" style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px;" onclick="alert('Iniciando o download do Boleto-Junho.pdf...')">
+                        <span class="material-symbols-outlined">download</span>
+                        Baixar Boleto (PDF)
+                    </button>
+                </div>
+            </div>
+
+            <div class="support-section">
+                <h3 style="font-size: 16px; margin-bottom: 12px; margin-top: 24px;">Precisa de ajuda?</h3>
+                <p style="font-size: 14px; color: var(--text-light); margin-bottom: 16px;">Negociações, dúvidas sobre valores ou problemas com o pagamento.</p>
+                
+                <a href="#" class="contact-finance-btn" style="text-decoration: none;" onclick="alert('Redirecionando para o WhatsApp do Departamento Financeiro...')">
+                    <span class="material-symbols-outlined" style="font-size: 28px; color: #25D366;">forum</span>
+                    <div>
+                        <strong style="display: block; font-size: 15px; color: var(--text-main);">Falar com o Financeiro</strong>
+                        <span style="font-size: 13px; color: var(--text-light);">Atendimento via WhatsApp</span>
+                    </div>
+                    <span class="material-symbols-outlined" style="margin-left: auto; color: var(--text-light);">chevron_right</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="/Javascript/app.js"></script>
+</body>
+</html>

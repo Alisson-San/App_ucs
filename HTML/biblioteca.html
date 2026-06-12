@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca - App Acadêmico</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="/CSS/style.css">
+</head>
+<body>
+
+    <div class="mobile-frame">
+        
+        <div class="topbar-subpage">
+            <a href="home.html" class="back-button">
+                <span class="material-symbols-outlined">arrow_back_ios_new</span>
+            </a>
+            <h2>Biblioteca Virtual</h2>
+            <span class="material-symbols-outlined" style="visibility: hidden;">arrow_back_ios_new</span>
+        </div>
+
+        <div class="content-area" style="padding-top: 16px;">
+            
+            <div class="search-container">
+                <span class="material-symbols-outlined search-icon">search</span>
+                <input type="text" placeholder="Buscar por título, autor ou disciplina..." class="search-input">
+            </div>
+
+            <div class="categories-scroll">
+                <button class="category-chip active">Todos</button>
+                <button class="category-chip">Engenharia</button>
+                <button class="category-chip">Psicologia</button>
+                <button class="category-chip">Nutrição</button>
+            </div>
+
+            <div class="books-list">
+                
+                <div class="book-card">
+                    <div class="book-cover" style="background-color: #E2E8F0;">
+                        <span class="material-symbols-outlined" style="font-size: 40px; color: #94A3B8;">menu_book</span>
+                    </div>
+                    <div class="book-info">
+                        <h4 class="book-title">Cálculo Diferencial e Integral</h4>
+                        <p class="book-author">James Stewart</p>
+                        <p class="book-status">Disponível em PDF</p>
+                        <button class="btn-ucs-blue btn-small">
+                            <span class="material-symbols-outlined" style="font-size: 16px;">download</span> Baixar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="book-card">
+                    <div class="book-cover" style="background-color: #E2E8F0;">
+                        <span class="material-symbols-outlined" style="font-size: 40px; color: #94A3B8;">menu_book</span>
+                    </div>
+                    <div class="book-info">
+                        <h4 class="book-title">Princípios de Anatomia Humana</h4>
+                        <p class="book-author">Gerard J. Tortora</p>
+                        <p class="book-status">Disponível Online</p>
+                        <button class="btn-ucs-blue btn-small">
+                            <span class="material-symbols-outlined" style="font-size: 16px;">visibility</span> Ler Online
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/Javascript/app.js"></script>
+
+</body>
+</html>
