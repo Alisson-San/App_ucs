@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Simula um carregamento de 1 segundo e redireciona para a home
             setTimeout(() => {
-                window.location.href = 'HTML/home.html';
+                window.location.href = '../HTML/home.html';
             }, 1000);
         });
     }
