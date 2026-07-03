@@ -54,6 +54,15 @@ Como o projeto é construído em cima de tecnologias *client-side* puras, execut
    
    *(Recomendação: Para uma experiência de desenvolvimento contínua, utilize a extensão **Live Server** do VS Code).*
 
+### Visualização em formato mobile
+
+O protótipo foi pensado para simular o uso em smartphone. Para visualizar corretamente, use uma das opções abaixo:
+
+- **No celular:** acesse o link publicado via GitHub Pages diretamente pelo navegador do aparelho.
+- **No computador:** abra o projeto no navegador, pressione `F12` para abrir as ferramentas de desenvolvedor e clique no ícone de celular/tablet (**Toggle device toolbar**) no topo do DevTools. No Chrome, o atalho `Ctrl + Shift + M` só funciona quando o DevTools já está aberto e focado, então o botão é a opção mais confiável.
+
+Caso esteja executando localmente com Live Server, também é possível acessar pelo celular usando o endereço IP da máquina na mesma rede Wi-Fi, seguido da porta exibida pelo Live Server.
+
 ## 👥 Equipe
 
 * **Alisson** - *Desenvolvedor(a)*

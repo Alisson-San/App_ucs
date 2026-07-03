@@ -22,7 +22,7 @@
 
         <div class="content-area" style="padding-top: 0; padding-left: 0; padding-right: 0;">
 
-            <div class="inbox-list">
+            <div class="inbox-list" id="inboxList">
                 
                 <div class="msg-card unread msg-urgent msg-trigger" 
                      data-sender="Prof. Carlos Silva" 
@@ -39,6 +39,9 @@
                         <h4 class="msg-subject">URGENTE: Mudança de Sala!</h4>
                         <p class="msg-preview">Olá pessoal! A nossa aula de hoje (Engenharia de S...</p>
                     </div>
+                    <button class="msg-delete-btn" type="button" aria-label="Excluir mensagem">
+                        <span class="material-symbols-outlined">delete</span>
+                    </button>
                 </div>
 
                 <div class="msg-card unread msg-finance msg-trigger" 
@@ -56,6 +59,9 @@
                         <h4 class="msg-subject">Boleto de Junho Disponível</h4>
                         <p class="msg-preview">Prezado aluno, informamos que o boleto referente...</p>
                     </div>
+                    <button class="msg-delete-btn" type="button" aria-label="Excluir mensagem">
+                        <span class="material-symbols-outlined">delete</span>
+                    </button>
                 </div>
 
                 <div class="msg-card msg-academic msg-trigger" 
@@ -73,8 +79,16 @@
                         <h4 class="msg-subject">Notas da P1 Lançadas</h4>
                         <p class="msg-preview">Turma, acabei de lançar as notas da Prova 1 (P1)...</p>
                     </div>
+                    <button class="msg-delete-btn" type="button" aria-label="Excluir mensagem">
+                        <span class="material-symbols-outlined">delete</span>
+                    </button>
                 </div>
 
+                <div class="inbox-empty" id="inboxEmpty" hidden>
+                    <span class="material-symbols-outlined">mark_email_read</span>
+                    <strong>Nenhuma mensagem</strong>
+                    <p>Sua caixa de entrada está limpa.</p>
+                </div>
             </div>
         </div>
 
@@ -96,8 +110,12 @@
                     <p id="modalMsgBody" style="font-size: 14px; color: var(--text-main); line-height: 1.6;">Texto completo da mensagem...</p>
                 </div>
 
-                <div style="padding: 16px 20px; border-top: 1px solid var(--border-color); text-align: right;">
-                    <button class="btn-ucs-blue close-msg-btn" style="padding: 10px 20px; font-size: 14px; width: auto; display: inline-block;">Fechar</button>
+                <div class="msg-modal-actions">
+                    <button class="msg-modal-delete-btn" type="button" id="deleteOpenMsg">
+                        <span class="material-symbols-outlined">delete</span>
+                        Excluir
+                    </button>
+                    <button class="btn-ucs-blue msg-modal-close-btn close-msg-btn">Fechar</button>
                 </div>
 
             </div>

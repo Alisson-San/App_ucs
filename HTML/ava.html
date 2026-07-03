@@ -292,24 +292,8 @@
             margin-bottom: 18px;
         }
 
-        .inline-back {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            border: 0;
-            background: color-mix(in srgb, var(--accent-color, var(--primary-color)) 13%, white);
-            color: var(--accent-color, var(--primary-color));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            flex-shrink: 0;
-            margin-top: 1px;
-            transition: transform 0.2s, background-color 0.2s;
-        }
-
-        .inline-back:hover {
-            transform: translateX(-1px);
+        .topbar-subpage .back-button[hidden] {
+            display: none;
         }
 
         .course-heading {
@@ -357,13 +341,13 @@
 
         .course-tabs {
             display: grid;
-            grid-template-columns: repeat(5, minmax(68px, 1fr));
+            grid-template-columns: 0.8fr 1.15fr 0.9fr 0.8fr 1.35fr;
             gap: 4px;
             background: #DDE7F0;
             border-radius: 12px;
             padding: 4px;
             margin-bottom: 16px;
-            overflow-x: auto;
+            overflow: hidden;
             border: 1px solid rgba(0, 45, 93, 0.08);
         }
 
@@ -372,11 +356,12 @@
             background: transparent;
             color: var(--text-light);
             border-radius: 8px;
-            padding: 10px 6px;
-            font-size: 11px;
+            padding: 10px 3px;
+            font-size: 10px;
             font-weight: 900;
             cursor: pointer;
             white-space: nowrap;
+            min-width: 0;
         }
 
         .course-tab.active {
@@ -607,7 +592,9 @@
 <body>
     <div class="mobile-frame">
         <div class="topbar-subpage">
-            <a href="../HTML/home.html" class="back-button"><span class="material-symbols-outlined">home</span></a>
+            <button class="back-button" type="button" id="avaTopBack" aria-label="Voltar para Home">
+                <span class="material-symbols-outlined">arrow_back_ios_new</span>
+            </button>
             <h2>AVA Graduação</h2>
             <div style="width: 36px;"></div>
         </div>
@@ -648,7 +635,6 @@
 
             <section class="ava-view" id="courseView">
                 <div class="course-toolbar">
-                    <button class="inline-back" type="button" id="backToCourses"><span class="material-symbols-outlined">arrow_back_ios_new</span></button>
                     <div class="course-heading">
                         <h2 id="courseTitle">Cadeira</h2>
                         <p id="courseSubtitle">Professor • horário</p>
@@ -708,7 +694,6 @@
 
             <section class="ava-view" id="lessonView">
                 <div class="course-toolbar">
-                    <button class="inline-back" type="button" id="backToCourse"><span class="material-symbols-outlined">arrow_back_ios_new</span></button>
                     <div class="course-heading">
                         <h2 id="lessonTitle">Aula</h2>
                         <p id="lessonSubtitle">Material da aula</p>
@@ -983,13 +968,18 @@
 
         const state = {
             course: null,
-            lesson: null
+            lesson: null,
+            view: 'courses'
         };
+
+        const topBackButton = document.getElementById('avaTopBack');
 
         function showView(name) {
             Object.entries(views).forEach(([key, view]) => {
                 view.classList.toggle('active', key === name);
             });
+            state.view = name;
+            topBackButton.setAttribute('aria-label', name === 'courses' ? 'Voltar para Home' : 'Voltar');
         }
 
         function pillClass(status) {
@@ -1185,8 +1175,21 @@
             showView('lesson');
         }
 
-        document.getElementById('backToCourses').addEventListener('click', () => showView('courses'));
-        document.getElementById('backToCourse').addEventListener('click', () => showView('course'));
+        topBackButton.addEventListener('click', () => {
+            if (state.view === 'courses') {
+                window.location.href = '../HTML/home.html';
+                return;
+            }
+
+            if (state.view === 'lesson') {
+                showView('course');
+                return;
+            }
+
+            if (state.view === 'course') {
+                showView('courses');
+            }
+        });
 
         document.querySelectorAll('.course-tab').forEach(tab => {
             tab.addEventListener('click', () => {

@@ -254,11 +254,11 @@ body {
 
 .current-class-card {
     background:
-        linear-gradient(135deg, rgba(0, 90, 156, 0.09) 0%, #ffffff 50%, rgba(200, 16, 46, 0.05) 100%);
+        linear-gradient(135deg, rgba(0, 90, 156, 0.12) 0%, #ffffff 50%, rgba(0, 90, 156, 0.06) 100%);
     padding: 22px;
     margin: -6px 0 24px;
     border: 1px solid rgba(0, 90, 156, 0.12);
-    border-left: 5px solid var(--ucs-red);
+    border-left: 5px solid var(--primary-color);
     box-shadow: 0 16px 34px rgba(0, 45, 93, 0.11);
     position: relative;
     cursor: pointer;
@@ -275,8 +275,8 @@ body {
 }
 
 .live-pill {
-    background: rgba(200, 16, 46, 0.1);
-    color: var(--ucs-red);
+    background: rgba(0, 90, 156, 0.1);
+    color: var(--primary-color);
     padding: 6px 10px;
     border-radius: 999px;
     font-size: 12px;
@@ -284,16 +284,16 @@ body {
     display: flex;
     align-items: center;
     gap: 7px;
-    border: 1px solid rgba(200, 16, 46, 0.16);
+    border: 1px solid rgba(0, 90, 156, 0.16);
 }
 
 .live-pill-dot {
     width: 7px;
     height: 7px;
-    background: var(--ucs-red);
+    background: var(--primary-color);
     border-radius: 50%;
     display: inline-block;
-    box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.14);
+    box-shadow: 0 0 0 3px rgba(0, 90, 156, 0.14);
 }
 
 .class-open-chip {
@@ -590,12 +590,33 @@ h3 {
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    transition: color 0.2s;
+    min-width: 54px;
+    padding: 7px 8px;
+    border-radius: var(--radius-input);
+    position: relative;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
 }
 
 .nav-item.active {
-    color: var(--ucs-blue-dark);
-    font-weight: 600;
+    background: rgba(0, 90, 156, 0.1);
+    color: var(--primary-color);
+    font-weight: 900;
+}
+
+.nav-item.active::after {
+    content: '';
+    width: 18px;
+    height: 3px;
+    border-radius: 999px;
+    background: var(--primary-color);
+    position: absolute;
+    bottom: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-item.active .material-symbols-outlined {
+    font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
 }
 
 .modal-overlay,
@@ -678,6 +699,8 @@ h3 {
     box-shadow: 0 4px 16px rgba(0, 90, 156, 0.4);
     border: 4px solid #fff;
     flex-shrink: 0;
+    padding: 0;
+    min-width: 64px;
 }
 
 .nav-item.nav-main-fab .material-symbols-outlined {
@@ -688,6 +711,16 @@ h3 {
 
 .nav-item.nav-main-fab span:not(.material-symbols-outlined) {
     display: none;
+}
+
+.nav-item.nav-main-fab.active {
+    background-color: var(--ucs-blue-dark);
+    box-shadow: 0 8px 22px rgba(0, 45, 93, 0.42);
+}
+
+.nav-item.nav-main-fab.active::after {
+    bottom: -10px;
+    background: var(--ucs-blue-dark);
 }
 
 .drawer-header {
@@ -1518,10 +1551,10 @@ h3 {
 }
 
 .cal-cell.today {
-    background: linear-gradient(135deg, var(--primary-color), var(--ucs-blue-dark));
-    color: white;
+    background: linear-gradient(135deg, rgba(0, 90, 156, 0.16), rgba(255, 255, 255, 0.96));
+    color: var(--ucs-blue-dark);
     font-weight: bold;
-    border: none;
+    border: 1px solid rgba(0, 90, 156, 0.32);
     box-shadow: 0 8px 18px rgba(0, 90, 156, 0.22);
 }
 
@@ -1543,10 +1576,6 @@ h3 {
 
 .event-task {
     background-color: #F59E0B;
-}
-
-.cal-cell.today .cal-event {
-    background-color: white;
 }
 
 .week-day-group {
@@ -1642,11 +1671,16 @@ h3 {
     margin-bottom: 32px;
 }
 
+.timeline-content {
+    position: relative;
+    min-width: 0;
+}
+
 .timeline-time {
     position: absolute;
-    left: 0;
+    left: -76px;
     top: -1px;
-    width: 46px;
+    width: 52px;
     font-size: 10px;
     font-weight: 900;
     color: var(--primary-color);
@@ -1683,6 +1717,7 @@ h3 {
 
 .msg-card {
     display: flex;
+    align-items: center;
     gap: 16px;
     padding: 20px;
     background-color: var(--card-bg);
@@ -1692,6 +1727,7 @@ h3 {
     cursor: pointer;
     transition: background-color 0.2s, transform 0.2s;
     border-left: 5px solid var(--border-color);
+    position: relative;
 }
 
 .msg-card:hover {
@@ -1725,7 +1761,124 @@ h3 {
 
 .msg-content {
     flex-grow: 1;
+    min-width: 0;
     overflow: hidden;
+}
+
+.msg-delete-btn {
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(100, 116, 139, 0.08);
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    align-self: center;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.msg-modal-actions {
+    padding: 16px 20px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.msg-modal-delete-btn,
+.btn-ucs-blue.msg-modal-close-btn {
+    height: 42px;
+    border-radius: var(--radius-input);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.msg-modal-delete-btn {
+    border: 0;
+    background: transparent;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-ucs-blue.msg-modal-close-btn {
+    width: auto;
+    margin-bottom: 0;
+}
+
+.msg-modal-delete-btn .material-symbols-outlined {
+    font-size: 18px;
+}
+
+.msg-modal-delete-btn:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #B91C1C;
+}
+
+.msg-delete-btn .material-symbols-outlined {
+    font-size: 20px;
+}
+
+.msg-delete-btn:hover {
+    background: rgba(239, 68, 68, 0.12);
+    color: #B91C1C;
+}
+
+.msg-delete-btn:active {
+    transform: scale(0.94);
+}
+
+.inbox-empty {
+    min-height: 240px;
+    border: 1px dashed rgba(0, 45, 93, 0.16);
+    border-radius: var(--radius-card);
+    background:
+        linear-gradient(135deg, rgba(0, 90, 156, 0.06), rgba(255, 255, 255, 0.88));
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+    padding: 24px;
+}
+
+.inbox-empty[hidden] {
+    display: none;
+}
+
+.inbox-empty .material-symbols-outlined {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: rgba(0, 90, 156, 0.1);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.inbox-empty strong {
+    color: var(--text-main);
+    font-size: 16px;
+}
+
+.inbox-empty p {
+    font-size: 13px;
 }
 
 .msg-header {

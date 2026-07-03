@@ -368,12 +368,14 @@ const closeDrawerBtn = document.getElementById('closeDrawerBtn');
 // Função para abrir o menu
 function openDrawer(e) {
     if (e) e.preventDefault(); // Evita recarregar a tela
+    if (!profileDrawer || !drawerOverlay) return;
     profileDrawer.classList.add('active');
     drawerOverlay.classList.add('active');
 }
 
 // Função para fechar o menu
 function closeDrawer() {
+    if (!profileDrawer || !drawerOverlay) return;
     profileDrawer.classList.remove('active');
     drawerOverlay.classList.remove('active');
 }
@@ -396,15 +398,39 @@ const modalSubject = document.getElementById('modalMsgSubject');
 const modalBody = document.getElementById('modalMsgBody');
 
 const closeMsgBtns = document.querySelectorAll('.close-msg-btn');
+const deleteOpenMsgBtn = document.getElementById('deleteOpenMsg');
+const inboxList = document.getElementById('inboxList');
+const inboxEmpty = document.getElementById('inboxEmpty');
+let activeMsgCard = null;
+
+function updateInboxEmptyState() {
+    if (!inboxList || !inboxEmpty) return;
+    inboxEmpty.hidden = inboxList.querySelectorAll('.msg-card').length > 0;
+}
+
+function deleteMessageCard(card) {
+    if (!card || !readMsgModal) return;
+
+    if (activeMsgCard === card) {
+        readMsgModal.classList.remove('active');
+        activeMsgCard = null;
+    }
+
+    card.remove();
+    updateInboxEmptyState();
+}
 
 if (msgTriggers.length > 0 && readMsgModal) {
     msgTriggers.forEach(card => {
-        card.addEventListener('click', function () {
+        card.addEventListener('click', function (event) {
+            if (event.target.closest('.msg-delete-btn')) return;
+
             // 1. Pega os dados escondidos no HTML da mensagem clicada
             const sender = this.getAttribute('data-sender');
             const date = this.getAttribute('data-date');
             const subject = this.getAttribute('data-subject');
             const body = this.getAttribute('data-body');
+            activeMsgCard = this;
 
             // 2. Preenche o Modal com esses dados
             modalSender.textContent = sender;
@@ -418,12 +444,28 @@ if (msgTriggers.length > 0 && readMsgModal) {
             // 4. Abre o Modal
             readMsgModal.classList.add('active');
         });
+
+        const deleteButton = card.querySelector('.msg-delete-btn');
+        if (deleteButton) {
+            deleteButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                deleteMessageCard(card);
+            });
+        }
     });
+
+    if (deleteOpenMsgBtn) {
+        deleteOpenMsgBtn.addEventListener('click', () => {
+            deleteMessageCard(activeMsgCard);
+        });
+    }
 
     // Eventos para fechar o modal de leitura
     closeMsgBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             readMsgModal.classList.remove('active');
+            activeMsgCard = null;
         });
     });
 
@@ -431,8 +473,11 @@ if (msgTriggers.length > 0 && readMsgModal) {
     readMsgModal.addEventListener('click', (e) => {
         if (e.target === readMsgModal) {
             readMsgModal.classList.remove('active');
+            activeMsgCard = null;
         }
     });
+
+    updateInboxEmptyState();
 }
 
 /* =========================================
