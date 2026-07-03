@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="material-symbols-outlined" style="font-size: 40px; color: var(--primary-color);">account_circle</span>
                         </div>
                         <h3 class="user-name-drawer" id="drawerUserName">Gabriel Canal</h3>
-                        <p class="user-ra-drawer">RA: 123456 • Engenharia Elétrica</p>
+                        <p class="user-ra-drawer">Matrícula: 123456 • Engenharia Elétrica</p>
                     </div>
                     <div class="drawer-menu">
                         <a href="#" class="drawer-link" data-i18n="drawer_edit"><span class="material-symbols-outlined">manage_accounts</span> Editar Perfil</a>
@@ -266,7 +266,7 @@ const translations = {
         login_btn: "ENTRAR",
         forgot_pass: "Esqueci a minha senha",
         first_access: "Políticas de Privacidade",
-        instructions: "* O 'Usuário' para acadêmicos com matrícula a partir de 2011 é o RA. Acadêmicos com matrícula anterior devem utilizar o número da matrícula. Outros usuários devem utilizar o CPF ou passaporte.",
+        instructions: "* O 'Usuário' para acadêmicos com matrícula a partir de 2011 é a Matrícula. Acadêmicos com matrícula anterior devem utilizar o número da matrícula. Outros usuários devem utilizar o CPF ou passaporte.",
         nav_home: "Início",
         nav_agenda: "Agenda",
         nav_profile: "Perfil",
@@ -290,7 +290,7 @@ const translations = {
         login_btn: "LOGIN",
         forgot_pass: "Forgot my password",
         first_access: "Privacy Policies",
-        instructions: "* The 'Username' for students enrolled from 2011 onwards is the RA. Students enrolled prior to that must use their enrollment number. Other users must use their CPF or passport.",
+        instructions: "* The 'Username' for students enrolled from 2011 onwards is the Enrollment Number. Students enrolled prior to that must use their enrollment number. Other users must use their CPF or passport.",
         nav_home: "Home",
         nav_agenda: "Schedule",
         nav_profile: "Profile",
