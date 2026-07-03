@@ -13,6 +13,83 @@ document.addEventListener('DOMContentLoaded', () => {
     if (idCardName) idCardName.textContent = savedName;
 
     /* =========================================
+       Navegação Global: Bottom Nav + Perfil
+       ========================================= */
+    function ensureGlobalNavigation() {
+        const frame = document.querySelector('.mobile-frame');
+        const isLoginPage = !!document.getElementById('loginForm') || document.body.classList.contains('login-body');
+
+        if (!frame || isLoginPage) return;
+        frame.classList.add('has-global-nav');
+
+        if (!document.querySelector('.bottom-nav')) {
+            frame.insertAdjacentHTML('beforeend', `
+                <nav class="bottom-nav">
+                    <a href="#" class="nav-item" id="btnPerfil" data-i18n="nav_profile">
+                        <span class="material-symbols-outlined">person</span> Perfil
+                    </a>
+                    <a href="../HTML/agenda.html" class="nav-item" data-page="agenda.html" data-i18n="nav_agenda">
+                        <span class="material-symbols-outlined">calendar_month</span> Agenda
+                    </a>
+                    <a href="../HTML/home.html" class="nav-item nav-main-fab" data-page="home.html" data-i18n="nav_home">
+                        <span class="material-symbols-outlined">home</span> Início
+                    </a>
+                    <a href="../HTML/id_estudante.html" class="nav-item" data-page="id_estudante.html" data-i18n="nav_id">
+                        <span class="material-symbols-outlined">badge</span> ID Digital
+                    </a>
+                    <a href="../HTML/mapa.html" class="nav-item" data-page="mapa.html" data-i18n="nav_map">
+                        <span class="material-symbols-outlined">map</span> Mapa
+                    </a>
+                </nav>
+            `);
+        }
+
+        if (!document.getElementById('drawerOverlay')) {
+            frame.insertAdjacentHTML('beforeend', '<div class="drawer-overlay" id="drawerOverlay"></div>');
+        }
+
+        if (!document.getElementById('profileDrawer')) {
+            frame.insertAdjacentHTML('beforeend', `
+                <div class="profile-drawer" id="profileDrawer">
+                    <div class="drawer-header">
+                        <button class="close-drawer" id="closeDrawerBtn" type="button">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                        <div class="user-avatar">
+                            <span class="material-symbols-outlined" style="font-size: 40px; color: var(--primary-color);">account_circle</span>
+                        </div>
+                        <h3 class="user-name-drawer" id="drawerUserName">Gabriel Canal</h3>
+                        <p class="user-ra-drawer">RA: 123456 • Engenharia Elétrica</p>
+                    </div>
+                    <div class="drawer-menu">
+                        <a href="#" class="drawer-link" data-i18n="drawer_edit"><span class="material-symbols-outlined">manage_accounts</span> Editar Perfil</a>
+                        <a href="#" class="drawer-link" data-i18n="drawer_settings"><span class="material-symbols-outlined">settings</span> Configurações</a>
+                        <a href="#" class="drawer-link" data-i18n="drawer_privacy"><span class="material-symbols-outlined">privacy_tip</span> Política de Privacidade</a>
+                        <a href="#" class="drawer-link" data-i18n="drawer_support"><span class="material-symbols-outlined">help</span> Suporte e Dúvidas</a>
+                    </div>
+                    <div class="drawer-footer">
+                        <a href="../index.html" class="logout-btn" data-i18n="drawer_logout">
+                            <span class="material-symbols-outlined">logout</span> Sair
+                        </a>
+                    </div>
+                </div>
+            `);
+        }
+
+        const currentPage = window.location.pathname.split('/').pop() || 'home.html';
+        document.querySelectorAll('.bottom-nav .nav-item').forEach(item => {
+            const href = item.getAttribute('href') || '';
+            const itemPage = item.dataset.page || href.split('/').pop();
+            item.classList.toggle('active', itemPage === currentPage);
+        });
+
+        const injectedDrawerName = document.getElementById('drawerUserName');
+        if (injectedDrawerName) injectedDrawerName.textContent = savedName;
+    }
+
+    ensureGlobalNavigation();
+
+    /* =========================================
        Sistema de Acesso Rápido Inteligente
        ========================================= */
     const ALL_SERVICES = [
@@ -139,7 +216,6 @@ document.addEventListener('DOMContentLoaded', () => {
        Lógica do Sistema de Modais (home.html)
        ========================================= */
     const modal = document.getElementById('myModal');
-    const btnChamada = document.getElementById('btnChamada');
     const closeBtns = document.querySelectorAll('.close-modal');
     const modalTriggers = document.querySelectorAll('.modal-trigger');
 
@@ -154,13 +230,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Função para fechar o modal
     function closeModal() {
         if (modal) modal.classList.remove('active');
-    }
-
-    // Evento: Botão Responder Chamada
-    if (btnChamada) {
-        btnChamada.addEventListener('click', () => {
-            openModal("Presença Registrada!", "Sua presença foi computada no sistema. Boa aula!");
-        });
     }
 
     // Evento: Botões do menu que ainda não tem página (Agenda, Perfil)
@@ -371,6 +440,7 @@ if (msgTriggers.length > 0 && readMsgModal) {
    ========================================= */
 const campusBtns = document.querySelectorAll('.campus-btn');
 const mapImage = document.getElementById('mapImage');
+const mapFrame = document.getElementById('mapFrame');
 
 // Variáveis de controle de Zoom
 let currentZoom = 1;
@@ -379,15 +449,22 @@ const maxZoom = 3;    // Zoom máximo (3x)
 const minZoom = 1;    // Zoom mínimo (Tamanho original)
 
 // 1. Troca de Campus
-if (campusBtns.length > 0 && mapImage) {
+if (campusBtns.length > 0 && (mapImage || mapFrame)) {
     campusBtns.forEach(btn => {
         btn.addEventListener('click', function () {
             // Atualiza visual dos botões
             campusBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
 
-            // Troca a imagem do mapa com base no data-map
-            const newSrc = this.getAttribute('data-map');
+            const newSrc = this.getAttribute('data-map-src') || this.getAttribute('data-map');
+            if (!newSrc) return;
+
+            if (mapFrame) {
+                mapFrame.src = newSrc;
+                mapFrame.title = `Mapa do Campus UCS ${this.textContent.trim()}`;
+                return;
+            }
+
             mapImage.src = newSrc;
 
             // Reseta o zoom ao trocar de mapa
@@ -447,13 +524,36 @@ if (btnZoomReset) {
 
 document.addEventListener('DOMContentLoaded', () => {
     /* Mágica do Botão de Chamada */
+    const currentClassCard = document.querySelector('.current-class-card[data-ava-course]');
     const btnChamada = document.getElementById('btnChamada');
     const containerChamada = document.getElementById('containerChamada');
     const myModal = document.getElementById('myModal');
     const closeModals = document.querySelectorAll('.close-modal');
 
+    if (currentClassCard) {
+        const openCurrentClass = () => {
+            window.location.href = currentClassCard.dataset.avaCourse;
+        };
+
+        currentClassCard.addEventListener('click', (event) => {
+            if (event.target.closest('#containerChamada')) return;
+            openCurrentClass();
+        });
+
+        currentClassCard.addEventListener('keydown', (event) => {
+            if (event.target.closest('#containerChamada')) return;
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                openCurrentClass();
+            }
+        });
+    }
+
     if (btnChamada && containerChamada) {
-        btnChamada.addEventListener('click', () => {
+        btnChamada.addEventListener('click', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+
             // 1. Abre o modal de sucesso
             if (myModal) myModal.classList.add('active');
 

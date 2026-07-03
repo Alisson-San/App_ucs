@@ -22,28 +22,20 @@
 
         <div class="map-campus-panel">
             <div class="campus-selector map-campus-selector">
-                <button class="campus-btn active" data-map="/imagens/mapa_caxias.png">Caxias do Sul</button>
-                <button class="campus-btn" data-map="/imagens/mapa_bento.png">Bento Gonçalves</button>
+                <button class="campus-btn active" type="button" data-map-src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3527.4481472442803!2d-51.14964603087218!3d-29.161345531709248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1spt-BR!2sbr!4v1783089846345!5m2!1spt-BR!2sbr">Caxias do Sul</button>
+                <button class="campus-btn" type="button" data-map-src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2159.2013913436585!2d-51.52119061056744!3d-29.146661667316447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1spt-BR!2sbr!4v1783089670119!5m2!1spt-BR!2sbr">Bento Gonçalves</button>
             </div>
         </div>
 
         <div class="map-area" id="mapContainer">
-            
-            <img src="/imagens/mapa_caxias.png" alt="Mapa do Campus" class="map-image" id="mapImage" 
-                 onerror="this.src='https://placehold.co/800x1200/e2e8f0/475569?text=Mapa+Caxias\n(Adicione+a+imagem)'">
-            
-        </div>
-
-        <div class="map-controls">
-            <button class="map-fab" id="btnZoomIn" title="Aproximar">
-                <span class="material-symbols-outlined">zoom_in</span>
-            </button>
-            <button class="map-btn-small" id="btnZoomReset" title="Restaurar Visão">
-                <span class="material-symbols-outlined">fit_screen</span>
-            </button>
-            <button class="map-fab" id="btnZoomOut" title="Afastar">
-                <span class="material-symbols-outlined">zoom_out</span>
-            </button>
+            <iframe
+                class="map-iframe"
+                id="mapFrame"
+                title="Mapa do Campus UCS Caxias do Sul"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3527.4481472442803!2d-51.14964603087218!3d-29.161345531709248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1spt-BR!2sbr!4v1783089846345!5m2!1spt-BR!2sbr"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
 
     </div>

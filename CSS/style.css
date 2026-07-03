@@ -574,6 +574,14 @@ h3 {
     z-index: 50;
 }
 
+.has-global-nav .content-area:not(.home-shell) {
+    padding-bottom: 120px !important;
+}
+
+.has-global-nav .map-area {
+    padding-bottom: 112px;
+}
+
 .nav-item {
     text-decoration: none;
     color: var(--text-light);
@@ -1613,7 +1621,7 @@ h3 {
 
 .timeline-container {
     position: relative;
-    padding-left: 54px;
+    padding-left: 78px;
     margin-left: 0;
     min-height: 196px;
 }
@@ -1621,7 +1629,7 @@ h3 {
 .timeline-container::before {
     content: '';
     position: absolute;
-    left: 44px;
+    left: 62px;
     top: 8px;
     bottom: 0;
     width: 2px;
@@ -1637,23 +1645,24 @@ h3 {
 .timeline-time {
     position: absolute;
     left: 0;
-    top: 0;
-    min-width: 36px;
+    top: -1px;
+    width: 46px;
     font-size: 10px;
     font-weight: 900;
     color: var(--primary-color);
     background: rgba(0, 90, 156, 0.08);
-    padding: 5px 4px;
+    padding: 5px 6px;
     border-radius: 999px;
     text-align: center;
     line-height: 1;
     white-space: nowrap;
+    z-index: 2;
 }
 
 .timeline-row::before {
     content: '';
     position: absolute;
-    left: -16px;
+    left: -22px;
     top: 4px;
     width: 12px;
     height: 12px;
@@ -1833,6 +1842,16 @@ h3 {
     box-shadow: 0 18px 38px rgba(0, 45, 93, 0.18);
     background: #ffffff;
     border: 1px solid rgba(0, 45, 93, 0.1);
+}
+
+.map-iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 540px;
+    border: 0;
+    border-radius: 18px;
+    box-shadow: 0 18px 38px rgba(0, 45, 93, 0.18);
+    background: #ffffff;
 }
 
 .map-controls {
