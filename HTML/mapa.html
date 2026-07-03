@@ -12,21 +12,19 @@
 
     <div class="mobile-frame" style="padding: 0; display: flex; flex-direction: column;">
         
-        <div class="topbar-subpage" style="padding: 20px 24px 16px 24px; border-bottom: none; z-index: 10; background-color: var(--card-bg); box-shadow: var(--shadow-soft);">
-            
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
-                <a href="../HTML/home.html" class="back-button">
-                    <span class="material-symbols-outlined">arrow_back_ios_new</span>
-                </a>
-                <h2 style="font-size: 18px; font-weight: 600; color: var(--text-main);">Mapa do Campus</h2>
-                <span class="material-symbols-outlined" style="visibility: hidden;">arrow_back_ios_new</span>
-            </div>
+        <div class="topbar-subpage">
+            <a href="../HTML/home.html" class="back-button">
+                <span class="material-symbols-outlined">arrow_back_ios_new</span>
+            </a>
+            <h2>Mapa do Campus</h2>
+            <span class="material-symbols-outlined" style="visibility: hidden;">arrow_back_ios_new</span>
+        </div>
 
-            <div class="campus-selector">
+        <div class="map-campus-panel">
+            <div class="campus-selector map-campus-selector">
                 <button class="campus-btn active" data-map="/imagens/mapa_caxias.png">Caxias do Sul</button>
                 <button class="campus-btn" data-map="/imagens/mapa_bento.png">Bento Gonçalves</button>
             </div>
-            
         </div>
 
         <div class="map-area" id="mapContainer">

@@ -7,30 +7,1202 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="../CSS/style.css">
     <style>
-        .placeholder-content {
-            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%; color: var(--text-light); padding: 40px 24px;
+        .ava-content {
+            padding-top: 16px;
+            padding-bottom: 48px;
+            background:
+                linear-gradient(180deg, rgba(0, 90, 156, 0.08) 0, rgba(240, 244, 248, 0) 150px),
+                var(--bg-color);
         }
-        .placeholder-content .material-symbols-outlined {
-            font-size: 64px; color: rgba(0, 90, 156, 0.2); margin-bottom: 24px;
+
+        .ava-hero {
+            background:
+                linear-gradient(135deg, rgba(0, 45, 93, 0.96) 0%, rgba(0, 90, 156, 0.96) 64%, rgba(200, 16, 46, 0.82) 100%);
+            border-radius: var(--radius-card);
+            color: #ffffff;
+            padding: 24px 20px;
+            margin-bottom: 18px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 18px 36px rgba(0, 45, 93, 0.24);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .ava-hero::before {
+            content: '';
+            position: absolute;
+            right: -52px;
+            top: -62px;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .ava-hero::after {
+            content: '';
+            position: absolute;
+            left: -38px;
+            bottom: -80px;
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .ava-eyebrow {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            opacity: 0.75;
+            margin-bottom: 6px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ava-hero h1 {
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ava-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ava-stat {
+            background: rgba(255, 255, 255, 0.16);
+            border-radius: 12px;
+            padding: 10px 8px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        }
+
+        .ava-stat strong {
+            display: block;
+            font-size: 18px;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .ava-stat span {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            opacity: 0.78;
+        }
+
+        .ava-view {
+            display: none;
+        }
+
+        .ava-view.active {
+            display: block;
+        }
+
+        .section-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin: 18px 0 12px;
+        }
+
+        .section-title-row h3 {
+            color: var(--text-main);
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title-row h3::before {
+            content: '';
+            width: 7px;
+            height: 18px;
+            border-radius: 99px;
+            background: var(--primary-color);
+        }
+
+        .status-pill {
+            border-radius: 999px;
+            padding: 6px 10px;
+            font-size: 10px;
+            font-weight: 900;
+            white-space: nowrap;
+            border: 1px solid currentColor;
+        }
+
+        .status-pill.blue { background: rgba(0, 90, 156, 0.13); color: var(--primary-color); }
+        .status-pill.green { background: rgba(0, 90, 156, 0.13); color: var(--primary-color); }
+        .status-pill.yellow { background: rgba(245, 158, 11, 0.16); color: #A16207; }
+        .status-pill.purple { background: rgba(200, 16, 46, 0.1); color: var(--ucs-red); }
+        .status-pill.gray { background: #E2E8F0; color: #475569; }
+
+        .course-card,
+        .ava-card {
+            background:
+                linear-gradient(135deg, color-mix(in srgb, var(--accent-color, var(--primary-color)) 7%, white) 0%, #ffffff 45%, #ffffff 100%);
+            border: 1px solid color-mix(in srgb, var(--accent-color, var(--primary-color)) 20%, white);
+            border-left: 5px solid var(--accent-color, var(--primary-color));
+            border-radius: var(--radius-card);
+            box-shadow: 0 10px 26px rgba(0, 45, 93, 0.08);
+            overflow: hidden;
+            margin-bottom: 14px;
+        }
+
+        .course-card {
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 32px rgba(0, 45, 93, 0.14);
+        }
+
+        .course-card-inner {
+            display: grid;
+            grid-template-columns: 46px 1fr;
+            gap: 12px;
+            padding: 16px;
+        }
+
+        .course-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 13px;
+            background: color-mix(in srgb, var(--accent-color, var(--primary-color)) 18%, white);
+            color: var(--accent-color, var(--primary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent-color, var(--primary-color)) 18%, white);
+        }
+
+        .course-icon .material-symbols-outlined {
+            font-size: 25px;
+        }
+
+        .course-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+
+        .course-name {
+            color: var(--text-main);
+            font-size: 16px;
+            font-weight: 900;
+            line-height: 1.25;
+        }
+
+        .course-meta,
+        .course-next {
+            color: var(--text-light);
+            font-size: 12px;
+            line-height: 1.45;
+        }
+
+        .course-next {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .course-next .material-symbols-outlined {
+            color: var(--accent-color, var(--primary-color));
+            font-size: 16px;
+        }
+
+        .course-progress {
+            background: color-mix(in srgb, var(--accent-color, var(--primary-color)) 12%, #E2E8F0);
+            border-radius: 999px;
+            height: 8px;
+            margin-top: 12px;
+            overflow: hidden;
+        }
+
+        .course-progress span {
+            display: block;
+            height: 100%;
+            width: var(--progress);
+            background: linear-gradient(90deg, var(--accent-color, var(--primary-color)), color-mix(in srgb, var(--accent-color, var(--primary-color)) 68%, white));
+            border-radius: 999px;
+        }
+
+        .course-footer {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            border-top: 1px solid var(--border-color);
+            padding: 11px 16px 14px;
+        }
+
+        .course-mini {
+            background: color-mix(in srgb, var(--accent-color, var(--primary-color)) 7%, #F8FAFC);
+            border-radius: 10px;
+            padding: 8px 6px;
+            text-align: center;
+            border: 1px solid color-mix(in srgb, var(--accent-color, var(--primary-color)) 12%, white);
+        }
+
+        .course-mini strong {
+            display: block;
+            color: var(--text-main);
+            font-size: 14px;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .course-mini span {
+            color: var(--text-light);
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .course-toolbar {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background:
+                linear-gradient(135deg, color-mix(in srgb, var(--accent-color, var(--primary-color)) 12%, white) 0%, #ffffff 62%, #F8FAFC 100%);
+            border: 1px solid color-mix(in srgb, var(--accent-color, var(--primary-color)) 20%, white);
+            border-left: 5px solid var(--accent-color, var(--primary-color));
+            border-radius: var(--radius-card);
+            box-shadow: 0 14px 30px rgba(0, 45, 93, 0.11);
+            padding: 16px;
+            margin-bottom: 18px;
+        }
+
+        .inline-back {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            border: 0;
+            background: color-mix(in srgb, var(--accent-color, var(--primary-color)) 13%, white);
+            color: var(--accent-color, var(--primary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            margin-top: 1px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .inline-back:hover {
+            transform: translateX(-1px);
+        }
+
+        .course-heading {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .course-heading h2 {
+            color: var(--text-main);
+            font-size: 19px;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+
+        .course-heading p {
+            color: var(--text-light);
+            font-size: 12px;
+            margin-top: 3px;
+        }
+
+        .course-context-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 10px;
+        }
+
+        .course-context-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: color-mix(in srgb, var(--accent-color, var(--primary-color)) 9%, #F8FAFC);
+            color: var(--text-light);
+            border-radius: 999px;
+            padding: 6px 8px;
+            font-size: 11px;
+            font-weight: 800;
+            border: 1px solid color-mix(in srgb, var(--accent-color, var(--primary-color)) 13%, white);
+        }
+
+        .course-context-chip .material-symbols-outlined {
+            color: var(--accent-color, var(--primary-color));
+            font-size: 15px;
+        }
+
+        .course-tabs {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(68px, 1fr));
+            gap: 4px;
+            background: #DDE7F0;
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 16px;
+            overflow-x: auto;
+            border: 1px solid rgba(0, 45, 93, 0.08);
+        }
+
+        .course-tab {
+            border: 0;
+            background: transparent;
+            color: var(--text-light);
+            border-radius: 8px;
+            padding: 10px 6px;
+            font-size: 11px;
+            font-weight: 900;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .course-tab.active {
+            background: var(--primary-color);
+            color: #ffffff;
+            box-shadow: 0 8px 16px rgba(0, 90, 156, 0.22);
+        }
+
+        .course-panel {
+            display: none;
+        }
+
+        .course-panel.active {
+            display: block;
+        }
+
+        .lesson-card {
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(0, 45, 93, 0.12);
+        }
+
+        .lesson-inner,
+        .activity-inner,
+        .grade-inner,
+        .schedule-inner,
+        .group-inner,
+        .material-inner {
+            padding: 16px;
+        }
+
+        .lesson-top,
+        .activity-top,
+        .grade-top,
+        .schedule-top,
+        .group-top,
+        .material-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .lesson-title,
+        .activity-title,
+        .grade-title,
+        .schedule-title,
+        .group-title,
+        .material-title {
+            color: var(--text-main);
+            font-size: 14px;
+            font-weight: 900;
+            line-height: 1.25;
+        }
+
+        .lesson-meta,
+        .activity-meta,
+        .grade-meta,
+        .schedule-meta,
+        .group-meta,
+        .material-meta {
+            color: var(--text-light);
+            font-size: 12px;
+            line-height: 1.45;
+        }
+
+        .lesson-assets {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 12px;
+        }
+
+        .asset-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: color-mix(in srgb, var(--accent-color, var(--primary-color)) 10%, #F8FAFC);
+            color: var(--text-light);
+            border-radius: 999px;
+            padding: 6px 8px;
+            font-size: 11px;
+            font-weight: 800;
+            border: 1px solid color-mix(in srgb, var(--accent-color, var(--primary-color)) 16%, white);
+        }
+
+        .asset-chip .material-symbols-outlined {
+            color: var(--accent-color, var(--primary-color));
+            font-size: 15px;
+        }
+
+        .deadline-strip {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.16), rgba(255, 255, 255, 0.88));
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            border-left: 5px solid #F59E0B;
+            border-radius: 14px;
+            color: #92400E;
+            padding: 12px;
+            font-size: 12px;
+            line-height: 1.45;
+            margin-bottom: 14px;
+            box-shadow: 0 8px 20px rgba(146, 64, 14, 0.08);
+        }
+
+        .deadline-strip .material-symbols-outlined {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .grade-score {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color, var(--primary-color));
+            background: color-mix(in srgb, var(--accent-color, var(--primary-color)) 16%, white);
+            font-size: 15px;
+            font-weight: 900;
+            flex-shrink: 0;
+            border: 2px solid color-mix(in srgb, var(--accent-color, var(--primary-color)) 22%, white);
+        }
+
+        .material-card {
+            cursor: pointer;
+        }
+
+        .pdf-preview {
+            background:
+                linear-gradient(135deg, color-mix(in srgb, var(--accent-color, var(--primary-color)) 10%, #F8FAFC), #ffffff);
+            border: 1px solid color-mix(in srgb, var(--accent-color, var(--primary-color)) 18%, white);
+            border-left: 5px solid var(--accent-color, var(--primary-color));
+            border-radius: var(--radius-card);
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 12px 28px rgba(0, 45, 93, 0.1);
+        }
+
+        .pdf-page {
+            background: #ffffff;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            padding: 18px;
+            min-height: 170px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pdf-page::before {
+            content: '';
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 8px;
+            background: var(--accent-color, var(--primary-color));
+        }
+
+        .pdf-page h3 {
+            color: var(--ucs-blue-dark);
+            font-size: 16px;
+            margin: 8px 0 12px;
+        }
+
+        .pdf-line {
+            height: 8px;
+            background: color-mix(in srgb, var(--accent-color, var(--primary-color)) 13%, #E2E8F0);
+            border-radius: 999px;
+            margin-bottom: 8px;
+        }
+
+        .pdf-line.short { width: 62%; }
+        .pdf-line.medium { width: 82%; }
+
+        .action-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .ava-btn {
+            border: 0;
+            border-radius: var(--radius-input);
+            padding: 12px 10px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            font-size: 13px;
+            font-weight: 900;
+            cursor: pointer;
+        }
+
+        .ava-btn.primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--ucs-blue-dark));
+            color: #ffffff;
+            box-shadow: var(--shadow-btn);
+        }
+
+        .ava-btn.outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 1.5px solid rgba(0, 90, 156, 0.38);
+        }
+
+        .empty-state {
+            background: linear-gradient(135deg, #ffffff, #F8FAFC);
+            border: 1px dashed rgba(0, 45, 93, 0.18);
+            border-radius: 14px;
+            color: var(--text-light);
+            font-size: 13px;
+            line-height: 1.45;
+            padding: 14px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
     <div class="mobile-frame">
         <div class="topbar-subpage">
-            <a href="../HTML/home.html" class="back-button"><span class="material-symbols-outlined">arrow_back</span></a>
+            <a href="../HTML/home.html" class="back-button"><span class="material-symbols-outlined">home</span></a>
             <h2>AVA Graduação</h2>
             <div style="width: 36px;"></div>
         </div>
-        <div class="content-area" style="padding: 24px; display: flex; flex-direction: column; justify-content: center;">
-            <div class="placeholder-content">
-                <span class="material-symbols-outlined">smartphone</span>
-                <h3 style="color: var(--text-main); margin-bottom: 12px; font-size: 18px;">Página em Construção</h3>
-                <p style="font-size: 14px; line-height: 1.5;">O módulo <strong>AVA Graduação</strong> será implementado nas próximas fases. Esta é apenas uma tela estrutural.</p>
-                <a href="../HTML/home.html" class="btn-ucs-blue" style="width: auto; margin-top: 32px; padding: 12px 24px; text-decoration: none;">Voltar ao Início</a>
-            </div>
+
+        <div class="content-area ava-content">
+            <section class="ava-view active" id="coursesView">
+                <section class="ava-hero">
+                    <p class="ava-eyebrow">2026/2 • Ambiente Virtual</p>
+                    <h1>Suas cadeiras, aulas, trabalhos e materiais em um só lugar.</h1>
+                    <div class="ava-stats">
+                        <div class="ava-stat">
+                            <strong>5</strong>
+                            <span>Cadeiras</span>
+                        </div>
+                        <div class="ava-stat">
+                            <strong>18</strong>
+                            <span>Aulas</span>
+                        </div>
+                        <div class="ava-stat">
+                            <strong>3</strong>
+                            <span>Prazos</span>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="deadline-strip">
+                    <span class="material-symbols-outlined">notifications_active</span>
+                    <p>Hoje: Circuitos Elétricos II tem aula às 19h30 e atividade de laboratório disponível.</p>
+                </div>
+
+                <div class="section-title-row">
+                    <h3>Cadeiras do semestre</h3>
+                    <span class="status-pill blue">Todas</span>
+                </div>
+
+                <div id="courseList"></div>
+            </section>
+
+            <section class="ava-view" id="courseView">
+                <div class="course-toolbar">
+                    <button class="inline-back" type="button" id="backToCourses"><span class="material-symbols-outlined">arrow_back_ios_new</span></button>
+                    <div class="course-heading">
+                        <h2 id="courseTitle">Cadeira</h2>
+                        <p id="courseSubtitle">Professor • horário</p>
+                        <div class="course-context-row" id="courseContext"></div>
+                    </div>
+                    <span class="status-pill blue" id="courseStatus">Ativa</span>
+                </div>
+
+                <div class="course-tabs" role="tablist">
+                    <button class="course-tab active" type="button" data-panel="lessonsPanel">Aulas</button>
+                    <button class="course-tab" type="button" data-panel="activitiesPanel">Trabalhos</button>
+                    <button class="course-tab" type="button" data-panel="groupsPanel">Grupos</button>
+                    <button class="course-tab" type="button" data-panel="gradesPanel">Notas</button>
+                    <button class="course-tab" type="button" data-panel="schedulePanel">Cronograma</button>
+                </div>
+
+                <div class="course-panel active" id="lessonsPanel">
+                    <div class="section-title-row">
+                        <h3>Aulas publicadas</h3>
+                        <span class="status-pill gray" id="lessonCount">0 itens</span>
+                    </div>
+                    <div id="lessonsList"></div>
+                </div>
+
+                <div class="course-panel" id="activitiesPanel">
+                    <div class="section-title-row">
+                        <h3>Trabalhos e atividades</h3>
+                        <span class="status-pill yellow">Prazos</span>
+                    </div>
+                    <div id="activitiesList"></div>
+                </div>
+
+                <div class="course-panel" id="groupsPanel">
+                    <div class="section-title-row">
+                        <h3>Grupos</h3>
+                        <span class="status-pill purple">Colaboração</span>
+                    </div>
+                    <div id="groupsList"></div>
+                </div>
+
+                <div class="course-panel" id="gradesPanel">
+                    <div class="section-title-row">
+                        <h3>Notas parciais</h3>
+                        <span class="status-pill green" id="gradeAverage">Média 0</span>
+                    </div>
+                    <div id="gradesList"></div>
+                </div>
+
+                <div class="course-panel" id="schedulePanel">
+                    <div class="section-title-row">
+                        <h3>Cronograma</h3>
+                        <span class="status-pill blue">Semestre</span>
+                    </div>
+                    <div id="scheduleList"></div>
+                </div>
+            </section>
+
+            <section class="ava-view" id="lessonView">
+                <div class="course-toolbar">
+                    <button class="inline-back" type="button" id="backToCourse"><span class="material-symbols-outlined">arrow_back_ios_new</span></button>
+                    <div class="course-heading">
+                        <h2 id="lessonTitle">Aula</h2>
+                        <p id="lessonSubtitle">Material da aula</p>
+                        <div class="course-context-row" id="lessonContext"></div>
+                    </div>
+                    <span class="status-pill green">Publicado</span>
+                </div>
+
+                <div class="pdf-preview">
+                    <div class="pdf-page">
+                        <h3 id="pdfTitle">PDF de leitura</h3>
+                        <div class="pdf-line medium"></div>
+                        <div class="pdf-line"></div>
+                        <div class="pdf-line short"></div>
+                        <div class="pdf-line medium"></div>
+                        <div class="pdf-line"></div>
+                    </div>
+                </div>
+
+                <div class="section-title-row">
+                    <h3>Materiais disponíveis</h3>
+                    <span class="status-pill gray" id="materialCount">0 itens</span>
+                </div>
+                <div id="materialsList"></div>
+
+                <div class="section-title-row">
+                    <h3>Atividade da aula</h3>
+                    <span class="status-pill yellow">Entrega</span>
+                </div>
+                <div id="lessonActivity"></div>
+            </section>
         </div>
     </div>
+
     <script src="../Javascript/app.js"></script>
+    <script>
+        const courses = [
+            {
+                id: 'circuitos',
+                name: 'Circuitos Elétricos II',
+                code: 'ELE204',
+                professor: 'Prof. Marcos Almeida',
+                schedule: 'Segundas e quartas, 19h30',
+                room: 'Bloco J • Sala 204',
+                icon: 'electrical_services',
+                color: 'var(--primary-color)',
+                progress: 68,
+                status: 'Em andamento',
+                lessons: [
+                    {
+                        id: 'circuitos-aula-08',
+                        title: 'Aula 08 • Regime permanente senoidal',
+                        date: 'Publicado hoje',
+                        summary: 'Fasores, impedância complexa e análise por malhas em CA.',
+                        materials: [
+                            { type: 'PDF', icon: 'picture_as_pdf', title: 'Notas de aula - fasores e impedância', meta: '18 páginas' },
+                            { type: 'Slides', icon: 'slideshow', title: 'Apresentação da aula 08', meta: '32 slides' },
+                            { type: 'Simulador', icon: 'tune', title: 'Circuito RLC interativo', meta: 'Laboratório virtual' }
+                        ],
+                        activity: 'Resolver exercícios 4, 5 e 8 da lista de CA até 07/07/2026.'
+                    },
+                    {
+                        id: 'circuitos-aula-07',
+                        title: 'Aula 07 • Transformada de Laplace',
+                        date: 'Publicado em 01/07',
+                        summary: 'Resposta transitória e funções de transferência para circuitos de primeira ordem.',
+                        materials: [
+                            { type: 'PDF', icon: 'picture_as_pdf', title: 'Resumo de Laplace aplicado', meta: '12 páginas' },
+                            { type: 'Vídeo', icon: 'play_circle', title: 'Resolução comentada', meta: '24 min' }
+                        ],
+                        activity: 'Quiz de fixação disponível até 05/07/2026.'
+                    },
+                    {
+                        id: 'circuitos-aula-06',
+                        title: 'Aula 06 • Teoremas de rede',
+                        date: 'Publicado em 26/06',
+                        summary: 'Thevenin, Norton e máxima transferência de potência.',
+                        materials: [
+                            { type: 'PDF', icon: 'picture_as_pdf', title: 'Roteiro de laboratório', meta: '8 páginas' },
+                            { type: 'Planilha', icon: 'table_chart', title: 'Medições do experimento', meta: 'Modelo XLS' }
+                        ],
+                        activity: 'Enviar relatório do laboratório em dupla.'
+                    }
+                ],
+                activities: [
+                    { title: 'Relatório 02 • Circuitos em CA', due: '06/07/2026', status: 'Aberto', meta: 'Entrega em dupla' },
+                    { title: 'Lista 03 • Fasores', due: '09/07/2026', status: 'Aberto', meta: '10 questões' },
+                    { title: 'Quiz 02 • Laplace', due: '05/07/2026', status: 'Pendente', meta: 'Valor: 1,0' }
+                ],
+                groups: [
+                    { title: 'Grupo 4 • Laboratório CA', members: 'Gabriel, Bruna, Lucas', meta: 'Relatório em andamento' },
+                    { title: 'Monitoria', members: 'Canal geral da turma', meta: 'Quintas, 18h30' }
+                ],
+                grades: [
+                    { title: 'Prova 1', score: '8.4', meta: 'Peso 35%' },
+                    { title: 'Relatório 1', score: '9.0', meta: 'Peso 15%' },
+                    { title: 'Quiz 1', score: '7.8', meta: 'Peso 10%' }
+                ],
+                scheduleItems: [
+                    { title: 'Aula 09 • Potência em CA', date: '08/07/2026', meta: 'Teoria e exercícios' },
+                    { title: 'Laboratório RLC', date: '13/07/2026', meta: 'Bancada 2' },
+                    { title: 'Prova 2', date: '24/07/2026', meta: 'Conteúdo: aulas 06 a 10' }
+                ]
+            },
+            {
+                id: 'sistemas',
+                name: 'Sistemas Digitais',
+                code: 'CMP118',
+                professor: 'Prof. Laura Antunes',
+                schedule: 'Terças, 19h30',
+                room: 'Lab. 3',
+                icon: 'memory',
+                color: 'var(--ucs-red)',
+                progress: 54,
+                status: 'Ativa',
+                lessons: [
+                    {
+                        id: 'sistemas-aula-05',
+                        title: 'Aula 05 • Mapas de Karnaugh',
+                        date: 'Publicado em 02/07',
+                        summary: 'Simplificação de expressões booleanas com 3 e 4 variáveis.',
+                        materials: [
+                            { type: 'PDF', icon: 'picture_as_pdf', title: 'Guia de Karnaugh', meta: '10 páginas' },
+                            { type: 'Exercícios', icon: 'edit_document', title: 'Lista de portas lógicas', meta: '15 itens' }
+                        ],
+                        activity: 'Entregar simplificações no AVA até 08/07/2026.'
+                    },
+                    {
+                        id: 'sistemas-aula-04',
+                        title: 'Aula 04 • Circuitos combinacionais',
+                        date: 'Publicado em 25/06',
+                        summary: 'Codificadores, decodificadores e multiplexadores.',
+                        materials: [
+                            { type: 'Slides', icon: 'slideshow', title: 'Circuitos combinacionais', meta: '28 slides' },
+                            { type: 'Simulador', icon: 'developer_board', title: 'Montagem virtual', meta: 'Logisim' }
+                        ],
+                        activity: 'Prática no laboratório com envio de print.'
+                    }
+                ],
+                activities: [
+                    { title: 'Projeto 01 • Somador binário', due: '11/07/2026', status: 'Aberto', meta: 'Grupo de 3' },
+                    { title: 'Lista 02 • Karnaugh', due: '08/07/2026', status: 'Aberto', meta: 'Individual' }
+                ],
+                groups: [
+                    { title: 'Grupo Somador', members: 'Gabriel, Ana, Pedro', meta: 'Entrega 11/07' }
+                ],
+                grades: [
+                    { title: 'Prova 1', score: '8.8', meta: 'Peso 40%' },
+                    { title: 'Prática 1', score: '9.5', meta: 'Peso 20%' }
+                ],
+                scheduleItems: [
+                    { title: 'Flip-flops', date: '09/07/2026', meta: 'Aula prática' },
+                    { title: 'Máquinas de estado', date: '16/07/2026', meta: 'Exercícios em sala' }
+                ]
+            },
+            {
+                id: 'calculo',
+                name: 'Cálculo Numérico',
+                code: 'MAT246',
+                professor: 'Prof. Renata Prado',
+                schedule: 'Quintas, 19h30',
+                room: 'Sala C-102',
+                icon: 'calculate',
+                color: 'var(--ucs-red)',
+                progress: 61,
+                status: 'Ativa',
+                lessons: [
+                    {
+                        id: 'calculo-aula-06',
+                        title: 'Aula 06 • Método de Newton',
+                        date: 'Publicado em 03/07',
+                        summary: 'Raízes de funções, critérios de parada e erro relativo.',
+                        materials: [
+                            { type: 'PDF', icon: 'picture_as_pdf', title: 'Métodos iterativos', meta: '14 páginas' },
+                            { type: 'Código', icon: 'code', title: 'Exemplos em Python', meta: 'Notebook' }
+                        ],
+                        activity: 'Enviar implementação do método de Newton.'
+                    }
+                ],
+                activities: [
+                    { title: 'TDE 02 • Métodos iterativos', due: '12/07/2026', status: 'Aberto', meta: 'Individual' }
+                ],
+                groups: [
+                    { title: 'Fórum de dúvidas', members: 'Turma completa', meta: 'Monitor responde às sextas' }
+                ],
+                grades: [
+                    { title: 'Prova 1', score: '7.6', meta: 'Peso 45%' },
+                    { title: 'TDE 1', score: '9.2', meta: 'Peso 15%' }
+                ],
+                scheduleItems: [
+                    { title: 'Interpolação', date: '10/07/2026', meta: 'Polinômios de Lagrange' },
+                    { title: 'Integração numérica', date: '17/07/2026', meta: 'Trapézios e Simpson' }
+                ]
+            },
+            {
+                id: 'gestao',
+                name: 'Gestão de Projetos',
+                code: 'ADM330',
+                professor: 'Prof. Henrique Nunes',
+                schedule: 'Sextas, 19h30',
+                room: 'Online síncrona',
+                icon: 'assignment',
+                color: '#F59E0B',
+                progress: 49,
+                status: 'Ativa',
+                lessons: [
+                    {
+                        id: 'gestao-aula-04',
+                        title: 'Aula 04 • Escopo e EAP',
+                        date: 'Publicado em 28/06',
+                        summary: 'Declaração de escopo, entregáveis e estrutura analítica do projeto.',
+                        materials: [
+                            { type: 'PDF', icon: 'picture_as_pdf', title: 'Template de EAP', meta: 'Modelo' },
+                            { type: 'Vídeo', icon: 'play_circle', title: 'Estudo de caso', meta: '18 min' }
+                        ],
+                        activity: 'Publicar EAP do projeto do grupo.'
+                    }
+                ],
+                activities: [
+                    { title: 'EAP do projeto', due: '10/07/2026', status: 'Aberto', meta: 'Grupo' }
+                ],
+                groups: [
+                    { title: 'Projeto Integrado', members: 'Gabriel, Júlia, Rafael, Marina', meta: 'Kanban atualizado' }
+                ],
+                grades: [
+                    { title: 'Pitch inicial', score: '9.1', meta: 'Peso 20%' }
+                ],
+                scheduleItems: [
+                    { title: 'Cronograma e caminho crítico', date: '11/07/2026', meta: 'MS Project / Gantt' }
+                ]
+            },
+            {
+                id: 'eletromag',
+                name: 'Eletromagnetismo',
+                code: 'FIS312',
+                professor: 'Prof. Diana Lopes',
+                schedule: 'Sábados, 08h',
+                room: 'Sala F-301',
+                icon: 'science',
+                color: 'var(--primary-color)',
+                progress: 42,
+                status: 'Fila #4',
+                lessons: [
+                    {
+                        id: 'eletromag-aula-03',
+                        title: 'Aula 03 • Lei de Gauss',
+                        date: 'Publicado em 29/06',
+                        summary: 'Fluxo elétrico e aplicações com simetria.',
+                        materials: [
+                            { type: 'PDF', icon: 'picture_as_pdf', title: 'Lei de Gauss', meta: '16 páginas' },
+                            { type: 'Lista', icon: 'edit_document', title: 'Exercícios dirigidos', meta: '8 itens' }
+                        ],
+                        activity: 'Lista opcional de revisão.'
+                    }
+                ],
+                activities: [
+                    { title: 'Lista 01 • Campo elétrico', due: '15/07/2026', status: 'Revisão', meta: 'Opcional' }
+                ],
+                groups: [],
+                grades: [],
+                scheduleItems: [
+                    { title: 'Potencial elétrico', date: '12/07/2026', meta: 'Aula teórica' }
+                ]
+            }
+        ];
+
+        const views = {
+            courses: document.getElementById('coursesView'),
+            course: document.getElementById('courseView'),
+            lesson: document.getElementById('lessonView')
+        };
+
+        const state = {
+            course: null,
+            lesson: null
+        };
+
+        function showView(name) {
+            Object.entries(views).forEach(([key, view]) => {
+                view.classList.toggle('active', key === name);
+            });
+        }
+
+        function pillClass(status) {
+            if (status.includes('Fila')) return 'yellow';
+            if (status.includes('andamento')) return 'blue';
+            return 'blue';
+        }
+
+        function renderCourses() {
+            document.getElementById('courseList').innerHTML = courses.map(course => `
+                <article class="course-card" style="--accent-color: ${course.color};" data-course-id="${course.id}">
+                    <div class="course-card-inner">
+                        <div class="course-icon"><span class="material-symbols-outlined">${course.icon}</span></div>
+                        <div>
+                            <div class="course-top">
+                                <div>
+                                    <p class="course-name">${course.name}</p>
+                                    <p class="course-meta">${course.code} • ${course.professor}</p>
+                                </div>
+                                <span class="status-pill ${pillClass(course.status)}">${course.status}</span>
+                            </div>
+                            <p class="course-next"><span class="material-symbols-outlined">schedule</span>${course.schedule}</p>
+                            <div class="course-progress" style="--progress: ${course.progress}%;"><span></span></div>
+                        </div>
+                    </div>
+                    <div class="course-footer">
+                        <div class="course-mini"><strong>${course.lessons.length}</strong><span>Aulas</span></div>
+                        <div class="course-mini"><strong>${course.activities.length}</strong><span>Trabalhos</span></div>
+                        <div class="course-mini"><strong>${course.grades.length || '-'}</strong><span>Notas</span></div>
+                    </div>
+                </article>
+            `).join('');
+
+            document.querySelectorAll('[data-course-id]').forEach(card => {
+                card.addEventListener('click', () => openCourse(card.dataset.courseId));
+            });
+        }
+
+        function renderList(items, renderer, emptyText) {
+            if (!items.length) return `<div class="empty-state">${emptyText}</div>`;
+            return items.map(renderer).join('');
+        }
+
+        function openCourse(courseId) {
+            const course = courses.find(item => item.id === courseId) || courses[0];
+            state.course = course;
+            state.lesson = null;
+
+            document.getElementById('courseView').style.setProperty('--accent-color', course.color);
+            document.getElementById('courseTitle').textContent = course.name;
+            document.getElementById('courseSubtitle').textContent = `${course.professor} • ${course.schedule} • ${course.room}`;
+            document.getElementById('courseStatus').textContent = course.status;
+            document.getElementById('courseStatus').className = `status-pill ${pillClass(course.status)}`;
+            document.getElementById('lessonCount').textContent = `${course.lessons.length} itens`;
+            document.getElementById('courseContext').innerHTML = `
+                <span class="course-context-chip"><span class="material-symbols-outlined">menu_book</span>${course.lessons.length} aulas</span>
+                <span class="course-context-chip"><span class="material-symbols-outlined">assignment</span>${course.activities.length} trabalhos</span>
+                <span class="course-context-chip"><span class="material-symbols-outlined">workspace_premium</span>${course.grades.length || 0} notas</span>
+            `;
+
+            document.getElementById('lessonsList').innerHTML = renderList(course.lessons, lesson => `
+                <article class="ava-card lesson-card" style="--accent-color: ${course.color};" data-lesson-id="${lesson.id}">
+                    <div class="lesson-inner">
+                        <div class="lesson-top">
+                            <div>
+                                <p class="lesson-title">${lesson.title}</p>
+                                <p class="lesson-meta">${lesson.date} • ${lesson.summary}</p>
+                            </div>
+                            <span class="status-pill green">Publicado</span>
+                        </div>
+                        <div class="lesson-assets">
+                            ${lesson.materials.map(material => `<span class="asset-chip"><span class="material-symbols-outlined">${material.icon}</span>${material.type}</span>`).join('')}
+                        </div>
+                    </div>
+                </article>
+            `, 'Nenhuma aula publicada até o momento.');
+
+            document.getElementById('activitiesList').innerHTML = renderList(course.activities, activity => `
+                <article class="ava-card" style="--accent-color: #F59E0B;">
+                    <div class="activity-inner">
+                        <div class="activity-top">
+                            <div>
+                                <p class="activity-title">${activity.title}</p>
+                                <p class="activity-meta">${activity.meta} • Entrega: ${activity.due}</p>
+                            </div>
+                            <span class="status-pill yellow">${activity.status}</span>
+                        </div>
+                    </div>
+                </article>
+            `, 'Nenhuma atividade publicada para esta cadeira.');
+
+            document.getElementById('groupsList').innerHTML = renderList(course.groups, group => `
+                <article class="ava-card" style="--accent-color: var(--ucs-red);">
+                    <div class="group-inner">
+                        <div class="group-top">
+                            <div>
+                                <p class="group-title">${group.title}</p>
+                                <p class="group-meta">${group.members} • ${group.meta}</p>
+                            </div>
+                            <span class="status-pill purple">Grupo</span>
+                        </div>
+                    </div>
+                </article>
+            `, 'Nenhum grupo vinculado a esta cadeira.');
+
+            const gradeValues = course.grades.map(grade => Number(grade.score)).filter(Boolean);
+            const average = gradeValues.length ? (gradeValues.reduce((sum, value) => sum + value, 0) / gradeValues.length).toFixed(1) : '-';
+            document.getElementById('gradeAverage').textContent = `Média ${average}`;
+            document.getElementById('gradesList').innerHTML = renderList(course.grades, grade => `
+                <article class="ava-card" style="--accent-color: var(--primary-color);">
+                    <div class="grade-inner">
+                        <div class="grade-top">
+                            <div>
+                                <p class="grade-title">${grade.title}</p>
+                                <p class="grade-meta">${grade.meta}</p>
+                            </div>
+                            <div class="grade-score" style="--accent-color: var(--primary-color);">${grade.score}</div>
+                        </div>
+                    </div>
+                </article>
+            `, 'Nenhuma nota publicada ainda.');
+
+            document.getElementById('scheduleList').innerHTML = renderList(course.scheduleItems, item => `
+                <article class="ava-card" style="--accent-color: ${course.color};">
+                    <div class="schedule-inner">
+                        <div class="schedule-top">
+                            <div>
+                                <p class="schedule-title">${item.title}</p>
+                                <p class="schedule-meta">${item.date} • ${item.meta}</p>
+                            </div>
+                            <span class="status-pill blue">Previsto</span>
+                        </div>
+                    </div>
+                </article>
+            `, 'Cronograma ainda não publicado.');
+
+            document.querySelectorAll('[data-lesson-id]').forEach(card => {
+                card.addEventListener('click', () => openLesson(card.dataset.lessonId));
+            });
+
+            document.querySelectorAll('.course-tab').forEach(tab => tab.classList.toggle('active', tab.dataset.panel === 'lessonsPanel'));
+            document.querySelectorAll('.course-panel').forEach(panel => panel.classList.toggle('active', panel.id === 'lessonsPanel'));
+            showView('course');
+        }
+
+        function openLesson(lessonId) {
+            const lesson = state.course.lessons.find(item => item.id === lessonId);
+            if (!lesson) return;
+            state.lesson = lesson;
+
+            document.getElementById('lessonView').style.setProperty('--accent-color', state.course.color);
+            document.getElementById('lessonTitle').textContent = lesson.title;
+            document.getElementById('lessonSubtitle').textContent = `${state.course.name} • ${lesson.date}`;
+            document.getElementById('pdfTitle').textContent = lesson.materials.find(material => material.type === 'PDF')?.title || 'Material de leitura';
+            document.getElementById('materialCount').textContent = `${lesson.materials.length} itens`;
+            document.getElementById('lessonContext').innerHTML = `
+                <span class="course-context-chip"><span class="material-symbols-outlined">inventory_2</span>${lesson.materials.length} materiais</span>
+                <span class="course-context-chip"><span class="material-symbols-outlined">task_alt</span>1 atividade</span>
+            `;
+
+            document.getElementById('materialsList').innerHTML = lesson.materials.map(material => `
+                <article class="ava-card material-card" style="--accent-color: ${state.course.color};">
+                    <div class="material-inner">
+                        <div class="material-top">
+                            <div>
+                                <p class="material-title">${material.title}</p>
+                                <p class="material-meta">${material.type} • ${material.meta}</p>
+                            </div>
+                            <span class="asset-chip"><span class="material-symbols-outlined">${material.icon}</span>${material.type}</span>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+
+            document.getElementById('lessonActivity').innerHTML = `
+                <article class="ava-card" style="--accent-color: #F59E0B;">
+                    <div class="activity-inner">
+                        <div class="activity-top">
+                            <div>
+                                <p class="activity-title">Atividade vinculada</p>
+                                <p class="activity-meta">${lesson.activity}</p>
+                            </div>
+                            <span class="status-pill yellow">Aberta</span>
+                        </div>
+                        <div class="action-row">
+                            <button class="ava-btn primary" type="button"><span class="material-symbols-outlined">upload_file</span>Enviar</button>
+                            <button class="ava-btn outline" type="button"><span class="material-symbols-outlined">forum</span>Dúvida</button>
+                        </div>
+                    </div>
+                </article>
+            `;
+
+            showView('lesson');
+        }
+
+        document.getElementById('backToCourses').addEventListener('click', () => showView('courses'));
+        document.getElementById('backToCourse').addEventListener('click', () => showView('course'));
+
+        document.querySelectorAll('.course-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.course-tab').forEach(item => item.classList.remove('active'));
+                document.querySelectorAll('.course-panel').forEach(panel => panel.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.panel).classList.add('active');
+            });
+        });
+
+        renderCourses();
+
+        const requestedCourse = new URLSearchParams(window.location.search).get('course');
+        if (requestedCourse) {
+            openCourse(requestedCourse);
+        }
+    </script>
 </body>
 </html>

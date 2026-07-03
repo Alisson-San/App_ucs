@@ -16,7 +16,7 @@
     <div class="mobile-frame">
 
         <!-- Barra Superior -->
-        <div class="topbar-subpage" style="padding-bottom: 8px;">
+        <div class="topbar-subpage">
             <a href="../HTML/home.html" class="back-button">
                 <span class="material-symbols-outlined">arrow_back_ios_new</span>
             </a>
@@ -24,7 +24,26 @@
             <span class="material-symbols-outlined" style="visibility: hidden;">arrow_back_ios_new</span>
         </div>
 
-        <div class="content-area" style="padding-top: 16px; padding-bottom: 100px; display: block; overflow-y: auto;">
+        <div class="content-area agenda-content">
+
+            <section class="agenda-hero">
+                <p class="agenda-eyebrow">Semana acadêmica • Junho 2026</p>
+                <h1>Provas, aulas e entregas organizadas por prioridade.</h1>
+                <div class="agenda-hero-stats">
+                    <div class="agenda-hero-stat">
+                        <strong>5</strong>
+                        <span>Aulas</span>
+                    </div>
+                    <div class="agenda-hero-stat">
+                        <strong>2</strong>
+                        <span>Provas</span>
+                    </div>
+                    <div class="agenda-hero-stat">
+                        <strong>3</strong>
+                        <span>Entregas</span>
+                    </div>
+                </div>
+            </section>
 
             <!-- Controle de Visualização (Tabs) -->
             <div class="calendar-tabs">
@@ -33,30 +52,31 @@
                 <button class="cal-tab" data-target="view-day">Dia</button>
             </div>
 
-            <!-- Cabeçalho Dinâmico -->
-            <div class="cal-header-nav">
-                <span class="material-symbols-outlined" style="cursor: pointer;">chevron_left</span>
-                <h3 id="cal-current-date">Junho 2026</h3>
-                <span class="material-symbols-outlined" style="cursor: pointer;">chevron_right</span>
-            </div>
-
-            <!-- Legenda de Cores -->
-            <div class="cal-legend">
-                <div class="legend-item"><span class="dot dot-class"></span> Aula</div>
-                <div class="legend-item"><span class="dot dot-exam"></span> Prova</div>
-                <div class="legend-item"><span class="dot dot-task"></span> Trabalho</div>
-            </div>
-
-            <!-- ==============================================
-                 VISÃO: MÊS (Grid de Calendário)
-                 ============================================== -->
-            <div id="view-month" class="cal-view" style="display: block;">
-                <div class="cal-grid-header">
-                    <span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span>
+            <div class="agenda-calendar-panel">
+                <!-- Cabeçalho Dinâmico -->
+                <div class="cal-header-nav">
+                    <span class="material-symbols-outlined" style="cursor: pointer;">chevron_left</span>
+                    <h3 id="cal-current-date">Junho 2026</h3>
+                    <span class="material-symbols-outlined" style="cursor: pointer;">chevron_right</span>
                 </div>
-                <div class="cal-grid">
-                    <!-- Dias vazios para começar o mês no dia certo -->
-                    <div class="cal-cell empty"></div>
+
+                <!-- Legenda de Cores -->
+                <div class="cal-legend">
+                    <div class="legend-item"><span class="dot dot-class"></span> Aula</div>
+                    <div class="legend-item"><span class="dot dot-exam"></span> Prova</div>
+                    <div class="legend-item"><span class="dot dot-task"></span> Trabalho</div>
+                </div>
+
+                <!-- ==============================================
+                     VISÃO: MÊS (Grid de Calendário)
+                     ============================================== -->
+                <div id="view-month" class="cal-view" style="display: block;">
+                    <div class="cal-grid-header">
+                        <span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span>
+                    </div>
+                    <div class="cal-grid">
+                        <!-- Dias vazios para começar o mês no dia certo -->
+                        <div class="cal-cell empty"></div>
 
                     <div class="cal-cell">1</div>
                     <div class="cal-cell">2 <div class="cal-event event-class"></div>
@@ -102,13 +122,13 @@
 
                     <div class="cal-cell">29</div>
                     <div class="cal-cell">30</div>
+                    </div>
                 </div>
-            </div>
 
             <!-- ==============================================
                  VISÃO: SEMANA (Lista Agrupada)
                  ============================================== -->
-            <div id="view-week" class="cal-view" style="display: none;">
+                <div id="view-week" class="cal-view" style="display: none;">
 
                 <div class="week-day-group">
                     <h4 class="week-day-title">Terça, 09 de Jun</h4>
@@ -167,13 +187,13 @@
                     </div>
                 </div>
 
-            </div>
+                </div>
 
             <!-- ==============================================
                  VISÃO: DIA (Timeline)
                  ============================================== -->
-            <div id="view-day" class="cal-view" style="display: none;">
-                <div class="timeline-container">
+                <div id="view-day" class="cal-view" style="display: none;">
+                    <div class="timeline-container">
 
                     <div class="timeline-row">
                         <div class="timeline-time">08:00</div>
@@ -217,6 +237,7 @@
                         </div>
                     </div>
 
+                    </div>
                 </div>
             </div>
 

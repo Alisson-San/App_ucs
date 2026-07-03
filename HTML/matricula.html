@@ -7,30 +7,1193 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="../CSS/style.css">
     <style>
-        .placeholder-content {
-            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%; color: var(--text-light); padding: 40px 24px;
+        .matricula-content {
+            padding-top: 16px;
+            padding-bottom: 48px;
         }
-        .placeholder-content .material-symbols-outlined {
-            font-size: 64px; color: rgba(0, 90, 156, 0.2); margin-bottom: 24px;
+
+        .matricula-hero {
+            background: linear-gradient(135deg, var(--ucs-blue-dark) 0%, var(--ucs-blue-light) 100%);
+            border-radius: var(--radius-card);
+            color: #ffffff;
+            padding: 22px 20px;
+            margin-bottom: 16px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 16px 32px rgba(0, 45, 93, 0.18);
+        }
+
+        .matricula-hero::before {
+            content: '';
+            position: absolute;
+            right: -48px;
+            top: -58px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .matricula-hero::after {
+            content: '';
+            position: absolute;
+            left: -36px;
+            bottom: -74px;
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .matricula-eyebrow {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            opacity: 0.75;
+            margin-bottom: 6px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .matricula-hero h1 {
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .matricula-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .matricula-stat {
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 10px 8px;
+            text-align: center;
+        }
+
+        .matricula-stat strong {
+            display: block;
+            font-size: 18px;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .matricula-stat span {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            opacity: 0.78;
+        }
+
+        .matricula-tabs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+            background: #E2E8F0;
+            border-radius: 10px;
+            padding: 4px;
+            margin-bottom: 16px;
+        }
+
+        .matricula-tab {
+            border: 0;
+            background: transparent;
+            color: var(--text-light);
+            border-radius: 8px;
+            padding: 10px 6px;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .matricula-tab.active {
+            background: var(--card-bg);
+            color: var(--primary-color);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+        }
+
+        .matricula-panel {
+            display: none;
+        }
+
+        .matricula-panel.active {
+            display: block;
+        }
+
+        .section-title-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin: 18px 0 12px;
+        }
+
+        .section-title-row h3 {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        .status-pill {
+            border-radius: 999px;
+            padding: 5px 9px;
+            font-size: 10px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .status-pill.green {
+            background: rgba(0, 90, 156, 0.12);
+            color: var(--primary-color);
+        }
+
+        .status-pill.blue {
+            background: rgba(0, 90, 156, 0.1);
+            color: var(--primary-color);
+        }
+
+        .status-pill.yellow {
+            background: rgba(245, 158, 11, 0.12);
+            color: #B45309;
+        }
+
+        .status-pill.gray {
+            background: #E2E8F0;
+            color: var(--text-light);
+        }
+
+        .matricula-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-card);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--accent-color, var(--primary-color));
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .subject-row {
+            display: grid;
+            grid-template-columns: 42px 1fr;
+            gap: 12px;
+            padding: 16px;
+        }
+
+        .subject-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: rgba(0, 90, 156, 0.1);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .subject-icon.green {
+            background: rgba(0, 90, 156, 0.12);
+            color: var(--primary-color);
+        }
+
+        .subject-icon.yellow {
+            background: rgba(245, 158, 11, 0.12);
+            color: #B45309;
+        }
+
+        .subject-icon.purple {
+            background: rgba(200, 16, 46, 0.12);
+            color: var(--ucs-red);
+        }
+
+        .subject-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 4px;
+        }
+
+        .subject-name {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.25;
+        }
+
+        .subject-meta,
+        .subject-schedule,
+        .subject-note {
+            font-size: 12px;
+            color: var(--text-light);
+            line-height: 1.45;
+        }
+
+        .subject-schedule {
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .subject-schedule .material-symbols-outlined {
+            font-size: 16px;
+        }
+
+        .subject-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .credit-chip {
+            color: var(--text-light);
+            font-size: 11px;
+            font-weight: 800;
+            background: #F1F5F9;
+            border-radius: 999px;
+            padding: 5px 8px;
+            white-space: nowrap;
+        }
+
+        .current-summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .summary-tile {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--accent-color, var(--primary-color));
+            border-radius: 14px;
+            padding: 12px 8px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .summary-tile strong {
+            display: block;
+            color: var(--text-main);
+            font-size: 18px;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .summary-tile span {
+            color: var(--text-light);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        .choice-card {
+            cursor: pointer;
+            display: block;
+            position: relative;
+            background: linear-gradient(135deg, #ffffff 0%, #F8FAFC 100%);
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s, background-color 0.2s;
+        }
+
+        .choice-card.selected {
+            border-color: rgba(0, 90, 156, 0.35);
+            box-shadow: 0 10px 24px rgba(0, 90, 156, 0.12);
+            background: linear-gradient(135deg, rgba(0, 90, 156, 0.08) 0%, #ffffff 100%);
+        }
+
+        .choice-card:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .choice-row {
+            display: grid;
+            grid-template-columns: 42px 1fr;
+            gap: 12px;
+            padding: 16px;
+        }
+
+        .choice-check {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            border: 2px solid #CBD5E1;
+            background: #ffffff;
+            color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            margin-top: 2px;
+        }
+
+        .choice-check .material-symbols-outlined {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .choice-card.selected .choice-check {
+            border-color: var(--accent-color, var(--primary-color));
+            background: var(--accent-color, var(--primary-color));
+            color: #ffffff;
+            box-shadow: 0 8px 18px rgba(0, 90, 156, 0.18);
+        }
+
+        .subject-checkbox {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .choice-content {
+            min-width: 0;
+        }
+
+        .choice-code {
+            color: var(--primary-color);
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin-bottom: 4px;
+        }
+
+        .choice-description {
+            color: var(--text-light);
+            font-size: 12px;
+            line-height: 1.45;
+            margin-top: 5px;
+        }
+
+        .choice-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 12px;
+            padding-top: 12px;
+        }
+
+        .choice-detail {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-light);
+            font-size: 12px;
+            font-weight: 700;
+            min-width: 0;
+        }
+
+        .choice-detail .material-symbols-outlined {
+            font-size: 16px;
+            color: var(--accent-color, var(--primary-color));
+            flex-shrink: 0;
+        }
+
+        .choice-detail span:last-child {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .selection-summary {
+            background: var(--card-bg);
+            border-radius: var(--radius-card);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--primary-color);
+            box-shadow: var(--shadow-soft);
+            padding: 16px;
+            margin-bottom: 14px;
+        }
+
+        .selection-numbers {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .selection-number {
+            background: #F8FAFC;
+            border-radius: 12px;
+            padding: 11px 8px;
+            text-align: center;
+        }
+
+        .selection-number strong {
+            display: block;
+            color: var(--text-main);
+            font-size: 17px;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .selection-number span {
+            color: var(--text-light);
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .alert-strip {
+            display: flex;
+            gap: 10px;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            border-left: 5px solid #F59E0B;
+            color: #92400E;
+            border-radius: 14px;
+            padding: 12px;
+            font-size: 12px;
+            line-height: 1.45;
+            margin-bottom: 14px;
+        }
+
+        .alert-strip .material-symbols-outlined {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .form-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-card);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--accent-color, var(--primary-color));
+            box-shadow: var(--shadow-soft);
+            padding: 16px;
+            margin-bottom: 14px;
+        }
+
+        .form-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .field-group label {
+            display: block;
+            color: var(--text-main);
+            font-size: 12px;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .field-group select,
+        .field-group textarea {
+            width: 100%;
+            border: 1px solid var(--border-color);
+            background: #F8FAFC;
+            color: var(--text-main);
+            border-radius: var(--radius-input);
+            padding: 12px;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .field-group textarea {
+            resize: vertical;
+            min-height: 86px;
+        }
+
+        .action-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .matricula-btn {
+            border: 0;
+            border-radius: var(--radius-input);
+            padding: 12px 10px;
+            font-size: 13px;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            min-height: 44px;
+        }
+
+        .matricula-btn .material-symbols-outlined {
+            font-size: 18px;
+        }
+
+        .matricula-btn.primary {
+            background: var(--primary-color);
+            color: #ffffff;
+            box-shadow: var(--shadow-btn);
+        }
+
+        .matricula-btn.outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 1px solid rgba(0, 90, 156, 0.35);
+        }
+
+        .matricula-btn.green {
+            background: var(--primary-color);
+            color: #ffffff;
+            box-shadow: 0 8px 20px rgba(0, 90, 156, 0.22);
+        }
+
+        .meeting-confirmation {
+            display: none;
+            background: rgba(0, 90, 156, 0.1);
+            border: 1px solid rgba(0, 90, 156, 0.25);
+            color: var(--ucs-blue-dark);
+            border-radius: 14px;
+            padding: 12px;
+            font-size: 13px;
+            line-height: 1.45;
+            margin-top: 12px;
+        }
+
+        .meeting-confirmation.active {
+            display: block;
+        }
+
+        .empty-state {
+            background: #F8FAFC;
+            border: 1px dashed rgba(0, 45, 93, 0.18);
+            border-radius: 14px;
+            color: var(--text-light);
+            font-size: 13px;
+            line-height: 1.45;
+            padding: 14px;
+            text-align: center;
+        }
+
+        #printSheet {
+            display: none;
+        }
+
+        @media print {
+            body {
+                background: #ffffff;
+                display: block;
+                min-height: auto;
+            }
+
+            body.printing .mobile-frame {
+                display: none;
+            }
+
+            body.printing #printSheet {
+                display: block;
+                color: #111827;
+                font-family: Arial, sans-serif;
+                padding: 24px;
+            }
+
+            .print-title {
+                color: #002D5D;
+                font-size: 22px;
+                margin-bottom: 4px;
+            }
+
+            .print-subtitle {
+                color: #475569;
+                font-size: 12px;
+                margin-bottom: 20px;
+            }
+
+            .print-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 14px;
+                font-size: 12px;
+            }
+
+            .print-table th,
+            .print-table td {
+                border: 1px solid #CBD5E1;
+                padding: 8px;
+                text-align: left;
+                vertical-align: top;
+            }
+
+            .print-table th {
+                background: #E2E8F0;
+            }
         }
     </style>
 </head>
 <body>
     <div class="mobile-frame">
         <div class="topbar-subpage">
-            <a href="../HTML/home.html" class="back-button"><span class="material-symbols-outlined">arrow_back</span></a>
+            <a href="../HTML/home.html" class="back-button"><span class="material-symbols-outlined">arrow_back_ios_new</span></a>
             <h2>Matrícula Online</h2>
             <div style="width: 36px;"></div>
         </div>
-        <div class="content-area" style="padding: 24px; display: flex; flex-direction: column; justify-content: center;">
-            <div class="placeholder-content">
-                <span class="material-symbols-outlined">description</span>
-                <h3 style="color: var(--text-main); margin-bottom: 12px; font-size: 18px;">Página em Construção</h3>
-                <p style="font-size: 14px; line-height: 1.5;">O módulo <strong>Matrícula Online</strong> será implementado nas próximas fases. Esta é apenas uma tela estrutural.</p>
-                <a href="../HTML/home.html" class="btn-ucs-blue" style="width: auto; margin-top: 32px; padding: 12px 24px; text-decoration: none;">Voltar ao Início</a>
+
+        <div class="content-area matricula-content">
+            <section class="matricula-hero">
+                <p class="matricula-eyebrow">2026/2 • Engenharia Elétrica</p>
+                <h1>Organize sua matrícula atual e planeje o próximo semestre.</h1>
+                <div class="matricula-stats">
+                    <div class="matricula-stat">
+                        <strong>5</strong>
+                        <span>Cadeiras</span>
+                    </div>
+                    <div class="matricula-stat">
+                        <strong>24</strong>
+                        <span>Créditos</span>
+                    </div>
+                    <div class="matricula-stat">
+                        <strong>1</strong>
+                        <span>Fila</span>
+                    </div>
+                </div>
+            </section>
+
+            <div class="matricula-tabs" role="tablist">
+                <button class="matricula-tab active" type="button" data-target="currentPanel">Atual</button>
+                <button class="matricula-tab" type="button" data-target="nextPanel">Próximo</button>
+                <button class="matricula-tab" type="button" data-target="meetingPanel">Reunião</button>
             </div>
+
+            <section class="matricula-panel active" id="currentPanel">
+                <div class="current-summary">
+                    <div class="summary-tile" style="--accent-color: var(--primary-color);">
+                        <strong>24</strong>
+                        <span>Créditos</span>
+                    </div>
+                    <div class="summary-tile" style="--accent-color: var(--primary-color);">
+                        <strong>5</strong>
+                        <span>Ativas</span>
+                    </div>
+                    <div class="summary-tile" style="--accent-color: var(--ucs-red);">
+                        <strong>Noite</strong>
+                        <span>Turno</span>
+                    </div>
+                </div>
+
+                <div class="action-row" style="margin-top: 0; margin-bottom: 16px;">
+                    <button class="matricula-btn primary" type="button" data-print="current">
+                        <span class="material-symbols-outlined">picture_as_pdf</span>
+                        PDF atual
+                    </button>
+                    <button class="matricula-btn outline" type="button" data-target-tab="nextPanel">
+                        <span class="material-symbols-outlined">edit_note</span>
+                        Planejar
+                    </button>
+                </div>
+
+                <div class="section-title-row">
+                    <h3>Cadeiras do semestre</h3>
+                    <span class="status-pill green">Matrícula confirmada</span>
+                </div>
+
+                <article class="matricula-card" style="--accent-color: var(--primary-color);" data-current-subject data-name="Circuitos Elétricos II" data-code="ELE204" data-credits="6" data-schedule="Segundas e quartas, 19h30" data-status="Confirmada">
+                    <div class="subject-row">
+                        <div class="subject-icon"><span class="material-symbols-outlined">electrical_services</span></div>
+                        <div>
+                            <div class="subject-top">
+                                <div>
+                                    <p class="subject-name">Circuitos Elétricos II</p>
+                                    <p class="subject-meta">ELE204 • Prof. Marcos Silva</p>
+                                </div>
+                                <span class="status-pill green">Confirmada</span>
+                            </div>
+                            <p class="subject-schedule"><span class="material-symbols-outlined">schedule</span>Segundas e quartas, 19h30</p>
+                            <div class="subject-footer">
+                                <span class="credit-chip">6 créditos</span>
+                                <span class="subject-note">Sala B-214</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="matricula-card" style="--accent-color: var(--ucs-red);" data-current-subject data-name="Sistemas Digitais" data-code="CMP118" data-credits="4" data-schedule="Terças, 19h30" data-status="Confirmada">
+                    <div class="subject-row">
+                        <div class="subject-icon purple"><span class="material-symbols-outlined">memory</span></div>
+                        <div>
+                            <div class="subject-top">
+                                <div>
+                                    <p class="subject-name">Sistemas Digitais</p>
+                                    <p class="subject-meta">CMP118 • Prof. Laura Antunes</p>
+                                </div>
+                                <span class="status-pill green">Confirmada</span>
+                            </div>
+                            <p class="subject-schedule"><span class="material-symbols-outlined">schedule</span>Terças, 19h30</p>
+                            <div class="subject-footer">
+                                <span class="credit-chip">4 créditos</span>
+                                <span class="subject-note">Lab. 3</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="matricula-card" style="--accent-color: var(--primary-color);" data-current-subject data-name="Cálculo Numérico" data-code="MAT246" data-credits="4" data-schedule="Quintas, 19h30" data-status="Confirmada">
+                    <div class="subject-row">
+                        <div class="subject-icon green"><span class="material-symbols-outlined">calculate</span></div>
+                        <div>
+                            <div class="subject-top">
+                                <div>
+                                    <p class="subject-name">Cálculo Numérico</p>
+                                    <p class="subject-meta">MAT246 • Prof. Renata Prado</p>
+                                </div>
+                                <span class="status-pill green">Confirmada</span>
+                            </div>
+                            <p class="subject-schedule"><span class="material-symbols-outlined">schedule</span>Quintas, 19h30</p>
+                            <div class="subject-footer">
+                                <span class="credit-chip">4 créditos</span>
+                                <span class="subject-note">Sala C-102</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="matricula-card" style="--accent-color: #F59E0B;" data-current-subject data-name="Gestão de Projetos" data-code="ADM330" data-credits="4" data-schedule="Sextas, 19h30" data-status="Confirmada">
+                    <div class="subject-row">
+                        <div class="subject-icon yellow"><span class="material-symbols-outlined">assignment</span></div>
+                        <div>
+                            <div class="subject-top">
+                                <div>
+                                    <p class="subject-name">Gestão de Projetos</p>
+                                    <p class="subject-meta">ADM330 • Prof. Henrique Nunes</p>
+                                </div>
+                                <span class="status-pill green">Confirmada</span>
+                            </div>
+                            <p class="subject-schedule"><span class="material-symbols-outlined">schedule</span>Sextas, 19h30</p>
+                            <div class="subject-footer">
+                                <span class="credit-chip">4 créditos</span>
+                                <span class="subject-note">Online síncrona</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="matricula-card" style="--accent-color: #F59E0B;" data-current-subject data-name="Eletromagnetismo" data-code="FIS312" data-credits="6" data-schedule="Sábados, 08h" data-status="Em fila de espera">
+                    <div class="subject-row">
+                        <div class="subject-icon"><span class="material-symbols-outlined">science</span></div>
+                        <div>
+                            <div class="subject-top">
+                                <div>
+                                    <p class="subject-name">Eletromagnetismo</p>
+                                    <p class="subject-meta">FIS312 • Prof. Diana Lopes</p>
+                                </div>
+                                <span class="status-pill yellow">Fila #4</span>
+                            </div>
+                            <p class="subject-schedule"><span class="material-symbols-outlined">schedule</span>Sábados, 08h</p>
+                            <div class="subject-footer">
+                                <span class="credit-chip">6 créditos</span>
+                                <span class="subject-note">Aguardando vaga</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="matricula-panel" id="nextPanel">
+                <div class="selection-summary">
+                    <div class="section-title-row" style="margin-top: 0;">
+                        <h3>Seleção 2027/1</h3>
+                        <span class="status-pill blue">Pré-matrícula</span>
+                    </div>
+                    <div class="selection-numbers">
+                        <div class="selection-number">
+                            <strong id="selectedCount">0</strong>
+                            <span>Cadeiras</span>
+                        </div>
+                        <div class="selection-number">
+                            <strong id="selectedCredits">0</strong>
+                            <span>Créditos</span>
+                        </div>
+                        <div class="selection-number">
+                            <strong id="waitlistCount">0</strong>
+                            <span>Em fila</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert-strip">
+                    <span class="material-symbols-outlined">info</span>
+                    <p>As cadeiras marcadas como fila de espera entram no PDF de solicitação, mas dependem de liberação de vaga pela coordenação.</p>
+                </div>
+
+                <div class="section-title-row">
+                    <h3>Cadeiras disponíveis</h3>
+                    <span class="status-pill gray">Máx. 28 créditos</span>
+                </div>
+
+                <label class="matricula-card choice-card" style="--accent-color: var(--primary-color);">
+                    <div class="choice-row">
+                        <input class="subject-checkbox next-subject" type="checkbox" data-name="Máquinas Elétricas I" data-code="ELE318" data-credits="6" data-schedule="Segundas e quartas, 19h30" data-status="Solicitada">
+                        <div class="choice-check"><span class="material-symbols-outlined">check</span></div>
+                        <div class="choice-content">
+                            <div class="subject-top">
+                                <div>
+                                    <p class="choice-code">ELE318</p>
+                                    <p class="subject-name">Máquinas Elétricas I</p>
+                                    <p class="choice-description">Pré-requisito: Circuitos II. Estudo de transformadores e máquinas CC/CA.</p>
+                                </div>
+                                <span class="status-pill green">Vagas</span>
+                            </div>
+                            <div class="choice-details">
+                                <div class="choice-detail"><span class="material-symbols-outlined">schedule</span><span>Seg/Qua, 19h30</span></div>
+                                <div class="choice-detail"><span class="material-symbols-outlined">school</span><span>6 créditos</span></div>
+                                <div class="choice-detail"><span class="material-symbols-outlined">groups</span><span>Turma A</span></div>
+                                <div class="choice-detail"><span class="material-symbols-outlined">meeting_room</span><span>Sala B-209</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+
+                <label class="matricula-card choice-card" style="--accent-color: var(--primary-color);">
+                    <div class="choice-row">
+                        <input class="subject-checkbox next-subject" type="checkbox" data-name="Eletrônica Analógica" data-code="ELE276" data-credits="4" data-schedule="Terças, 19h30" data-status="Solicitada">
+                        <div class="choice-check"><span class="material-symbols-outlined">check</span></div>
+                        <div class="choice-content">
+                            <div class="subject-top">
+                                <div>
+                                    <p class="choice-code">ELE276</p>
+                                    <p class="subject-name">Eletrônica Analógica</p>
+                                    <p class="choice-description">Laboratório integrado com diodos, transistores e amplificadores operacionais.</p>
+                                </div>
+                                <span class="status-pill green">Vagas</span>
+                            </div>
+                            <div class="choice-details">
+                                <div class="choice-detail"><span class="material-symbols-outlined">schedule</span><span>Terças, 19h30</span></div>
+                                <div class="choice-detail"><span class="material-symbols-outlined">school</span><span>4 créditos</span></div>
+                                <div class="choice-detail"><span class="material-symbols-outlined">science</span><span>Lab. 5</span></div>
+                                <div class="choice-detail"><span class="material-symbols-outlined">person</span><span>Prof. Camila</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+
+                <label class="matricula-card choice-card" style="--accent-color: #F59E0B;">
+                    <div class="choice-row">
+                        <input class="subject-checkbox next-subject" type="checkbox" data-name="Instalações Elétricas Prediais" data-code="ELE330" data-credits="4" data-schedule="Quintas, 19h30" data-status="Fila de espera #2" data-waitlist="true">
+                        <div class="choice-check"><span class="material-symbols-outlined">check</span></div>
+                        <div class="choice-content">
+                            <div class="subject-top">
+                                <div>
+                                    <p class="choice-code">ELE330</p>
+                                    <p class="subject-name">Instalações Elétricas Prediais</p>
+                                    <p class="choice-description">Alta procura. A solicitação entra em fila e depende de liberação de vaga.</p>
+                                </div>
+                                <span class="status-pill yellow">Fila #2</span>
+                            </div>
+                            <div class="choice-details">
+                                <div class="choice-detail"><span class="material-symbols-outlined">schedule</span><span>Quintas, 19h30</span></div>
+                                <div class="choice-detail"><span class="material-symbols-outlined">school</span><span>4 créditos</span></div>
+                                <div class="choice-detail"><span class="material-symbols-outlined">pending_actions</span><span>Lista 08/07</span></div>
+                                <div class="choice-detail"><span class="material-symbols-outlined">priority_high</span><span>Prioridade #2</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+
+                <label class="matricula-card choice-card" style="--accent-color: var(--ucs-red);">
+                    <div class="choice-row">
+                        <input class="subject-checkbox next-subject" type="checkbox" data-name="Controle e Automação" data-code="ELE402" data-credits="6" data-schedule="Sextas, 19h30" data-status="Solicitada">
+                        <div class="choice-check"><span class="material-symbols-outlined">check</span></div>
+                        <div class="choice-content">
+                            <div class="subject-top">
+                                <div>
+                                    <p class="choice-code">ELE402</p>
+                                    <p class="subject-name">Controle e Automação</p>
+                                    <p class="choice-description">Projeto aplicado com modelagem, resposta dinâmica e controladores industriais.</p>
+                                </div>
+                                <span class="status-pill green">Vagas</span>
+                            </div>
+                            <div class="choice-details">
+                                <div class="choice-detail"><span class="material-symbols-outlined">schedule</span><span>Sextas, 19h30</span></div>
+                                <div class="choice-detail"><span class="material-symbols-outlined">school</span><span>6 créditos</span></div>
+                                <div class="choice-detail"><span class="material-symbols-outlined">engineering</span><span>Projeto aplicado</span></div>
+                                <div class="choice-detail"><span class="material-symbols-outlined">groups</span><span>Turma única</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+
+                <label class="matricula-card choice-card" style="--accent-color: #F59E0B;">
+                    <div class="choice-row">
+                        <input class="subject-checkbox next-subject" type="checkbox" data-name="Projeto Integrador V" data-code="ENG501" data-credits="4" data-schedule="Sábados, 08h" data-status="Fila de espera #5" data-waitlist="true">
+                        <div class="choice-check"><span class="material-symbols-outlined">check</span></div>
+                        <div class="choice-content">
+                            <div class="subject-top">
+                                <div>
+                                    <p class="choice-code">ENG501</p>
+                                    <p class="subject-name">Projeto Integrador V</p>
+                                    <p class="choice-description">Preferência para formandos. Inclui banca, protótipo e relatório técnico.</p>
+                                </div>
+                                <span class="status-pill yellow">Fila #5</span>
+                            </div>
+                            <div class="choice-details">
+                                <div class="choice-detail"><span class="material-symbols-outlined">schedule</span><span>Sábados, 08h</span></div>
+                                <div class="choice-detail"><span class="material-symbols-outlined">school</span><span>4 créditos</span></div>
+                                <div class="choice-detail"><span class="material-symbols-outlined">assignment_turned_in</span><span>Análise manual</span></div>
+                                <div class="choice-detail"><span class="material-symbols-outlined">pending_actions</span><span>Fila #5</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+
+                <div class="action-row">
+                    <button class="matricula-btn primary" type="button" data-print="next">
+                        <span class="material-symbols-outlined">picture_as_pdf</span>
+                        PDF seleção
+                    </button>
+                    <button class="matricula-btn outline" type="button" data-target-tab="meetingPanel">
+                        <span class="material-symbols-outlined">event</span>
+                        Agendar
+                    </button>
+                </div>
+            </section>
+
+            <section class="matricula-panel" id="meetingPanel">
+                <div class="form-card" style="--accent-color: var(--primary-color);">
+                    <div class="section-title-row" style="margin-top: 0;">
+                        <h3>Reunião com coordenação</h3>
+                        <span class="status-pill blue">30 min</span>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="field-group">
+                            <label for="meetingDate">Data disponível</label>
+                            <select id="meetingDate">
+                                <option value="09/07/2026">09/07/2026 • quinta-feira</option>
+                                <option value="10/07/2026">10/07/2026 • sexta-feira</option>
+                                <option value="13/07/2026">13/07/2026 • segunda-feira</option>
+                            </select>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="meetingTime">Horário</label>
+                            <select id="meetingTime">
+                                <option value="14h">14h</option>
+                                <option value="16h">16h</option>
+                                <option value="18h30">18h30</option>
+                            </select>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="meetingMode">Formato</label>
+                            <select id="meetingMode">
+                                <option value="Online pelo Teams">Online pelo Teams</option>
+                                <option value="Presencial na coordenação">Presencial na coordenação</option>
+                            </select>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="meetingNotes">Pontos para revisar</label>
+                            <textarea id="meetingNotes">Validar fila de espera, carga de créditos e compatibilidade de horários.</textarea>
+                        </div>
+                    </div>
+
+                    <button class="matricula-btn green" type="button" id="scheduleMeetingBtn" style="width: 100%; margin-top: 14px;">
+                        <span class="material-symbols-outlined">event_available</span>
+                        Confirmar agendamento
+                    </button>
+
+                    <div class="meeting-confirmation" id="meetingConfirmation"></div>
+                </div>
+
+                <div class="form-card" style="--accent-color: var(--primary-color);">
+                    <div class="section-title-row" style="margin-top: 0;">
+                        <h3>Prévia para conversa</h3>
+                        <span class="status-pill gray" id="meetingPreviewCount">0 selecionadas</span>
+                    </div>
+                    <div id="meetingPreview" class="empty-state">Selecione cadeiras na aba Próximo para montar a pauta da reunião.</div>
+                    <div class="action-row">
+                        <button class="matricula-btn primary" type="button" data-print="next">
+                            <span class="material-symbols-outlined">picture_as_pdf</span>
+                            PDF pauta
+                        </button>
+                        <button class="matricula-btn outline" type="button" data-target-tab="nextPanel">
+                            <span class="material-symbols-outlined">checklist</span>
+                            Selecionar
+                        </button>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
+
+    <section id="printSheet" aria-hidden="true"></section>
+
     <script src="../Javascript/app.js"></script>
+    <script>
+        const tabs = document.querySelectorAll('.matricula-tab');
+        const panels = document.querySelectorAll('.matricula-panel');
+        const nextSubjects = document.querySelectorAll('.next-subject');
+        const selectedCount = document.getElementById('selectedCount');
+        const selectedCredits = document.getElementById('selectedCredits');
+        const waitlistCount = document.getElementById('waitlistCount');
+        const meetingPreview = document.getElementById('meetingPreview');
+        const meetingPreviewCount = document.getElementById('meetingPreviewCount');
+        const printSheet = document.getElementById('printSheet');
+
+        function showPanel(panelId) {
+            tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.target === panelId));
+            panels.forEach(panel => panel.classList.toggle('active', panel.id === panelId));
+        }
+
+        function getSelectedSubjects() {
+            return Array.from(nextSubjects)
+                .filter(input => input.checked)
+                .map(input => ({
+                    name: input.dataset.name,
+                    code: input.dataset.code,
+                    credits: Number(input.dataset.credits),
+                    schedule: input.dataset.schedule,
+                    status: input.dataset.status,
+                    waitlist: input.dataset.waitlist === 'true'
+                }));
+        }
+
+        function updateSelectionSummary() {
+            nextSubjects.forEach(input => {
+                input.closest('.choice-card').classList.toggle('selected', input.checked);
+            });
+
+            const selected = getSelectedSubjects();
+            const credits = selected.reduce((sum, subject) => sum + subject.credits, 0);
+            const waitlist = selected.filter(subject => subject.waitlist).length;
+
+            selectedCount.textContent = selected.length;
+            selectedCredits.textContent = credits;
+            waitlistCount.textContent = waitlist;
+            meetingPreviewCount.textContent = `${selected.length} selecionadas`;
+
+            if (!selected.length) {
+                meetingPreview.className = 'empty-state';
+                meetingPreview.textContent = 'Selecione cadeiras na aba Próximo para montar a pauta da reunião.';
+                return;
+            }
+
+            meetingPreview.className = '';
+            meetingPreview.innerHTML = selected.map(subject => `
+                <article class="matricula-card" style="--accent-color: ${subject.waitlist ? '#F59E0B' : 'var(--primary-color)'}; box-shadow: none;">
+                    <div class="subject-row" style="grid-template-columns: 1fr; padding: 12px;">
+                        <div>
+                            <div class="subject-top">
+                                <div>
+                                    <p class="subject-name">${subject.name}</p>
+                                    <p class="subject-meta">${subject.code} • ${subject.credits} créditos</p>
+                                </div>
+                                <span class="status-pill ${subject.waitlist ? 'yellow' : 'green'}">${subject.status}</span>
+                            </div>
+                            <p class="subject-schedule"><span class="material-symbols-outlined">schedule</span>${subject.schedule}</p>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        function getCurrentSubjects() {
+            return Array.from(document.querySelectorAll('[data-current-subject]')).map(card => ({
+                name: card.dataset.name,
+                code: card.dataset.code,
+                credits: Number(card.dataset.credits),
+                schedule: card.dataset.schedule,
+                status: card.dataset.status
+            }));
+        }
+
+        function buildPrintTable(subjects) {
+            if (!subjects.length) {
+                return '<p>Nenhuma cadeira selecionada para este relatório.</p>';
+            }
+
+            const rows = subjects.map(subject => `
+                <tr>
+                    <td>${subject.code}</td>
+                    <td>${subject.name}</td>
+                    <td>${subject.credits}</td>
+                    <td>${subject.schedule}</td>
+                    <td>${subject.status}</td>
+                </tr>
+            `).join('');
+
+            return `
+                <table class="print-table">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Cadeira</th>
+                            <th>Créditos</th>
+                            <th>Horário</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>${rows}</tbody>
+                </table>
+            `;
+        }
+
+        function printEnrollment(type) {
+            const isCurrent = type === 'current';
+            const subjects = isCurrent ? getCurrentSubjects() : getSelectedSubjects();
+            const credits = subjects.reduce((sum, subject) => sum + subject.credits, 0);
+            const waitlist = subjects.filter(subject => subject.waitlist || subject.status.includes('fila') || subject.status.includes('Fila')).length;
+            const title = isCurrent ? 'Comprovante de Matrícula 2026/2' : 'Solicitação de Pré-Matrícula 2027/1';
+
+            printSheet.innerHTML = `
+                <h1 class="print-title">${title}</h1>
+                <p class="print-subtitle">Aluno: Gabriel Canal • RA: 123456 • Curso: Engenharia Elétrica</p>
+                <p><strong>Total:</strong> ${subjects.length} cadeiras • ${credits} créditos • ${waitlist} em fila de espera</p>
+                ${buildPrintTable(subjects)}
+                <p style="margin-top: 22px; font-size: 11px; color: #64748B;">Documento gerado pelo App Acadêmico UCS.</p>
+            `;
+
+            document.body.classList.add('printing');
+            window.print();
+        }
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => showPanel(tab.dataset.target));
+        });
+
+        document.querySelectorAll('[data-target-tab]').forEach(button => {
+            button.addEventListener('click', () => showPanel(button.dataset.targetTab));
+        });
+
+        nextSubjects.forEach(input => {
+            input.addEventListener('change', updateSelectionSummary);
+        });
+
+        document.querySelectorAll('[data-print]').forEach(button => {
+            button.addEventListener('click', () => printEnrollment(button.dataset.print));
+        });
+
+        document.getElementById('scheduleMeetingBtn').addEventListener('click', () => {
+            const date = document.getElementById('meetingDate').value;
+            const time = document.getElementById('meetingTime').value;
+            const mode = document.getElementById('meetingMode').value;
+            const selected = getSelectedSubjects();
+            const confirmation = document.getElementById('meetingConfirmation');
+            const subjectText = selected.length ? `${selected.length} cadeiras na pauta` : 'sem cadeiras selecionadas';
+
+            confirmation.textContent = `Reunião agendada para ${date}, às ${time}, em formato ${mode}, com ${subjectText}.`;
+            confirmation.classList.add('active');
+        });
+
+        window.addEventListener('afterprint', () => {
+            document.body.classList.remove('printing');
+            printSheet.innerHTML = '';
+        });
+
+        updateSelectionSummary();
+    </script>
 </body>
 </html>

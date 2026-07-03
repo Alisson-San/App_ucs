@@ -406,7 +406,7 @@ function applyZoom() {
         // Aplica a transformação CSS para aumentar a imagem
         mapImage.style.transform = `scale(${currentZoom})`;
 
-        // Se o zoom for maior que 1, garantimos que a imagem cresça do topo/esquerda 
+        // Se o zoom for maior que 1, garantimos que a imagem cresça do topo/esquerda
         // para gerar a barra de rolagem corretamente
         if (currentZoom > 1) {
             mapImage.style.transformOrigin = "top left";
@@ -457,9 +457,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // 1. Abre o modal de sucesso
             if (myModal) myModal.classList.add('active');
 
-            // 2. Substitui o botão pelo texto verde de sucesso
+            // 2. Substitui o botão pelo texto de sucesso em azul UCS
             containerChamada.innerHTML = `
-                        <div style="display: flex; align-items: center; justify-content: center; gap: 8px; background-color: rgba(255, 255, 255, 0.1); color: #10B981; padding: 14px; border-radius: 100px; font-weight: 700; font-size: 16px;">
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 8px; background-color: rgba(255, 255, 255, 0.1); color: var(--primary-color); padding: 14px; border-radius: 100px; font-weight: 700; font-size: 16px;">
                             <span class="material-symbols-outlined" style="font-size: 22px;">check_circle</span>
                             Chamada Respondida
                         </div>
