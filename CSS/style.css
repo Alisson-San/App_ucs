@@ -90,19 +90,42 @@ body {
     width: 100%;
     background-color: var(--primary-color);
     color: white;
-    border: none;
-    padding: 16px;
+    border: 1px solid transparent;
+    padding: 14px 16px;
     border-radius: var(--radius-input);
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
     box-shadow: var(--shadow-btn);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 }
 
 .btn-primary:hover {
     background-color: var(--primary-hover);
     transform: translateY(-1px);
+}
+
+.btn-danger {
+    background-color: var(--ucs-red);
+    box-shadow: 0 8px 20px rgba(200, 16, 46, 0.25);
+}
+
+.btn-danger:hover {
+    background-color: #A00D25;
+}
+
+.btn-inverted {
+    background-color: #ffffff;
+    color: var(--ucs-blue-dark);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-inverted:hover {
+    background-color: #F8FAFC;
 }
 
 /* =========================================
@@ -156,8 +179,6 @@ body {
     color: #3C3C3B;
     font-weight: 700;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 100px;
-    padding: 14px;
 }
 
 .hero-card .btn-primary:hover {
@@ -822,6 +843,24 @@ h3 {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-outline:hover {
+    background-color: rgba(0, 90, 156, 0.05);
+}
+
+.btn-outline-inverted {
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+}
+
+.btn-outline-inverted:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
 }
 
 .contact-finance-btn {
@@ -990,15 +1029,14 @@ h3 {
 }
 
 .agenda-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 16px;
+    padding: 20px;
     border-radius: var(--radius-card);
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     background-color: var(--card-bg);
-    box-shadow: var(--shadow-soft);
-    border-left: 4px solid;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid;
+    display: flex;
+    flex-direction: column;
 }
 
 .agenda-card strong {
@@ -1073,20 +1111,37 @@ h3 {
 .inbox-list {
     display: flex;
     flex-direction: column;
+    padding: 24px;
 }
 
 .msg-card {
     display: flex;
     gap: 16px;
-    padding: 20px 24px;
+    padding: 20px;
     background-color: var(--card-bg);
-    border-bottom: 1px solid var(--border-color);
+    border-radius: var(--radius-card);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 16px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, transform 0.2s;
+    border-left: 5px solid var(--border-color);
 }
 
 .msg-card:hover {
     background-color: #F8FAFC;
+    transform: translateY(-2px);
+}
+
+.msg-urgent {
+    border-left-color: var(--ucs-red);
+}
+
+.msg-finance {
+    border-left-color: #F59E0B;
+}
+
+.msg-academic {
+    border-left-color: var(--ucs-blue-light);
 }
 
 .msg-icon {
@@ -1515,3 +1570,90 @@ h3 {
 .page-transition-exit {
     animation: appFadeOut 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
+
+/* =========================================
+   14. NOVOS ESTILOS PARA NOTAS E HELP
+   ========================================= */
+.subject-header-title {
+    display: flex;
+    align-items: center;
+}
+
+.info-btn {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 50%;
+    transition: background-color 0.2s, color 0.2s;
+    margin-left: 8px;
+    margin-bottom: 4px;
+}
+
+.info-btn:hover {
+    background-color: rgba(0, 90, 156, 0.1);
+    color: var(--primary-color);
+}
+
+.info-btn .material-symbols-outlined {
+    font-size: 20px;
+}
+
+.info-btn-text {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: opacity 0.2s;
+    padding: 2px 0;
+}
+
+.info-btn-text:hover {
+    opacity: 0.7;
+}
+
+.info-btn-text .material-symbols-outlined {
+    font-size: 16px;
+}
+
+.grade-value-area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.max-grade {
+    font-size: 12px;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-left: 4px;
+}
+
+.grade-mini-bar {
+    width: 60px;
+    height: 4px;
+    background-color: #E2E8F0;
+    border-radius: 2px;
+    margin-top: 6px;
+    overflow: hidden;
+    position: relative;
+}
+
+.grade-mini-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bg-green { background-color: #10B981; }
+.bg-red { background-color: #EF4444; }
+.bg-yellow { background-color: #F59E0B; }

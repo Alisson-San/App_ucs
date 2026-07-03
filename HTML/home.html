@@ -42,15 +42,37 @@
             <div style="padding: 24px; padding-bottom: 120px;">
 
 
-                <div class="hero-card"
-                    style="background: linear-gradient(135deg, #3C3C3B 0%, #1E293B 100%); color: white; box-shadow: 0 16px 32px rgba(60, 60, 59, 0.25); border-radius: var(--radius-card); padding: 28px 24px; margin-bottom: 24px; border: none;">
-                    <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 6px;">Engenharia Elétrica</h2>
-                    <p style="font-size: 14px; opacity: 0.85; margin-bottom: 20px; line-height: 1.5;">📍 Bloco J - Sala
-                        204 <br> ⏰ 19:30 às 22:30</p>
+                <div class="card" style="padding: 24px; margin-bottom: 24px; border: none; border-left: 5px solid var(--primary-color); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08); position: relative;">
+                    <!-- Badge -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                        <div style="background-color: rgba(0, 90, 156, 0.1); color: var(--primary-color); padding: 4px 10px; border-radius: 8px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 6px;">
+                            <span style="width: 6px; height: 6px; background-color: var(--primary-color); border-radius: 50%; display: inline-block; box-shadow: 0 0 0 2px rgba(0, 90, 156, 0.2);"></span>
+                            Em andamento
+                        </div>
+                        <span style="font-size: 13px; font-weight: 700; color: var(--text-light); display: flex; align-items: center; gap: 4px;">
+                            <span class="material-symbols-outlined" style="font-size: 16px;">schedule</span> 19:30 - 22:30
+                        </span>
+                    </div>
 
+                    <!-- Informações da Aula -->
+                    <h2 style="font-size: 22px; font-weight: 800; color: var(--text-main); margin-bottom: 4px; letter-spacing: -0.5px;">Engenharia Elétrica</h2>
+                    <p style="font-size: 14px; color: var(--text-light); margin-bottom: 20px;">Prof. Marcos Almeida</p>
+
+                    <!-- Local -->
+                    <div style="display: flex; align-items: center; gap: 12px; background-color: #F8FAFC; padding: 12px 16px; border-radius: 12px; margin-bottom: 24px; border: 1px solid var(--border-color);">
+                        <div style="width: 36px; height: 36px; border-radius: 8px; background-color: white; box-shadow: 0 2px 6px rgba(0,0,0,0.05); display: flex; justify-content: center; align-items: center;">
+                            <span class="material-symbols-outlined" style="font-size: 20px; color: var(--primary-color);">location_on</span>
+                        </div>
+                        <div>
+                            <span style="display: block; font-size: 11px; color: var(--text-light); text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 2px;">Local da Aula</span>
+                            <span style="display: block; font-size: 14px; font-weight: 700; color: var(--text-main);">Bloco J • Sala 204</span>
+                        </div>
+                    </div>
+
+                    <!-- Botão de Chamada -->
                     <div id="containerChamada">
-                        <button class="btn-primary" id="btnChamada"
-                            style="background-color: white; color: #3C3C3B; width: 100%; border: none; padding: 14px; border-radius: 100px; font-size: 16px; font-weight: 700; cursor: pointer; transition: transform 0.2s;">
+                        <button class="btn-primary" id="btnChamada" style="box-shadow: 0 8px 20px rgba(0, 90, 156, 0.25);">
+                            <span class="material-symbols-outlined">how_to_reg</span>
                             Responder Chamada
                         </button>
                     </div>

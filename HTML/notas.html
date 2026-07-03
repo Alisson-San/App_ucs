@@ -6,11 +6,286 @@
     <title>Notas - App Acadêmico</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="../CSS/style.css">
+    <style>
+        /* ---- Hero Card do Boletim ---- */
+        .boletim-hero {
+            background: linear-gradient(135deg, var(--ucs-blue-dark) 0%, var(--primary-color) 100%);
+            border-radius: var(--radius-card);
+            padding: 28px 24px 24px;
+            color: white;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 16px 32px rgba(0, 45, 93, 0.25);
+        }
+
+        .boletim-hero::before {
+            content: '';
+            position: absolute;
+            top: -40px; right: -40px;
+            width: 140px; height: 140px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 50%;
+        }
+
+        .boletim-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -60px; left: -20px;
+            width: 180px; height: 180px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+        }
+
+        .hero-period {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.75;
+            margin-bottom: 6px;
+        }
+
+        .hero-title {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -0.3px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+        }
+
+        .hero-stat {
+            background: rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 12px 10px;
+            text-align: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-stat-value {
+            font-size: 22px;
+            font-weight: 800;
+            display: block;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .hero-stat-label {
+            font-size: 10px;
+            font-weight: 600;
+            opacity: 0.75;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        /* ---- Subject Card ---- */
+        .subject-card-premium {
+            background: var(--card-bg);
+            border-radius: var(--radius-card);
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+
+        .subject-card-header {
+            padding: 20px 20px 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .subject-card-body {
+            padding: 16px 20px 20px;
+        }
+
+        .subject-name-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .subject-name-col h3 {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 3px;
+            letter-spacing: -0.2px;
+            line-height: 1.3;
+        }
+
+        .subject-name-col p {
+            font-size: 12px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .subject-avg-block {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .avg-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-weight: 800;
+            position: relative;
+        }
+
+        .avg-circle-value {
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        .avg-circle-label {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            opacity: 0.8;
+        }
+
+        .avg-circle.green {
+            background: rgba(16, 185, 129, 0.12);
+            color: #059669;
+            border: 2px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .avg-circle.red {
+            background: rgba(239, 68, 68, 0.12);
+            color: #DC2626;
+            border: 2px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .avg-circle.yellow {
+            background: rgba(245, 158, 11, 0.12);
+            color: #B45309;
+            border: 2px solid rgba(245, 158, 11, 0.3);
+        }
+
+        /* ---- Tabela de Notas ---- */
+        .grade-table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .grade-table-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+        .grade-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .grade-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .grade-item-name {
+            flex: 1;
+            font-size: 13px;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .grade-item-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
+
+        .grade-pill {
+            font-size: 13px;
+            font-weight: 800;
+            padding: 2px 10px;
+            border-radius: 20px;
+        }
+
+        .grade-pill.green { background: rgba(16,185,129,0.1); color: #059669; }
+        .grade-pill.red   { background: rgba(239,68,68,0.1);  color: #DC2626; }
+        .grade-pill.blue  { background: rgba(0,90,156,0.1);   color: var(--primary-color); }
+        .grade-pill.yellow { background: rgba(245,158,11,0.1); color: #B45309; }
+
+        .grade-bar-wrap {
+            width: 60px;
+            height: 4px;
+            background: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .grade-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .grade-bar-fill.green  { background: #10B981; }
+        .grade-bar-fill.red    { background: #EF4444; }
+        .grade-bar-fill.blue   { background: var(--primary-color); }
+        .grade-bar-fill.yellow { background: #F59E0B; }
+
+        /* ---- Info btn ---- */
+        .calc-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-light);
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 3px 8px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .calc-badge:hover {
+            background: rgba(0,90,156,0.08);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .calc-badge .material-symbols-outlined {
+            font-size: 13px;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: var(--border-color);
+            margin: 14px 0;
+        }
+    </style>
 </head>
 <body>
 
     <div class="mobile-frame">
-        
+
         <div class="topbar-subpage">
             <a href="../HTML/home.html" class="back-button">
                 <span class="material-symbols-outlined">arrow_back_ios_new</span>
@@ -21,95 +296,243 @@
 
         <div class="content-area" style="padding-top: 16px;">
 
-            <div class="card subject-card">
-                <div class="subject-header">
-                    <div>
-                        <h3 class="subject-title">Engenharia de Software</h3>
-                        <p class="subject-code">Cód: ENG104 • 60h</p>
+            <!-- ===== HERO: Resumo do Semestre ===== -->
+            <div class="boletim-hero">
+                <p class="hero-period">2º Semestre • 2026</p>
+                <h2 class="hero-title">Seu Desempenho Acadêmico</h2>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">6.4</span>
+                        <span class="hero-stat-label">IRA Geral</span>
                     </div>
-                    <div class="average-badge badge-green">Média: 7.2</div>
-                </div>
-
-                <div class="grade-section">
-                    <h4 class="grade-category">Avaliações (Provas)</h4>
-                    <div class="grade-row">
-                        <span>Prova 1 (P1)</span>
-                        <span class="grade-value text-green">8.5</span>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">2</span>
+                        <span class="hero-stat-label">Aprovando</span>
                     </div>
-                    <div class="grade-row">
-                        <span>Prova 2 (P2)</span>
-                        <span class="grade-value text-red">5.0</span>
-                    </div>
-                </div>
-
-                <div class="grade-section">
-                    <h4 class="grade-category">TDEs (Trabalhos)</h4>
-                    <div class="grade-row">
-                        <span>TDE 1 - Projeto Prático</span>
-                        <span class="grade-value text-green">8.0</span>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value" style="color: #FCA5A5;">1</span>
+                        <span class="hero-stat-label">Em Risco</span>
                     </div>
                 </div>
             </div>
 
-            <div class="card subject-card">
-                <div class="subject-header">
-                    <div>
-                        <h3 class="subject-title">Cálculo Numérico</h3>
-                        <p class="subject-code">Cód: MAT201 • 80h</p>
+            <!-- ===== MATÉRIA 1: Engenharia de Software — Média 7.2 (verde) ===== -->
+            <div class="subject-card-premium" style="border-left: 5px solid #10B981;">
+                <div class="subject-card-header">
+                    <div class="subject-name-row">
+                        <div class="subject-name-col">
+                            <h3>Engenharia de Software</h3>
+                            <p>Cód: ENG104 • 60h</p>
+                        </div>
+                        <div class="subject-avg-block">
+                            <div class="avg-circle green">
+                                <span class="avg-circle-value">7.2</span>
+                                <span class="avg-circle-label">Média</span>
+                            </div>
+                            <button class="calc-badge" onclick="showHelpModal('normal')">
+                                <span class="material-symbols-outlined">calculate</span> Cálculo
+                            </button>
+                        </div>
                     </div>
-                    <div class="average-badge badge-red">Média: 4.8</div>
                 </div>
 
-                <div class="grade-section">
-                    <h4 class="grade-category">Avaliações (Provas)</h4>
-                    <div class="grade-row">
-                        <span>Prova 1 (P1)</span>
-                        <span class="grade-value text-red">4.0</span>
+                <div class="subject-card-body">
+                    <!-- Provas -->
+                    <div class="grade-table-header">
+                        <span class="grade-table-title">Avaliações (Provas)</span>
                     </div>
-                    <div class="grade-row">
-                        <span>Prova 2 (P2)</span>
-                        <span class="grade-value text-red">5.5</span>
-                    </div>
-                </div>
 
-                <div class="grade-section">
-                    <h4 class="grade-category">TDEs (Trabalhos)</h4>
-                    <div class="grade-row">
-                        <span>TDE 1 - Lista de Exercícios</span>
-                        <span class="grade-value text-red">5.0</span>
+                    <div class="grade-item">
+                        <span class="grade-item-name">Prova 1 (P1)</span>
+                        <div class="grade-item-right">
+                            <span class="grade-pill green">8.5 <span style="font-weight:500; opacity:0.7;">/ 10.0</span></span>
+                            <div class="grade-bar-wrap"><div class="grade-bar-fill green" style="width: 85%;"></div></div>
+                        </div>
+                    </div>
+                    <div class="grade-item">
+                        <span class="grade-item-name">Prova 2 (P2)</span>
+                        <div class="grade-item-right">
+                            <span class="grade-pill red">5.0 <span style="font-weight:500; opacity:0.7;">/ 10.0</span></span>
+                            <div class="grade-bar-wrap"><div class="grade-bar-fill red" style="width: 50%;"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <!-- TDEs -->
+                    <div class="grade-table-header">
+                        <span class="grade-table-title">TDEs (Trabalhos)</span>
+                    </div>
+                    <div class="grade-item">
+                        <span class="grade-item-name">TDE 1 — Projeto Prático</span>
+                        <div class="grade-item-right">
+                            <span class="grade-pill green">8.0 <span style="font-weight:500; opacity:0.7;">/ 10.0</span></span>
+                            <div class="grade-bar-wrap"><div class="grade-bar-fill green" style="width: 80%;"></div></div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card subject-card">
-                <div class="subject-header">
-                    <div>
-                        <h3 class="subject-title">Gestão de Projetos</h3>
-                        <p class="subject-code">Cód: ADM305 • 40h</p>
+            <!-- ===== MATÉRIA 2: Cálculo Numérico — Média 2.8 (vermelho) ===== -->
+            <div class="subject-card-premium" style="border-left: 5px solid #EF4444;">
+                <div class="subject-card-header">
+                    <div class="subject-name-row">
+                        <div class="subject-name-col">
+                            <h3>Cálculo Numérico</h3>
+                            <p>Cód: MAT201 • 80h</p>
+                        </div>
+                        <div class="subject-avg-block">
+                            <div class="avg-circle red">
+                                <span class="avg-circle-value">2.8</span>
+                                <span class="avg-circle-label">Média</span>
+                            </div>
+                            <button class="calc-badge" onclick="showHelpModal('harmonica')">
+                                <span class="material-symbols-outlined">calculate</span> Cálculo
+                            </button>
+                        </div>
                     </div>
-                    <div class="average-badge badge-green">Média: 9.5</div>
+                    <!-- Alerta de risco -->
+                    <div style="display: flex; align-items: center; gap: 8px; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: 10px; padding: 10px 12px;">
+                        <span class="material-symbols-outlined" style="font-size: 18px; color: #EF4444; flex-shrink: 0;">warning</span>
+                        <p style="font-size: 12px; color: #B91C1C; font-weight: 600; line-height: 1.4;">Situação crítica. Média abaixo do mínimo exigido (5.0) pela instituição.</p>
+                    </div>
                 </div>
 
-                <div class="grade-section">
-                    <h4 class="grade-category">Avaliações (Provas)</h4>
-                    <div class="grade-row">
-                        <span>Prova Única</span>
-                        <span class="grade-value text-green">9.0</span>
+                <div class="subject-card-body">
+                    <!-- Provas -->
+                    <div class="grade-table-header">
+                        <span class="grade-table-title">Avaliações (Provas)</span>
+                    </div>
+                    <div class="grade-item">
+                        <span class="grade-item-name">Prova 1 (P1)</span>
+                        <div class="grade-item-right">
+                            <span class="grade-pill red">2.0 <span style="font-weight:500; opacity:0.7;">/ 10.0</span></span>
+                            <div class="grade-bar-wrap"><div class="grade-bar-fill red" style="width: 20%;"></div></div>
+                        </div>
+                    </div>
+                    <div class="grade-item">
+                        <span class="grade-item-name">Prova 2 (P2)</span>
+                        <div class="grade-item-right">
+                            <span class="grade-pill yellow">6.5 <span style="font-weight:500; opacity:0.7;">/ 10.0</span></span>
+                            <div class="grade-bar-wrap"><div class="grade-bar-fill yellow" style="width: 65%;"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <!-- TDEs -->
+                    <div class="grade-table-header">
+                        <span class="grade-table-title">TDEs (Trabalhos)</span>
+                    </div>
+                    <div class="grade-item">
+                        <span class="grade-item-name">TDE 1 — Lista de Exercícios</span>
+                        <div class="grade-item-right">
+                            <span class="grade-pill red">1.0 <span style="font-weight:500; opacity:0.7;">/ 10.0</span></span>
+                            <div class="grade-bar-wrap"><div class="grade-bar-fill red" style="width: 10%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== MATÉRIA 3: Gestão de Projetos — Média 9.2 (verde) ===== -->
+            <div class="subject-card-premium" style="border-left: 5px solid #10B981;">
+                <div class="subject-card-header">
+                    <div class="subject-name-row">
+                        <div class="subject-name-col">
+                            <h3>Gestão de Projetos Avançada e Liderança Estratégica</h3>
+                            <p>Cód: ADM305 • 40h</p>
+                        </div>
+                        <div class="subject-avg-block">
+                            <div class="avg-circle green">
+                                <span class="avg-circle-value">9.2</span>
+                                <span class="avg-circle-label">Média</span>
+                            </div>
+                            <button class="calc-badge" onclick="showHelpModal('normal')">
+                                <span class="material-symbols-outlined">calculate</span> Cálculo
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <div class="grade-section">
-                    <h4 class="grade-category">TDEs (Trabalhos)</h4>
-                    <div class="grade-row">
-                        <span>TDE 1 - Seminário</span>
-                        <span class="grade-value text-green">10.0</span>
+                <div class="subject-card-body">
+                    <!-- Provas -->
+                    <div class="grade-table-header">
+                        <span class="grade-table-title">Avaliações (Provas)</span>
+                    </div>
+                    <div class="grade-item">
+                        <span class="grade-item-name">Prova Única</span>
+                        <div class="grade-item-right">
+                            <span class="grade-pill green">35.0 <span style="font-weight:500; opacity:0.7;">/ 40.0</span></span>
+                            <div class="grade-bar-wrap"><div class="grade-bar-fill green" style="width: 87.5%;"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <!-- TDEs -->
+                    <div class="grade-table-header">
+                        <span class="grade-table-title">TDEs (Trabalhos)</span>
+                    </div>
+                    <div class="grade-item">
+                        <span class="grade-item-name">Seminário Final</span>
+                        <div class="grade-item-right">
+                            <span class="grade-pill green">57.0 <span style="font-weight:500; opacity:0.7;">/ 60.0</span></span>
+                            <div class="grade-bar-wrap"><div class="grade-bar-fill green" style="width: 95%;"></div></div>
+                        </div>
                     </div>
                 </div>
             </div>
 
         </div>
+
+        <!-- Help Modal -->
+        <div class="modal-overlay" id="helpModal">
+            <div class="modal-content" style="text-align: left;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <div class="icon-wrapper" style="width: 40px; height: 40px; margin: 0; background-color: rgba(0, 90, 156, 0.1);">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">calculate</span>
+                        </div>
+                        <h3 id="helpModalTitle" style="margin: 0; font-size: 16px; color: var(--text-main);">Título</h3>
+                    </div>
+                </div>
+                <p id="helpModalMessage" style="color: var(--text-light); font-size: 14px; line-height: 1.5; margin-bottom: 16px;"></p>
+                <div style="background-color: var(--bg-color); padding: 16px; border-radius: 12px; border: 1px dashed var(--border-color); display: flex; align-items: center; justify-content: center;">
+                    <p id="helpModalFormula" style="font-family: monospace; font-size: 14px; color: var(--ucs-blue-dark); font-weight: 700; text-align: center; margin: 0;"></p>
+                </div>
+                <button class="btn-primary" onclick="closeHelpModal()" style="margin-top: 24px; width: 100%;">Entendi</button>
+            </div>
+        </div>
     </div>
 
     <script src="../Javascript/app.js"></script>
+    <script>
+        function showHelpModal(type) {
+            const modal = document.getElementById('helpModal');
+            const title = document.getElementById('helpModalTitle');
+            const message = document.getElementById('helpModalMessage');
+            const formula = document.getElementById('helpModalFormula');
+
+            if (type === 'normal') {
+                title.textContent = "Média Aritmética / Ponderada";
+                message.textContent = "Nesta disciplina, a média é calculada pela soma simples das avaliações. Caso cada uma tenha um peso diferente (como valer 4.0 ou 6.0), a nota final já reflete essa pontuação máxima proporcional.";
+                formula.innerHTML = "<span style='color: var(--text-light)'>Média =</span> (N₁ + N₂ + N₃) / Peso Total";
+            } else if (type === 'harmonica') {
+                title.textContent = "Média Harmônica";
+                message.textContent = "Nesta disciplina, é utilizada a média harmônica para privilegiar avaliações consistentes. É calculada dividindo o número total de avaliações pela soma do inverso de cada nota percentual.";
+                formula.innerHTML = "<span style='color: var(--text-light)'>Média =</span> Qtd / ((1/N₁) + (1/N₂) + (1/N₃))";
+            }
+
+            modal.classList.add('active');
+        }
+
+        function closeHelpModal() {
+            document.getElementById('helpModal').classList.remove('active');
+        }
+
+        document.getElementById('helpModal').addEventListener('click', function(e) {
+            if (e.target === this) closeHelpModal();
+        });
+    </script>
 </body>
 </html>

@@ -16,44 +16,100 @@
                 <span class="material-symbols-outlined">arrow_back_ios_new</span>
             </a>
             <h2>Financeiro</h2>
-            <span class="material-symbols-outlined" style="visibility: hidden;">arrow_back_ios_new</span>
+            <button class="back-button" style="background: none; border: none; outline: none; cursor: pointer;" onclick="alert('Abrindo Histórico de Faturas...')">
+                <span class="material-symbols-outlined">history</span>
+            </button>
         </div>
 
         <div class="content-area" style="padding-top: 16px;">
 
-            <h3 style="font-size: 16px; margin-bottom: 12px;">Mensalidade Atual</h3>
-            
-            <div class="card finance-card">
-                <div class="finance-header">
-                    <span class="finance-month">Junho / 2026</span>
-                    <span class="finance-status status-pending">A Vencer</span>
+            <!-- Resumo Centralizado (Mensalidade Atual) -->
+            <div class="hero-card" style="margin-bottom: 24px; text-align: center; background: linear-gradient(135deg, var(--ucs-blue-dark) 0%, var(--ucs-blue-light) 100%);">
+                <p style="font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; opacity: 0.9;">Mensalidade Atual (Junho/26)</p>
+                <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 4px;">R$ 1.450,00</h2>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 20px;">
+                    <span class="finance-status status-pending" style="background-color: rgba(255,255,255,0.2); color: #FFF;">Vence em 15/06</span>
                 </div>
                 
-                <div class="finance-details">
-                    <p class="finance-label">Valor total</p>
-                    <h2 class="finance-amount">R$ 1.450,00</h2>
-                    <p class="finance-due-date">Vencimento: <strong>15/06/2026</strong></p>
-                </div>
-
-                <div class="finance-actions">
-                    <button class="btn-ucs-blue" style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 12px;" onclick="alert('Código de barras copiado: 34191.09008 63571.277308 71444.640008 1 900000000145000')">
+                <div style="display: flex; gap: 12px; justify-content: center;">
+                    <button class="btn-primary btn-inverted" style="flex: 1;" onclick="alert('Código de barras copiado!')">
                         <span class="material-symbols-outlined">content_copy</span>
                         Copiar Código
                     </button>
-                    
-                    <button class="btn-outline" style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px;" onclick="alert('Iniciando o download do Boleto-Junho.pdf...')">
+                    <button class="btn-outline btn-outline-inverted" style="flex: 1;" onclick="alert('Boleto baixado com sucesso!')">
                         <span class="material-symbols-outlined">download</span>
-                        Baixar Boleto (PDF)
+                        Boleto (PDF)
                     </button>
                 </div>
             </div>
 
+            <!-- Faturas Atrasadas -->
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 12px;">
+                <h3 style="font-size: 16px;">Faturas Atrasadas</h3>
+            </div>
+            
+            <div class="card finance-card" style="border-left: 4px solid var(--ucs-red); margin-bottom: 24px; padding: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                    <div>
+                        <span style="font-size: 15px; font-weight: 700; color: var(--text-main); display: block;">Maio / 2026</span>
+                        <span style="font-size: 13px; color: var(--ucs-red); font-weight: 600;">Vencida há 30 dias</span>
+                    </div>
+                    <div style="text-align: right;">
+                        <h3 style="font-size: 18px; color: var(--ucs-red);">R$ 1.500,00</h3>
+                        <span style="font-size: 11px; color: var(--text-light);">Já com juros inclusos</span>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 12px;">
+                    <button class="btn-outline" style="flex: 1;" onclick="alert('Gerando 2ª via atualizada...')">
+                        <span class="material-symbols-outlined">receipt_long</span> Gerar 2ª Via
+                    </button>
+                    <button class="btn-primary btn-danger" style="flex: 1;" onclick="alert('Redirecionando para Acordo Online...')">
+                        <span class="material-symbols-outlined">handshake</span> Negociar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Faturas Pagas -->
+            <h3 style="font-size: 16px; margin-bottom: 12px;">Últimos Pagamentos</h3>
+            
+            <div class="card finance-card" style="padding: 0; overflow: hidden; margin-bottom: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px; border-bottom: 1px solid var(--border-color);">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background-color: #DEF7EC; display: flex; align-items: center; justify-content: center; color: #10B981;">
+                            <span class="material-symbols-outlined">check_circle</span>
+                        </div>
+                        <div>
+                            <span style="font-size: 15px; font-weight: 600; display: block;">Abril / 2026</span>
+                            <span style="font-size: 12px; color: var(--text-light);">Pago em 10/04/2026</span>
+                        </div>
+                    </div>
+                    <span style="font-weight: 700; color: var(--text-main);">R$ 1.450,00</span>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background-color: #DEF7EC; display: flex; align-items: center; justify-content: center; color: #10B981;">
+                            <span class="material-symbols-outlined">check_circle</span>
+                        </div>
+                        <div>
+                            <span style="font-size: 15px; font-weight: 600; display: block;">Março / 2026</span>
+                            <span style="font-size: 12px; color: var(--text-light);">Pago em 12/03/2026</span>
+                        </div>
+                    </div>
+                    <span style="font-weight: 700; color: var(--text-main);">R$ 1.450,00</span>
+                </div>
+                <div style="background-color: var(--bg-color); padding: 12px; text-align: center; cursor: pointer; border-top: 1px solid var(--border-color);" onclick="alert('Carregando mais faturas...')">
+                    <span style="font-size: 13px; font-weight: 600; color: var(--primary-color);">Ver todo o histórico</span>
+                </div>
+            </div>
+
             <div class="support-section">
-                <h3 style="font-size: 16px; margin-bottom: 12px; margin-top: 24px;">Precisa de ajuda?</h3>
-                <p style="font-size: 14px; color: var(--text-light); margin-bottom: 16px;">Negociações, dúvidas sobre valores ou problemas com o pagamento.</p>
+                <h3 style="font-size: 16px; margin-bottom: 12px;">Precisa de ajuda?</h3>
                 
                 <a href="#" class="contact-finance-btn" style="text-decoration: none;" onclick="alert('Redirecionando para o WhatsApp do Departamento Financeiro...')">
-                    <span class="material-symbols-outlined" style="font-size: 28px; color: #25D366;">forum</span>
+                    <div style="width: 48px; height: 48px; border-radius: 12px; background-color: rgba(37, 211, 102, 0.1); display: flex; justify-content: center; align-items: center;">
+                        <span class="material-symbols-outlined" style="font-size: 24px; color: #25D366;">forum</span>
+                    </div>
                     <div>
                         <strong style="display: block; font-size: 15px; color: var(--text-main);">Falar com o Financeiro</strong>
                         <span style="font-size: 13px; color: var(--text-light);">Atendimento via WhatsApp</span>
