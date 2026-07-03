@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda - App Acadêmico</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="../CSS/style.css">
 
 </head>
+
 <body>
 
     <div class="mobile-frame">
-        
+
         <!-- Barra Superior -->
         <div class="topbar-subpage" style="padding-bottom: 8px;">
             <a href="../HTML/home.html" class="back-button">
@@ -22,7 +25,7 @@
         </div>
 
         <div class="content-area" style="padding-top: 16px; padding-bottom: 100px; display: block; overflow-y: auto;">
-            
+
             <!-- Controle de Visualização (Tabs) -->
             <div class="calendar-tabs">
                 <button class="cal-tab active" data-target="view-month">Mês</button>
@@ -54,34 +57,44 @@
                 <div class="cal-grid">
                     <!-- Dias vazios para começar o mês no dia certo -->
                     <div class="cal-cell empty"></div>
-                    
+
                     <div class="cal-cell">1</div>
-                    <div class="cal-cell">2 <div class="cal-event event-class"></div></div>
+                    <div class="cal-cell">2 <div class="cal-event event-class"></div>
+                    </div>
                     <div class="cal-cell">3</div>
-                    <div class="cal-cell">4 <div class="cal-event event-class"></div></div>
+                    <div class="cal-cell">4 <div class="cal-event event-class"></div>
+                    </div>
                     <div class="cal-cell">5</div>
                     <div class="cal-cell">6</div>
                     <div class="cal-cell">7</div>
-                    
+
                     <div class="cal-cell">8</div>
-                    <div class="cal-cell">9 <div class="cal-event event-class"></div></div>
-                    <div class="cal-cell">10 <div class="cal-event event-task"></div></div>
-                    <div class="cal-cell">11 <div class="cal-event event-class"></div></div>
-                    <div class="cal-cell today">12 <div class="cal-event event-exam"></div></div>
+                    <div class="cal-cell">9 <div class="cal-event event-class"></div>
+                    </div>
+                    <div class="cal-cell">10 <div class="cal-event event-task"></div>
+                    </div>
+                    <div class="cal-cell">11 <div class="cal-event event-class"></div>
+                    </div>
+                    <div class="cal-cell today">12 <div class="cal-event event-exam"></div>
+                    </div>
                     <div class="cal-cell">13</div>
                     <div class="cal-cell">14</div>
 
-                    <div class="cal-cell">15 <div class="cal-event event-task"></div></div>
-                    <div class="cal-cell">16 <div class="cal-event event-class"></div></div>
+                    <div class="cal-cell">15 <div class="cal-event event-task"></div>
+                    </div>
+                    <div class="cal-cell">16 <div class="cal-event event-class"></div>
+                    </div>
                     <div class="cal-cell">17</div>
-                    <div class="cal-cell">18 <div class="cal-event event-class"></div></div>
+                    <div class="cal-cell">18 <div class="cal-event event-class"></div>
+                    </div>
                     <div class="cal-cell">19</div>
                     <div class="cal-cell">20</div>
                     <div class="cal-cell">21</div>
 
                     <div class="cal-cell">22</div>
                     <div class="cal-cell">23</div>
-                    <div class="cal-cell">24 <div class="cal-event event-exam"></div></div>
+                    <div class="cal-cell">24 <div class="cal-event event-exam"></div>
+                    </div>
                     <div class="cal-cell">25</div>
                     <div class="cal-cell">26</div>
                     <div class="cal-cell">27</div>
@@ -96,7 +109,7 @@
                  VISÃO: SEMANA (Lista Agrupada)
                  ============================================== -->
             <div id="view-week" class="cal-view" style="display: none;">
-                
+
                 <div class="week-day-group">
                     <h4 class="week-day-title">Terça, 09 de Jun</h4>
                     <div class="agenda-card bg-class">
@@ -137,7 +150,7 @@
                  ============================================== -->
             <div id="view-day" class="cal-view" style="display: none;">
                 <div class="timeline-container">
-                    
+
                     <div class="timeline-row">
                         <div class="timeline-time">08:00</div>
                         <div class="timeline-content">
@@ -176,16 +189,21 @@
 
         </div>
 
-        <!-- Menu Inferior -->
         <nav class="bottom-nav">
-            <a href="../HTML/home.html" class="nav-item">
-                <span class="material-symbols-outlined">home</span> Início
+            <a href="#" class="nav-item" id="btnPerfil" data-i18n="nav_profile">
+                <span class="material-symbols-outlined">person</span> Perfil
             </a>
-            <a href="../HTML/agenda.html" class="nav-item active">
+            <a href="../HTML/agenda.html" class="nav-item active" data-i18n="nav_agenda">
                 <span class="material-symbols-outlined">calendar_month</span> Agenda
             </a>
-            <a href="#" class="nav-item">
-                <span class="material-symbols-outlined">person</span> Perfil
+            <a href="../HTML/home.html" class="nav-item nav-main-fab" data-i18n="nav_home">
+                <span class="material-symbols-outlined">home</span> Início
+            </a>
+            <a href="../HTML/id_estudante.html" class="nav-item" data-i18n="nav_id">
+                <span class="material-symbols-outlined">badge</span> ID Digital
+            </a>
+            <a href="../HTML/mapa.html" class="nav-item" data-i18n="nav_map">
+                <span class="material-symbols-outlined">map</span> Mapa
             </a>
         </nav>
 
@@ -224,4 +242,5 @@
         });
     </script>
 </body>
+
 </html>

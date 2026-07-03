@@ -1,30 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Universidade de Caxias do Sul</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css" />
     <link rel="stylesheet" href="CSS/style.css">
 </head>
+
 <body class="login-body">
 
     <div class="mobile-frame login-frame">
-        
-        <div class="ucs-topbar">
-            <div class="topbar-left">
-                <span class="material-symbols-outlined">language</span>
-                <span data-i18n="topbar_title">Universidade de Caxias do Sul</span>
-            </div>
-            <span class="material-symbols-outlined menu-icon">menu</span>
-        </div>
+
 
         <div class="login-content-area">
             <main class="card login-card-original">
-                
+
                 <div class="logo-container">
-                    <img src="imagens/logo-ucs.png" alt="UCS" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <img src="imagens/logo-ucs.png" alt="UCS" class="logo-img"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="logo-fallback-red"><span>UCS</span></div>
                 </div>
 
@@ -33,10 +30,11 @@
                         <span class="material-symbols-outlined icon-left">person</span>
                         <input type="text" id="user" data-i18n-placeholder="user_ph" placeholder="Usuário" required>
                     </div>
-                    
+
                     <div class="input-with-icon">
                         <span class="material-symbols-outlined icon-left">lock</span>
-                        <input type="password" id="password" data-i18n-placeholder="pass_ph" placeholder="Senha" required>
+                        <input type="password" id="password" data-i18n-placeholder="pass_ph" placeholder="Senha"
+                            required>
                         <button type="button" class="toggle-password-btn" id="toggleBtn">
                             <span class="material-symbols-outlined">visibility_off</span>
                         </button>
@@ -51,7 +49,7 @@
                 </form>
 
                 <div class="login-links-vertical">
-                    
+
                     <a href="#" data-i18n="first_access">Políticas de Privacidade</a>
                 </div>
 
@@ -70,4 +68,5 @@
 
     <script src="Javascript/app.js"></script>
 </body>
+
 </html>
